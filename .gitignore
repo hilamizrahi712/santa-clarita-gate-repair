@@ -1,0 +1,23 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Source/working files — not needed for deployment
+my images scv/
+styles-content.txt
+assets/brands/*tp.jpeg
+assets/brands/allomatic.jpeg
+assets/brands/eagle.jpeg
+assets/brands/elite.jpeg
+assets/brands/liftmaster.jpeg
+assets/brands/ramset.jpeg
+assets/brands/*.svg
