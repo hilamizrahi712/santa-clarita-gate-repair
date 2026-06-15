@@ -21,3 +21,10 @@ assets/brands/elite.jpeg
 assets/brands/liftmaster.jpeg
 assets/brands/ramset.jpeg
 assets/brands/*.svg
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
