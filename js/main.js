@@ -80,7 +80,7 @@
 
       fetch(action, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } })
         .then(function (res) {
-          if (res.ok) { showSuccess(); }
+          if (res.ok) { showSuccess(); if (typeof window.gtag === "function") { window.gtag("event", "lead_form_submit", { page: location.pathname }); } }
           else { throw new Error("Bad response"); }
         })
         .catch(function () {
@@ -95,6 +95,18 @@
       }
     });
   }
+
+  /* ---------- Conversion tracking (GA4) ----------
+     One delegated listener: any click on a tel: or sms: link fires a GA4 event. */
+  function track(name, params) {
+    if (typeof window.gtag === "function") { window.gtag("event", name, params || {}); }
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest ? e.target.closest("a") : null;
+    var href = a ? (a.getAttribute("href") || "") : "";
+    if (href.indexOf("tel:") === 0) { track("call_click", { page: location.pathname }); }
+    else if (href.indexOf("sms:") === 0) { track("sms_click", { page: location.pathname }); }
+  });
 
   /* ---------- Footer year ---------- */
   var yr = document.getElementById("year");
