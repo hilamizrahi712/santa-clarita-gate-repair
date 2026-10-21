@@ -1,0 +1,3 @@
+/blog /tips 301
+/blog/* /tips/:splat 301
+/pricing /contact 301
