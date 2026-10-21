@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Phone } from "lucide-react";
 import { BRANDS } from "@/lib/brands-data";
 import { BRAND_MODELS, finderEntries, modelVariants, shortBrandName } from "@/lib/brand-models";
+import { IMAGES } from "@/lib/images";
 import { BUSINESS, ORG_ID } from "@/lib/constants";
 import ModelFinder from "@/components/ModelFinder";
 import ModelList from "@/components/ModelList";
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/gate-operator-models" },
-  openGraph: { title: TITLE, description: DESCRIPTION, url: "/gate-operator-models", images: [{ url: "/images/og/og-default.jpg", width: 1200, height: 630 }] },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: "/gate-operator-models", images: [{ url: IMAGES.og, width: 1200, height: 630 }] },
 };
 
 // Gate motor brands first (that's where the jobs are), then intercom and garage.

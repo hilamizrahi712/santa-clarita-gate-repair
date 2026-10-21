@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, MapPin } from "lucide-react";
+import { IMAGES, IMAGE_ALT } from "@/lib/images";
 import { BUSINESS, ALL_CITIES } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -55,12 +56,7 @@ export default function ServiceAreasPage() {
       {/* TODO: An interactive Google Maps embed showing coverage radius could replace this section */}
       <section style={{ background: "var(--bg-muted)", borderBottom: "1px solid var(--line)" }}>
         <div className="grid grid-cols-4" style={{ height: 200 }}>
-          {[
-            { src: "/images/gallery/gate-2.webp", alt: "Gate repair service Los Angeles" },
-            { src: "/images/services/whatsapp-photo-2.webp", alt: "Gate and garage door service Los Angeles" },
-            { src: "/images/services/commercial-2.webp", alt: "Commercial garage door service near you" },
-            { src: "/images/services/frezno-gate.webp", alt: "Custom iron gate installation" },
-          ].map((photo, i) => (
+          {IMAGES.serviceAreasStrip.map((src) => ({ src, alt: IMAGE_ALT[src] })).map((photo, i) => (
             <div key={i} style={{ position: "relative", overflow: "hidden", height: 200 }}>
               <Image
                 src={photo.src}

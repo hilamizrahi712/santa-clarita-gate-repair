@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Phone, CheckCircle, ChevronRight, AlertCircle, ArrowRight } from "lucide-react";
 import { BRANDS, getBrandBySlug, anchorVerb, type BrandData } from "@/lib/brands-data";
+import { IMAGES, IMAGE_ALT } from "@/lib/images";
 import { BUSINESS, ALL_CITIES, ORG_ID } from "@/lib/constants";
 import { CITY_REGIONS } from "@/lib/city-regions";
 import { PRIORITY_CITY_SLUGS } from "@/lib/cities-data";
@@ -48,7 +49,7 @@ export async function generateMetadata({
   const brand = getBrandBySlug(slug);
   if (!brand) return {};
   const url = `/brands/${brand.slug}`;
-  const ogImage = { url: "/images/og/og-default.jpg", width: 1200, height: 630 };
+  const ogImage = { url: IMAGES.og, width: 1200, height: 630 };
   return {
     title: brand.metaTitle,
     description: brand.metaDescription,
@@ -57,38 +58,6 @@ export async function generateMetadata({
     twitter: { card: "summary_large_image", images: [ogImage.url] },
   };
 }
-
-const BRAND_IMAGES: Record<string, { hero: string; photo: string }> = {
-  "all-o-matic":  { hero: "/images/brands/all-o-matic/all-o-matic-hero.webp", photo: "/images/brands/all-o-matic/all-o-matic-1.webp" },
-  "liftmaster":   { hero: "/images/brands/liftmaster/liftmaster-hero.webp",   photo: "/images/brands/liftmaster/liftmaster-1.webp" },
-  "doorking":     { hero: "/images/gallery/commercial-1.webp",     photo: "/images/gallery/commercial-1.webp" },
-  "genie":        { hero: "/images/services/garage-door-repair.webp",          photo: "/images/services/walnut-garage.webp" },
-  "doorbird":     { hero: "/images/services/commercial-3.webp",        photo: "/images/gallery/outside-1.webp" },
-  "chamberlain":  { hero: "/images/services/white-garage.webp",        photo: "/images/services/wood-garage.webp" },
-  "elite":        { hero: "/images/brands/elite/elite-hero.webp",      photo: "/images/brands/elite/elite-1.webp" },
-  "viking":       { hero: "/images/services/estate-gate.webp",         photo: "/images/services/iron-gold-gate.webp" },
-  "ramset":       { hero: "/images/services/iron-gate-1.webp",         photo: "/images/services/long-iron-gate.webp" },
-  "linear":       { hero: "/images/services/malibu-gate.webp",         photo: "/images/services/gate-motor.webp" },
-  "eagle":        { hero: "/images/services/gated-community.webp",     photo: "/images/gallery/commercial-1.webp" },
-};
-
-// Alt text for the real jobsite photos (All-O-Matic, LiftMaster, Elite) — describes what's
-// actually in each photo, not just the brand name. Images without an entry here (the 8
-// brands still on generic stock photos) fall back to the generic alt pattern below.
-const REAL_PHOTO_ALT: Record<string, string> = {
-  "/images/brands/all-o-matic/all-o-matic-hero.webp": "All-O-Matic slide gate operator mounted beside a black horizontal-slat driveway gate",
-  "/images/brands/all-o-matic/all-o-matic-1.webp": "All-O-Matic slide gate operator mounted against a stucco wall",
-  "/images/brands/all-o-matic/all-o-matic-2.webp": "Black horizontal-slat sliding driveway gate with All-O-Matic operator",
-  "/images/brands/all-o-matic/all-o-matic-4.webp": "Black horizontal-slat driveway gate and All-O-Matic operator on a residential street",
-  "/images/brands/all-o-matic/all-o-matic-5.webp": "Black horizontal-slat driveway gate on a white stucco wall",
-  "/images/brands/liftmaster/liftmaster-hero.webp": "LiftMaster slide gate operator mounted beside a black iron driveway gate",
-  "/images/brands/liftmaster/liftmaster-1.webp": "LiftMaster swing gate operator on a gray composite horizontal-slat driveway gate",
-  "/images/brands/liftmaster/liftmaster-2.webp": "LiftMaster swing gate operator on a wrought iron double driveway gate with scrollwork",
-  "/images/brands/liftmaster/liftmaster-3.webp": "LiftMaster swing gate operator on an ornate bronze estate gate with floral ironwork",
-  "/images/brands/liftmaster/liftmaster-4.webp": "LiftMaster swing gate operator on a black horizontal-slat driveway gate",
-  "/images/brands/elite/elite-hero.webp": "Elite swing gate operator mounted on a black wrought iron driveway gate post",
-  "/images/brands/elite/elite-1.webp": "Elite swing gate operator on a large arched wrought iron estate gate",
-};
 
 // Relevant service links by brand category.
 const TYPE_INFO: Record<string, { services: { href: string; label: string }[] }> = {
@@ -134,10 +103,7 @@ export default async function BrandPage({
   const brand = getBrandBySlug(slug);
   if (!brand) notFound();
 
-  const images = BRAND_IMAGES[brand.slug] ?? {
-    hero: "/images/hero/hero-gate.webp",
-    photo: "/images/services/gate-motor.webp",
-  };
+  const images = IMAGES.brands[brand.slug] ?? IMAGES.brandFallback;
   const typeInfo = TYPE_INFO[brand.type];
   const whyUsShort = brand.whyUs.split(". ")[0] + ".";
   const verb = anchorVerb(brand.type);
@@ -214,7 +180,7 @@ export default async function BrandPage({
       <section className="relative flex flex-col justify-end overflow-hidden" style={{ minHeight: "55vh" }}>
         <Image
           src={images.hero}
-          alt={REAL_PHOTO_ALT[images.hero] ?? `${brand.name} gate and garage door repair in Los Angeles`}
+          alt={IMAGE_ALT[images.hero]}
           fill
           className="object-cover"
           priority
@@ -392,7 +358,7 @@ export default async function BrandPage({
               {/* Photo */}
               <ArchImage
                 src={images.photo}
-                alt={REAL_PHOTO_ALT[images.photo] ?? `${brand.name} repair and installation work by Real Gate & Garage Door`}
+                alt={IMAGE_ALT[images.photo]}
                 aspect="4/5"
                 sizes="(max-width: 1024px) 100vw, 66vw"
               />

@@ -6,6 +6,7 @@ import { Phone, ArrowRight } from "lucide-react";
 import { CITIES, getCityBySlug, PRIORITY_CITY_SLUGS } from "@/lib/cities-data";
 import { SERVICES } from "@/lib/services-data";
 import { BRANDS, anchorVerb, BRAND_CATEGORY_GROUPS } from "@/lib/brands-data";
+import { IMAGES, IMAGE_ALT } from "@/lib/images";
 import { BUSINESS, ORG_ID } from "@/lib/constants";
 import ContactForm from "@/components/ContactForm";
 import BrandsMarquee from "@/components/BrandsMarquee";
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const data = getCityBySlug(city);
   if (!data) return {};
   const url = `/areas/${city}`;
-  const ogImage = { url: "/images/og/og-default.jpg", width: 1200, height: 630 };
+  const ogImage = { url: IMAGES.og, width: 1200, height: 630 };
   return {
     title: data.metaTitle,
     description: data.metaDescription,
@@ -39,62 +40,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const gateCityServices = [
-  { href: "/services/gate-repair",               label: "Gate Repair",            img: "/images/gallery/gate-1.webp" },
-  { href: "/services/automatic-gate-repair",     label: "Automatic Gate Repair",  img: "/images/services/gate-motor.webp" },
-  { href: "/services/electric-gate-repair",      label: "Electric Gate Repair",   img: "/images/services/swing-motor.webp" },
-  { href: "/services/iron-gate-repair",          label: "Iron Gate Repair",       img: "/images/gallery/gate-4.webp" },
+  { href: "/services/gate-repair",               label: "Gate Repair",            img: IMAGES.services["gate-repair"] },
+  { href: "/services/automatic-gate-repair",     label: "Automatic Gate Repair",  img: IMAGES.services["automatic-gate-repair"] },
+  { href: "/services/electric-gate-repair",      label: "Electric Gate Repair",   img: IMAGES.services["electric-gate-repair"] },
+  { href: "/services/iron-gate-repair",          label: "Iron Gate Repair",       img: IMAGES.services["iron-gate-repair"] },
 ];
 
 const garageCityServices = [
-  { href: "/services/garage-door-repair",        label: "Garage Door Repair",     img: "/images/services/garage-door-repair.webp" },
-  { href: "/services/garage-door-spring-repair", label: "Spring Repair",          img: "/images/services/whatsapp-photo-1.webp" },
-  { href: "/services/garage-door-opener-repair", label: "Opener Repair",          img: "/images/services/gate-motor.webp" },
-  { href: "/services/emergency-garage-door-repair", label: "24/7 Emergency",      img: "/images/hero/hero-gate.webp" },
+  { href: "/services/garage-door-repair",        label: "Garage Door Repair",     img: IMAGES.services["garage-door-repair"] },
+  { href: "/services/garage-door-spring-repair", label: "Spring Repair",          img: IMAGES.services["garage-door-spring-repair"] },
+  { href: "/services/garage-door-opener-repair", label: "Opener Repair",          img: IMAGES.services["garage-door-opener-repair"] },
+  { href: "/services/emergency-garage-door-repair", label: "24/7 Emergency",      img: IMAGES.services["emergency-garage-door-repair"] },
 ];
 
-const CITY_HERO_POOL = [
-  "/images/hero/hero-home.webp",
-  "/images/gallery/gate-5.webp",
-  "/images/gallery/gate-3.webp",
-  "/images/gallery/gate-2.webp",
-  "/images/gallery/gate-6.webp",
-  "/images/gallery/outside-1.webp",
-  "/images/story/building.webp",
-  "/images/services/gate-view.webp",
-  "/images/services/gated-community.webp",
-  "/images/services/iron-gate-1.webp",
-  "/images/services/iron-gold-gate.webp",
-  "/images/services/estate-gate.webp",
-  "/images/services/malibu-gate.webp",
-  "/images/services/long-iron-gate.webp",
-  "/images/services/frezno-gate.webp",
-  "/images/services/short-gate.webp",
-  "/images/gallery/outside-1.webp",
-];
+const CITY_HERO_POOL = IMAGES.cityHeroPool;
 
 // Rotating sets so nearby cities on the list don't all show the same three photos
-const CITY_PHOTO_STRIPS = [
-  [
-    { src: "/images/gallery/gate-4.webp", alt: "Iron gate repair and service" },
-    { src: "/images/gallery/gate-5.webp", alt: "Gate installation and service" },
-    { src: "/images/gallery/gate-6.webp", alt: "Custom gate repair service" },
-  ],
-  [
-    { src: "/images/gallery/gate-1.webp", alt: "Sliding gate repair and service" },
-    { src: "/images/gallery/gate-2.webp", alt: "Driveway gate repair and service" },
-    { src: "/images/gallery/gate-3.webp", alt: "New gate installation" },
-  ],
-  [
-    { src: "/images/gallery/commercial-1.webp", alt: "Commercial gate service" },
-    { src: "/images/gallery/outside-1.webp", alt: "Gate repair on-site" },
-    { src: "/images/services/iron-wood-gate.webp", alt: "Iron and wood gate repair" },
-  ],
-  [
-    { src: "/images/services/garage-door-repair.webp", alt: "Garage door opener repair" },
-    { src: "/images/services/wood-garage.webp", alt: "Wood garage door repair" },
-    { src: "/images/services/whatsapp-photo-2.webp", alt: "Garage door service" },
-  ],
-];
+const CITY_PHOTO_STRIPS = IMAGES.cityPhotoStrips.map((strip) => strip.map((src) => ({ src, alt: IMAGE_ALT[src] })));
 
 export default async function CityPage({ params }: Props) {
   const { city } = await params;

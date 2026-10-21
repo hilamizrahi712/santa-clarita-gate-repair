@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Phone, MessageSquareText, Calendar, Clock, ArrowLeft } from "lucide-react";
 import { BLOG_POSTS, getBlogPostBySlug } from "@/lib/blog-data";
+import { IMAGES } from "@/lib/images";
 import { BUSINESS, ORG_ID } from "@/lib/constants";
 import ContactForm from "@/components/ContactForm";
 import DiagnosticWidget from "@/components/DiagnosticWidget";
@@ -20,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getBlogPostBySlug(slug);
   if (!post) return {};
   const url = `/tips/${slug}`;
-  const ogImage = { url: "/images/og/og-default.jpg", width: 1200, height: 630 };
+  const ogImage = { url: IMAGES.og, width: 1200, height: 630 };
   return {
     title: post.metaTitle,
     description: post.metaDescription,

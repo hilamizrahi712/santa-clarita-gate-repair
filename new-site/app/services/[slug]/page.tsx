@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Phone, CheckCircle, ArrowRight, Clock, Shield, Star, AlertCircle } from "lucide-react";
 import { SERVICES, getServiceBySlug } from "@/lib/services-data";
+import { IMAGES } from "@/lib/images";
 import { BUSINESS, SCV_CITIES, ORG_ID } from "@/lib/constants";
 import { CITIES, PRIORITY_CITY_SLUGS } from "@/lib/cities-data";
 
@@ -36,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = getServiceBySlug(slug);
   if (!service) return {};
   const url = `/services/${slug}`;
-  const ogImage = { url: "/images/og/og-default.jpg", width: 1200, height: 630 };
+  const ogImage = { url: IMAGES.og, width: 1200, height: 630 };
   return {
     title: service.metaTitle,
     description: service.metaDescription,
@@ -47,34 +48,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 // Map service slugs to real uploaded images — each service gets a unique photo
-const SERVICE_IMAGES: Record<string, string> = {
-  "gate-repair":                  "/images/services/iron-gate-1.webp",
-  "automatic-gate-repair":        "/images/services/gate-motor.webp",
-  "driveway-gate-repair":         "/images/gallery/driveway-swing-gate-spanish-villa.webp",
-  "electric-gate-repair":         "/images/gallery/modern-black-slat-gate.webp",
-  "gate-opener-repair":           "/images/gallery/slat-swing-gate-opener.webp",
-  "gate-motor-replacement":       "/images/services/swing-motor.webp",
-  "iron-gate-repair":             "/images/services/estate-gate.webp",
-  "commercial-gate-repair":       "/images/gallery/iron-gate-community-entrance.webp",
-  "emergency-gate-repair":        "/images/services/gate-motor.webp",
-  "gate-installation":            "/images/brands/all-o-matic/all-o-matic-2.webp",
-  "garage-door-repair":           "/images/services/white-garage.webp",
-  "garage-door-spring-repair":    "/images/services/walnut-garage.webp",
-  "garage-door-opener-repair":    "/images/services/garage-door-repair.webp",
-  "garage-door-cable-repair":     "/images/gallery/commercial-1.webp",
-  "garage-door-panel-repair":     "/images/services/garage-door-repair.webp",
-  "emergency-garage-door-repair": "/images/services/whatsapp-photo-1.webp",
-  "commercial-garage-door":       "/images/services/commercial-3.webp",
-  "garage-door-installation":     "/images/gallery/outside-1.webp",
-};
-
 export default async function ServicePage({ params }: Props) {
   const { slug } = await params;
   const service = getServiceBySlug(slug);
   if (!service) notFound();
 
   const related = SERVICES.filter((s) => service.relatedSlugs.includes(s.slug));
-  const heroImg = SERVICE_IMAGES[slug] ?? "/images/gallery/gate-1.webp";
+  const heroImg = IMAGES.services[slug] ?? IMAGES.serviceFallback;
 
   const serviceSchema = {
     "@context": "https://schema.org",

@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
 import ConversionTracking from "@/components/ConversionTracking";
+import { IMAGES } from "@/lib/images";
 import { BUSINESS, ALL_CITIES, ORG_ID } from "@/lib/constants";
 import { BRANDS } from "@/lib/brands-data";
 import { SERVICES } from "@/lib/services-data";
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: BUSINESS.name,
     url: "/",
-    images: [{ url: "/images/og/og-default.jpg", width: 1200, height: 630 }],
+    images: [{ url: IMAGES.og, width: 1200, height: 630 }],
   },
   twitter: { card: "summary_large_image" },
   other: {
@@ -68,7 +69,7 @@ const localBusinessSchema = {
   url: BUSINESS.domain,
   telephone: BUSINESS.phone,
   ...(BUSINESS.email ? { email: BUSINESS.email } : {}),
-  image: `${BUSINESS.domain}/images/og/og-default.jpg`,
+  image: `${BUSINESS.domain}${IMAGES.og}`,
   address: {
     "@type": "PostalAddress",
     // Service-area business: no street address, city/region only.

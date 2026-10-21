@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, CheckCircle } from "lucide-react";
+import { IMAGES, IMAGE_ALT } from "@/lib/images";
 import { BUSINESS } from "@/lib/constants";
 import SectionRule from "@/components/SectionRule";
 import ArchImage from "@/components/ArchImage";
@@ -125,8 +126,8 @@ export default function AboutPage() {
             style={{ aspectRatio: "16/6", position: "relative" }}
           >
             <Image
-              src="/images/story/building.webp"
-              alt="Real Gate and Garage Door team at work"
+              src={IMAGES.about}
+              alt={IMAGE_ALT[IMAGES.about]}
               fill
               className="object-cover"
             />

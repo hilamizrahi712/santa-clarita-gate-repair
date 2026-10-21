@@ -1,3 +1,5 @@
+import { IMAGES } from "@/lib/images";
+
 export interface BrandFAQ {
   q: string;
   a: string;
@@ -55,7 +57,7 @@ export const BRANDS: BrandData[] = [
   {
     slug: "liftmaster",
     name: "LiftMaster",
-    logo: "",
+    logo: IMAGES.brandLogos["liftmaster"],
     type: "both",
     tagline: "TODO(content)",
     intro: "TODO(content)",
