@@ -48,7 +48,7 @@ export default function AboutPage() {
           <h1 style={{ color: "var(--text-warm)", marginBottom: "1rem" }}>
             About Real Gate &amp; <em>Garage Door</em>
           </h1>
-          <p style={{ color: "rgba(237,234,228,0.75)", fontSize: "1.05rem" }}>
+          <p style={{ color: "rgba(216,234,208,0.75)", fontSize: "1.05rem" }}>
             Local gate and garage door specialists —{" "}
             {/* TODO(content) */}
           </p>
@@ -98,7 +98,7 @@ export default function AboutPage() {
             >
               <p
                 className="font-heading font-bold mb-6"
-                style={{ fontSize: "1.05rem", color: "var(--navy)" }}
+                style={{ fontSize: "1.05rem", color: "var(--heading)" }}
               >
                 What sets us apart
               </p>
@@ -139,7 +139,7 @@ export default function AboutPage() {
           >
             <blockquote
               style={{
-                color: "rgba(237,234,228,0.9)",
+                color: "rgba(216,234,208,0.9)",
                 fontSize: "1.08rem",
                 lineHeight: 1.85,
                 fontStyle: "italic",
@@ -155,7 +155,7 @@ export default function AboutPage() {
             </blockquote>
             <p
               style={{
-                color: "var(--brown-warm)",
+                color: "var(--sage)",
                 marginTop: "1.25rem",
                 fontSize: "0.9rem",
                 fontWeight: 600,
@@ -182,7 +182,7 @@ export default function AboutPage() {
                   </p>
                   <h3
                     className="font-heading font-semibold mb-2"
-                    style={{ fontSize: "1.05rem", color: "var(--navy)" }}
+                    style={{ fontSize: "1.05rem", color: "var(--heading)" }}
                   >
                     {v.title}
                   </h3>
@@ -217,7 +217,7 @@ export default function AboutPage() {
             className="section--dark rounded-[var(--radius-lg)] p-10 text-center"
             style={{ background: "var(--navy)" }}
           >
-            <span className="eyebrow" style={{ color: "var(--brown-warm)" }}>
+            <span className="eyebrow" style={{ color: "var(--sage)" }}>
               We&apos;re Ready Right Now
             </span>
             <h2
@@ -235,7 +235,7 @@ export default function AboutPage() {
             <SectionRule />
             <p
               style={{
-                color: "rgba(237,234,228,0.72)",
+                color: "rgba(216,234,208,0.72)",
                 maxWidth: 520,
                 margin: "1.25rem auto 2rem",
                 fontSize: "0.97rem",

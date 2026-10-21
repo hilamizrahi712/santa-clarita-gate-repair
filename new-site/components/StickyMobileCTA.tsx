@@ -14,7 +14,7 @@ export default function StickyMobileCTA() {
       <a
         href={BUSINESS.phoneHref}
         className="flex flex-col items-center justify-center py-3 gap-1"
-        style={{ background: "var(--brown)", color: "var(--text-warm)" }}
+        style={{ background: "var(--green)", color: "#ffffff" }}
       >
         <Phone size={20} />
         <span className="text-xs font-semibold">Call Now</span>
@@ -22,7 +22,7 @@ export default function StickyMobileCTA() {
       <a
         href={BUSINESS.smsHref}
         className="flex flex-col items-center justify-center py-3 gap-1"
-        style={{ background: "var(--brown-warm)", color: "var(--text-warm)" }}
+        style={{ background: "var(--brown)", color: "#ffffff" }}
       >
         <MessageSquareText size={20} />
         <span className="text-xs font-semibold">Text Us</span>
@@ -30,10 +30,10 @@ export default function StickyMobileCTA() {
       <Link
         href="/contact"
         className="flex flex-col items-center justify-center py-3 gap-1"
-        style={{ background: "var(--navy)", color: "var(--text-warm)" }}
+        style={{ background: "var(--navy)", color: "#ffffff", borderTop: "1px solid var(--navy-mid)" }}
       >
         <ClipboardList size={20} />
-        <span className="text-xs font-semibold">Free Estimate</span>
+        <span className="text-xs font-semibold">Free Quote</span>
       </Link>
     </div>
   );

@@ -58,7 +58,7 @@ export default function GateOperatorModelsPage() {
           <h1 style={{ color: "var(--text-warm)", marginBottom: "1rem" }}>
             Gate Opener Models We Repair &amp; Replace in <em>Los Angeles</em>
           </h1>
-          <p style={{ color: "rgba(237,234,228,0.8)", fontSize: "1.05rem", marginBottom: "1.5rem" }}>
+          <p style={{ color: "rgba(216,234,208,0.8)", fontSize: "1.05rem", marginBottom: "1.5rem" }}>
             Find the model on the sticker of your gate motor. We repair and replace LiftMaster, All-O-Matic, Viking,
             Elite, Ramset, DoorKing, Eagle and Linear gate operators for homeowners across Los Angeles and the San
             Fernando Valley, including older and discontinued models going back 20 years and more.
@@ -77,7 +77,7 @@ export default function GateOperatorModelsPage() {
           <ModelFinder entries={entries} />
 
           <nav aria-label="Brands on this page">
-            <p className="font-semibold" style={{ color: "var(--navy)", marginBottom: "0.5rem" }}>Jump to a brand</p>
+            <p className="font-semibold" style={{ color: "var(--heading)", marginBottom: "0.5rem" }}>Jump to a brand</p>
             <div className="flex flex-wrap gap-2">
               {brands.map((b) => (
                 <a key={b.slug} href={`#${b.slug}`} className="card" style={{ padding: "0.35rem 0.8rem", fontSize: "0.88rem" }}>
@@ -91,13 +91,13 @@ export default function GateOperatorModelsPage() {
             <div key={b.slug} id={b.slug} style={{ scrollMarginTop: "6rem" }}>
               <h2
                 className="font-heading font-bold"
-                style={{ fontSize: "1.4rem", color: "var(--navy)", marginBottom: "1rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
+                style={{ fontSize: "1.4rem", color: "var(--heading)", marginBottom: "1rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
               >
                 {shortBrandName(b.name)} models
               </h2>
               <ModelList slug={b.slug} brandName={shortBrandName(b.name)} />
               <p style={{ marginTop: "1rem" }}>
-                <Link href={`/brands/${b.slug}`} style={{ color: "var(--brown)", textDecoration: "underline", fontWeight: 600 }}>
+                <Link href={`/brands/${b.slug}`} style={{ color: "var(--brown-warm)", textDecoration: "underline", fontWeight: 600 }}>
                   {shortBrandName(b.name)} repair and replacement
                 </Link>
               </p>
@@ -108,10 +108,10 @@ export default function GateOperatorModelsPage() {
             <h2 className="font-heading font-bold" style={{ fontSize: "1.2rem", color: "var(--text-warm)", marginBottom: "0.5rem" }}>
               Can&apos;t find your model?
             </h2>
-            <p style={{ color: "rgba(237,234,228,0.8)", marginBottom: "1rem" }}>
+            <p style={{ color: "rgba(216,234,208,0.8)", marginBottom: "1rem" }}>
               Text us a photo of the sticker on your gate motor. We&apos;ll tell you whether it&apos;s worth repairing or
               time to replace it, and see our{" "}
-              <Link href="/services/gate-motor-replacement" style={{ color: "#C9A84C", textDecoration: "underline" }}>
+              <Link href="/services/gate-motor-replacement" style={{ color: "#4db87a", textDecoration: "underline" }}>
                 gate motor replacement
               </Link>{" "}
               service for how a replacement works.

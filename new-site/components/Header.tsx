@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Phone, Menu, X, ChevronDown } from "lucide-react";
-import { BUSINESS } from "@/lib/constants";
+import { Phone, Menu, X, ChevronDown, MessageSquareText } from "lucide-react";
+import { BUSINESS, SCV_CITIES } from "@/lib/constants";
 
 const gateLinks = [
   { href: "/services/gate-repair", label: "Gate Repair" },
@@ -42,13 +42,8 @@ const brandLinks = [
 ];
 
 const areaLinks = [
-  { href: "/areas/woodland-hills", label: "Woodland Hills" },
-  { href: "/areas/sherman-oaks", label: "Sherman Oaks" },
-  { href: "/areas/encino", label: "Encino" },
-  { href: "/areas/calabasas", label: "Calabasas" },
-  { href: "/areas/burbank", label: "Burbank" },
-  { href: "/areas/glendale", label: "Glendale" },
-  { href: "/service-areas", label: "All Service Areas →" },
+  ...SCV_CITIES.slice(0, 7).map((c) => ({ href: `/areas/${c.slug}`, label: c.name })),
+  { href: "/service-areas", label: "All 20 Service Areas →" },
 ];
 
 export default function Header() {
@@ -64,10 +59,13 @@ export default function Header() {
 
   return (
     <div className="sticky top-0 z-40" data-cta-location="header">
-      {/* Emergency Banner — part of the same sticky unit as the header, so they scroll together instead of unsticking independently */}
-      <div className="bg-red-700 text-white text-center py-2 px-4 text-sm font-semibold">
-        🚨 Emergency Repair Available 24/7 — Gates &amp; Garage Doors —{" "}
-        <a href={BUSINESS.phoneHref} className="underline hover:no-underline">
+      {/* Emergency bar: part of the same sticky unit as the header so they scroll together */}
+      <div
+        className="text-center py-2 px-4 text-sm font-semibold"
+        style={{ background: "var(--brown)", color: "#ffffff" }}
+      >
+        Emergency? Call now, 24/7 dispatch:{" "}
+        <a href={BUSINESS.phoneHref} className="underline hover:no-underline whitespace-nowrap">
           {BUSINESS.phone}
         </a>
       </div>
@@ -75,22 +73,23 @@ export default function Header() {
       {/* Main Header */}
       <header
         className={headerBg}
-        style={{ height: "var(--nav-h)", background: "#F5F5F5" }}
+        style={{ height: "var(--nav-h)", background: "var(--bg-dark)", borderBottom: "1px solid var(--line)" }}
       >
         <div className="container-max flex items-center justify-between h-full gap-4">
-          {/* Logo */}
-          <Link href="/" className="flex-shrink-0 group">
-            <span
-              className="font-heading font-extrabold text-xl leading-tight block"
-              style={{ color: "var(--navy)" }}
-            >
-              Real Gate &amp;
-              <span style={{ color: "var(--brown-warm)" }}> Garage Door</span>
+          {/* Logo: plain text wordmark (no logo file exists for this business) */}
+          <Link href="/" className="flex-shrink-0" aria-label={`${BUSINESS.name}, home`}>
+            <span className="font-heading font-bold text-xl leading-tight block" style={{ color: "var(--heading)" }}>
+              <span className="hidden sm:inline">
+                Santa Clarita <em style={{ color: "var(--sage)" }}>Gate Repair</em>
+              </span>
+              <span className="sm:hidden">
+                SCV <em style={{ color: "var(--sage)" }}>Gate Repair</em>
+              </span>
             </span>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className={`hidden lg:flex items-center gap-6 text-sm font-semibold ${linkColor}`}>
+          <nav className={`hidden lg:flex items-center gap-5 text-sm font-semibold whitespace-nowrap ${linkColor}`}>
             {/* Gate Services */}
             <div className="relative group">
               <Link href="/services" className="flex items-center gap-1 py-2 hover:opacity-70 transition-opacity">
@@ -98,7 +97,7 @@ export default function Header() {
               </Link>
               <div
                 className="absolute top-full left-0 rounded-[var(--radius-lg)] py-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-150 z-50"
-                style={{ background: "var(--bg-card)", boxShadow: "0 8px 32px rgba(11,28,46,0.14)", border: "1px solid var(--line)" }}
+                style={{ background: "var(--bg-card)", boxShadow: "0 8px 32px rgba(0,0,0,0.14)", border: "1px solid var(--line)" }}
               >
                 {gateLinks.map((l) => (
                   <Link
@@ -106,7 +105,7 @@ export default function Header() {
                     href={l.href}
                     className="block px-4 py-2.5 text-sm font-medium transition-colors"
                     style={{ color: "var(--text-mid)" }}
-                    onMouseEnter={e => (e.currentTarget.style.color = "var(--brown)")}
+                    onMouseEnter={e => (e.currentTarget.style.color = "var(--brown-warm)")}
                     onMouseLeave={e => (e.currentTarget.style.color = "var(--text-mid)")}
                   >
                     {l.label}
@@ -122,7 +121,7 @@ export default function Header() {
               </Link>
               <div
                 className="absolute top-full left-0 rounded-[var(--radius-lg)] py-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-150 z-50"
-                style={{ background: "var(--bg-card)", boxShadow: "0 8px 32px rgba(11,28,46,0.14)", border: "1px solid var(--line)" }}
+                style={{ background: "var(--bg-card)", boxShadow: "0 8px 32px rgba(0,0,0,0.14)", border: "1px solid var(--line)" }}
               >
                 {garageDoorLinks.map((l) => (
                   <Link
@@ -130,7 +129,7 @@ export default function Header() {
                     href={l.href}
                     className="block px-4 py-2.5 text-sm font-medium transition-colors"
                     style={{ color: "var(--text-mid)" }}
-                    onMouseEnter={e => (e.currentTarget.style.color = "var(--brown)")}
+                    onMouseEnter={e => (e.currentTarget.style.color = "var(--brown-warm)")}
                     onMouseLeave={e => (e.currentTarget.style.color = "var(--text-mid)")}
                   >
                     {l.label}
@@ -146,7 +145,7 @@ export default function Header() {
               </Link>
               <div
                 className="absolute top-full left-0 rounded-[var(--radius-lg)] py-2 w-52 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-150 z-50"
-                style={{ background: "var(--bg-card)", boxShadow: "0 8px 32px rgba(11,28,46,0.14)", border: "1px solid var(--line)" }}
+                style={{ background: "var(--bg-card)", boxShadow: "0 8px 32px rgba(0,0,0,0.14)", border: "1px solid var(--line)" }}
               >
                 {areaLinks.map((l) => (
                   <Link
@@ -154,7 +153,7 @@ export default function Header() {
                     href={l.href}
                     className="block px-4 py-2.5 text-sm font-medium transition-colors"
                     style={{ color: "var(--text-mid)" }}
-                    onMouseEnter={e => (e.currentTarget.style.color = "var(--brown)")}
+                    onMouseEnter={e => (e.currentTarget.style.color = "var(--brown-warm)")}
                     onMouseLeave={e => (e.currentTarget.style.color = "var(--text-mid)")}
                   >
                     {l.label}
@@ -170,7 +169,7 @@ export default function Header() {
               </Link>
               <div
                 className="absolute top-full left-0 rounded-[var(--radius-lg)] py-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-150 z-50"
-                style={{ background: "var(--bg-card)", boxShadow: "0 8px 32px rgba(11,28,46,0.14)", border: "1px solid var(--line)" }}
+                style={{ background: "var(--bg-card)", boxShadow: "0 8px 32px rgba(0,0,0,0.14)", border: "1px solid var(--line)" }}
               >
                 {brandLinks.map((l) => (
                   <Link
@@ -178,7 +177,7 @@ export default function Header() {
                     href={l.href}
                     className="block px-4 py-2.5 text-sm font-medium transition-colors"
                     style={{ color: "var(--text-mid)" }}
-                    onMouseEnter={e => (e.currentTarget.style.color = "var(--brown)")}
+                    onMouseEnter={e => (e.currentTarget.style.color = "var(--brown-warm)")}
                     onMouseLeave={e => (e.currentTarget.style.color = "var(--text-mid)")}
                   >
                     {l.label}
@@ -192,8 +191,12 @@ export default function Header() {
             <Link href="/contact" className="hover:opacity-70 transition-opacity py-2">Contact</Link>
           </nav>
 
-          {/* Phone CTA */}
-          <div className="hidden lg:flex items-center">
+          {/* Phone + SMS CTA */}
+          <div className="hidden lg:flex items-center gap-2">
+            <a href={BUSINESS.smsHref} className="btn-secondary text-sm !hidden xl:!inline-flex" style={{ padding: "0.65rem 1.1rem" }}>
+              <MessageSquareText size={15} />
+              Text
+            </a>
             <a href={BUSINESS.phoneHref} className="btn-primary text-sm">
               <Phone size={15} />
               {BUSINESS.phone}
@@ -202,11 +205,10 @@ export default function Header() {
 
           {/* Mobile */}
           <div className="lg:hidden flex items-center gap-3">
-            <a
-              href={BUSINESS.phoneHref}
-              aria-label="Call us"
-              style={{ color: "var(--navy)" }}
-            >
+            <a href={BUSINESS.smsHref} aria-label="Text us" style={{ color: "var(--heading)" }}>
+              <MessageSquareText size={22} />
+            </a>
+            <a href={BUSINESS.phoneHref} aria-label={`Call ${BUSINESS.phone}`} style={{ color: "var(--sage)" }}>
               <Phone size={22} />
             </a>
             <button
@@ -229,6 +231,10 @@ export default function Header() {
               <a href={BUSINESS.phoneHref} className="btn-primary w-full text-center mb-4 mt-1 justify-center">
                 <Phone size={16} />
                 Call {BUSINESS.phone}
+              </a>
+              <a href={BUSINESS.smsHref} className="btn-secondary w-full text-center mb-4 justify-center">
+                <MessageSquareText size={16} />
+                Text {BUSINESS.phone}
               </a>
 
               <button

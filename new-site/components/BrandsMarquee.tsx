@@ -65,7 +65,8 @@ export default function BrandsMarquee() {
     };
   }, []);
 
-  const items = [...BRANDS, ...BRANDS];
+  const withLogo = BRANDS.filter((b) => b.logo);
+  const items = [...withLogo, ...withLogo];
 
   const arrowBtn: React.CSSProperties = {
     background: "var(--bg-card)",
@@ -77,16 +78,16 @@ export default function BrandsMarquee() {
     alignItems: "center",
     justifyContent: "center",
     cursor: "pointer",
-    color: "var(--navy)",
+    color: "var(--heading)",
     flexShrink: 0,
   };
 
   return (
     <section className="brands-bar">
       <div className="brands-head">
-        <span className="eyebrow">Brands We Service</span>
-        <h2>Every Major Manufacturer. <em>Every Model.</em></h2>
-        <p>We work on them all — from LiftMaster to Viking, Genie to DoorKing.</p>
+        <span className="eyebrow">Brands</span>
+        <h2>Openers and operators <em>we work on</em></h2>
+        <p>Gate operators, garage door openers and entry systems from the brands you find around both valleys.</p>
       </div>
 
       <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", padding: "0 1.5rem" }}>

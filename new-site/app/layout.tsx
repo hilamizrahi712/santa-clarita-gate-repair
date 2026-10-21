@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, DM_Sans } from "next/font/google";
+import { Space_Grotesk, Manrope } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -9,16 +9,15 @@ import { BUSINESS, ALL_CITIES, ORG_ID } from "@/lib/constants";
 import { BRANDS } from "@/lib/brands-data";
 import { SERVICES } from "@/lib/services-data";
 
-const bricolage = Bricolage_Grotesque({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-bricolage",
+  variable: "--font-space-grotesk",
   display: "swap",
-  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
-const dmSans = DM_Sans({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-manrope",
   display: "swap",
 });
 
@@ -29,20 +28,18 @@ const gaId = process.env.NEXT_PUBLIC_GA_ID;
 const gaEnabled = !!gaId && !gaId.startsWith("G-XXX");
 const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID;
 
-// Tarzana pin — matches BUSINESS address below. Confirm against the Google Business Profile pin.
-const GEO_LAT = 34.1747;
-const GEO_LNG = -118.5539;
+// City-center pin for Santa Clarita (service-area business, no street address).
+const GEO_LAT = 34.3917;
+const GEO_LNG = -118.5426;
 
 export const metadata: Metadata = {
   metadataBase: new URL(BUSINESS.domain),
   title: {
-    default: "Automatic Gate Repair & Garage Door Repair | Same-Day Service",
-    // Passthrough — every page title already includes "| Real Gate & Garage Door"
+    default: `Gate & Garage Door Repair in Santa Clarita | ${BUSINESS.name}`,
     template: "%s",
   },
   description:
-    "Expert gate repair and garage door repair in Los Angeles, CA. Same-day service, 24/7 emergency, free estimates. Call (818) 915-5715.",
-  keywords: ["gate repair Los Angeles", "garage door repair Los Angeles", "gate repair near me"],
+    `Driveway gate, gate opener and garage door repair across the Santa Clarita and Antelope Valleys. 24/7 emergency dispatch and free on-site quotes. Call ${BUSINESS.phone}.`,
   robots: { index: true, follow: true },
   openGraph: {
     type: "website",
@@ -54,7 +51,7 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" },
   other: {
     "geo.region": "US-CA",
-    "geo.placename": "Tarzana",
+    "geo.placename": "Santa Clarita",
     "geo.position": `${GEO_LAT};${GEO_LNG}`,
     ICBM: `${GEO_LAT}, ${GEO_LNG}`,
   },
@@ -66,25 +63,21 @@ const localBusinessSchema = {
   "@type": "LocalBusiness",
   "@id": ORG_ID,
   name: BUSINESS.name,
-  description: "Expert gate and garage door repair, installation, and 24/7 emergency service across greater Los Angeles, CA",
+  alternateName: BUSINESS.shortName,
+  description: "Gate, gate operator and garage door repair for homes and businesses in the Santa Clarita Valley and Antelope Valley, with 24/7 emergency dispatch.",
   url: BUSINESS.domain,
   telephone: BUSINESS.phone,
-  email: BUSINESS.email,
+  ...(BUSINESS.email ? { email: BUSINESS.email } : {}),
   image: `${BUSINESS.domain}/images/og/og-default.jpg`,
-  logo: `${BUSINESS.domain}/images/logos/logo-name-white-square.webp`,
   address: {
     "@type": "PostalAddress",
-    // Service-area business — GBP has the street address hidden. City/region/postal only.
-    addressLocality: "Tarzana",
+    // Service-area business: no street address, city/region only.
+    addressLocality: "Santa Clarita",
     addressRegion: "CA",
-    postalCode: "91356",
     addressCountry: "US",
   },
   geo: { "@type": "GeoCoordinates", latitude: GEO_LAT, longitude: GEO_LNG },
-  areaServed: ALL_CITIES.map((c) => ({ "@type": "City", name: c.name })),
-  // Core San Fernando Valley coverage radius around the Tarzana pin — areaServed above
-  // already carries the full 52-city list; this just gives the field built for breadth.
-  serviceArea: { "@type": "GeoCircle", geoMidpoint: { "@type": "GeoCoordinates", latitude: GEO_LAT, longitude: GEO_LNG }, geoRadius: "40000" },
+  areaServed: ALL_CITIES.map((c) => ({ "@type": "City", name: `${c.name}, CA` })),
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Gate & Garage Door Services",
@@ -93,35 +86,25 @@ const localBusinessSchema = {
       itemOffered: { "@type": "Service", name: s.title, url: `${BUSINESS.domain}/services/${s.slug}` },
     })),
   },
-  // No review / aggregateRating markup: Google treats reviews on your own LocalBusiness
-  // as self-serving and ineligible, and our reviews are copied from Google anyway.
+  // No review / aggregateRating markup (site rule: no reviews or ratings anywhere).
   knowsAbout: [
     ...BRANDS.map((b) => b.name),
     "Automatic gate operators",
-    "Torsion springs",
+    "Garage door springs",
     "Access control systems",
-    "UL 325 compliance",
   ],
   openingHoursSpecification: {
     "@type": "OpeningHoursSpecification",
-    dayOfWeek: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday"],
+    dayOfWeek: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
     opens: "07:00",
     closes: "22:00",
   },
-  priceRange: "$$",
-  sameAs: [
-    // TODO(client): Google Business Profile URL
-    // TODO(client): Yelp business page URL
-    // TODO(client): Bing Places business page URL
-    // TODO(client): Apple Business Connect listing URL
-    // TODO(client): BBB profile URL
-    // TODO(client): Facebook Page URL
-  ],
+  // TODO(client): sameAs profile URLs (Google Business Profile, Yelp, Facebook) once they exist.
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${bricolage.variable} ${dmSans.variable}`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${manrope.variable}`}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

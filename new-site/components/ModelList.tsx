@@ -14,7 +14,7 @@ export default function ModelList({ slug, brandName, headingLevel = "h3" }: { sl
       )}
       {data.groups.map((g) => (
         <div key={g.title}>
-          <H className="font-heading font-semibold" style={{ fontSize: "1rem", color: "var(--navy)", marginBottom: "0.6rem" }}>
+          <H className="font-heading font-semibold" style={{ fontSize: "1rem", color: "var(--heading)", marginBottom: "0.6rem" }}>
             {g.title.toLowerCase().includes(brandName.toLowerCase())
               ? g.title
               : `${brandName} ${g.title.charAt(0).toLowerCase()}${g.title.slice(1)}`}
@@ -27,7 +27,7 @@ export default function ModelList({ slug, brandName, headingLevel = "h3" }: { sl
               return (
                 <li key={m.name} className="py-2.5" style={{ borderBottom: "1px solid var(--line)" }}>
                   <div className="flex flex-wrap items-baseline gap-x-2">
-                    <span className="font-semibold" style={{ color: "var(--navy)", fontSize: "0.95rem" }}>
+                    <span className="font-semibold" style={{ color: "var(--heading)", fontSize: "0.95rem" }}>
                       {carriesBrand ? m.name : `${brandName} ${m.name}`}
                     </span>
                     <span style={{ color: "var(--text-soft)", fontSize: "0.85rem" }}>

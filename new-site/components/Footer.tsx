@@ -1,17 +1,6 @@
 import Link from "next/link";
-import { Phone, Mail, MapPin } from "lucide-react";
-import { BUSINESS, SCV_CITIES, AV_CITIES, ALL_CITIES } from "@/lib/constants";
-
-// Highest sitemap-priority cities (see next-sitemap.config.js AREA_TIER_1/2) get the
-// weakest internal linking otherwise — this block exists specifically to fix that.
-const TOP_SERVICE_AREA_SLUGS = [
-  // Tier 1 — every one of these must appear
-  "fresno", "bakersfield", "lancaster", "palmdale", "oxnard", "ventura-county", "santa-barbara",
-  // Tier 2
-  "santa-clarita", "glendora", "hacienda-heights", "torrance", "manhattan-beach", "long-beach", "orange-county",
-  // Recognizable anchors to round out the 16
-  "los-angeles", "beverly-hills",
-];
+import { Phone, Mail, MapPin, MessageSquareText, Clock } from "lucide-react";
+import { BUSINESS, SCV_CITIES, AV_CITIES } from "@/lib/constants";
 
 const gateServiceLinks = [
   { href: "/services/gate-repair", label: "Gate Repair" },
@@ -42,6 +31,11 @@ const companyLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
+const areaGroups = [
+  { name: "Santa Clarita Valley", cities: SCV_CITIES },
+  { name: "Antelope Valley", cities: AV_CITIES },
+];
+
 export default function Footer() {
   return (
     <footer className="footer-dark" data-cta-location="footer">
@@ -49,19 +43,25 @@ export default function Footer() {
       <div className="footer-cta-strip">
         <div className="container-max flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
-            <p className="footer-cta-title">Ready for Same-Day Service?</p>
-            <p className="footer-cta-sub">Gates · Garage Doors · 24/7 Emergency · Free Estimates</p>
+            <p className="footer-cta-title">Gate stuck or door off track?</p>
+            <p className="footer-cta-sub">Call or text {BUSINESS.shortName}. Free on-site quote, 24/7 emergency dispatch.</p>
           </div>
-          <a href={BUSINESS.phoneHref} className="btn-gold">
-            <Phone size={18} />
-            Call {BUSINESS.phone}
-          </a>
+          <div className="flex flex-wrap gap-3">
+            <a href={BUSINESS.phoneHref} className="btn-gold">
+              <Phone size={18} />
+              Call {BUSINESS.phone}
+            </a>
+            <a href={BUSINESS.smsHref} className="btn-ghost">
+              <MessageSquareText size={18} />
+              Text Us
+            </a>
+          </div>
         </div>
       </div>
 
       {/* Main Grid */}
       <div className="container-max py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        {/* Brand Column */}
+        {/* Business Column */}
         <div>
           <p className="footer-col-brand">{BUSINESS.name}</p>
           <p className="footer-tagline">{BUSINESS.tagline}</p>
@@ -69,19 +69,23 @@ export default function Footer() {
             <a href={BUSINESS.phoneHref} className="footer-link flex items-center gap-2">
               <Phone size={13} /> {BUSINESS.phone}
             </a>
-            <a href={`mailto:${BUSINESS.email}`} className="footer-link flex items-center gap-2">
-              <Mail size={13} /> {BUSINESS.email}
+            <a href={BUSINESS.smsHref} className="footer-link flex items-center gap-2">
+              <MessageSquareText size={13} /> Text {BUSINESS.phone}
             </a>
+            {BUSINESS.email && (
+              <a href={`mailto:${BUSINESS.email}`} className="footer-link flex items-center gap-2">
+                <Mail size={13} /> {BUSINESS.email}
+              </a>
+            )}
             <div className="footer-link flex items-start gap-2">
-              <MapPin size={13} className="mt-0.5 flex-shrink-0" />
+              <MapPin size={13} className="mt-1 flex-shrink-0" />
               <span>{BUSINESS.address}</span>
             </div>
+            <div className="footer-link flex items-start gap-2" style={{ lineHeight: 1.6 }}>
+              <Clock size={13} className="mt-1 flex-shrink-0" />
+              <span>{BUSINESS.hours}</span>
+            </div>
           </div>
-          <p className="footer-tagline mt-4" style={{ lineHeight: 1.65 }}>
-            Hours: Sun–Fri 7 AM–10 PM<br />
-            Saturday: Closed · Emergency: 24/7
-          </p>
-          <p className="footer-tagline mt-2">Bonded &amp; Insured</p>
         </div>
 
         {/* Gate Services */}
@@ -116,40 +120,20 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Service Areas */}
+        {/* Service Areas: all 20 cities */}
         <div>
-          <p className="footer-col-heading">Service Areas</p>
-          <ul className="space-y-2 columns-2">
-            {SCV_CITIES.map((c) => (
-              <li key={c.slug}>
-                <Link href={`/areas/${c.slug}`} className="footer-link text-sm">{c.name}</Link>
-              </li>
-            ))}
-          </ul>
-          <Link href="/service-areas" className="footer-more-link">
-            + {AV_CITIES.length} more cities →
-          </Link>
-        </div>
-      </div>
-
-      {/* Top Service Areas — extra internal links for the highest-priority, least-linked city pages */}
-      <div className="footer-top-areas" style={{ borderTop: "1px solid rgba(237,234,228,0.1)" }}>
-        <div className="container-max py-8">
-          <p className="footer-col-heading mb-3">Top Service Areas</p>
-          <div className="flex flex-wrap gap-x-4 gap-y-2">
-            {TOP_SERVICE_AREA_SLUGS.map((slug, i) => {
-              const c = ALL_CITIES.find((city) => city.slug === slug);
-              if (!c) return null;
-              return (
-                <span key={slug} className="flex items-center">
-                  <Link href={`/areas/${slug}`} className="footer-link text-sm">{c.name}</Link>
-                  {i < TOP_SERVICE_AREA_SLUGS.length - 1 && (
-                    <span className="ml-4" style={{ opacity: 0.25 }}>·</span>
-                  )}
-                </span>
-              );
-            })}
-          </div>
+          {areaGroups.map((g) => (
+            <div key={g.name} className="mb-5">
+              <p className="footer-col-heading">{g.name}</p>
+              <ul className="space-y-2 columns-2">
+                {g.cities.map((c) => (
+                  <li key={c.slug}>
+                    <Link href={`/areas/${c.slug}`} className="footer-link text-sm">{c.name}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -157,7 +141,7 @@ export default function Footer() {
       <nav
         aria-label="Site"
         className="footer-top-areas"
-        style={{ borderTop: "1px solid rgba(237,234,228,0.1)" }}
+        style={{ borderTop: "1px solid rgba(216,234,208,0.1)" }}
       >
         <div className="container-max py-5 flex flex-wrap gap-x-6 gap-y-2 text-sm">
           <a href="/services" className="footer-link">Services</a>
@@ -171,7 +155,7 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="footer-bottom">
         <div className="container-max flex flex-col sm:flex-row items-center justify-between gap-2">
-          <span>© {new Date().getFullYear()} {BUSINESS.name}. All rights reserved. · Bonded &amp; Insured</span>
+          <span>© {new Date().getFullYear()} {BUSINESS.name}. All rights reserved.</span>
           <div className="flex gap-4">
             <Link href="/privacy-policy" className="footer-link">Privacy Policy</Link>
             <Link href="/sitemap.xml" className="footer-link">Sitemap</Link>

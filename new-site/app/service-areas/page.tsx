@@ -44,7 +44,7 @@ export default function ServiceAreasPage() {
           <h1 style={{ color: "var(--text-warm)", marginBottom: "1rem" }}>
             Gate & Garage Door Repair — <em>Service Areas</em>
           </h1>
-          <p style={{ color: "rgba(237,234,228,0.75)", fontSize: "1.05rem" }}>
+          <p style={{ color: "rgba(216,234,208,0.75)", fontSize: "1.05rem" }}>
             We serve cities across Los Angeles &amp; Southern California —
             from Malibu to Long Beach, Santa Barbara to Orange County.
           </p>
@@ -71,7 +71,7 @@ export default function ServiceAreasPage() {
               />
               <div
                 className="absolute inset-0"
-                style={{ background: "rgba(11,28,46,0.15)" }}
+                style={{ background: "rgba(0,0,0,0.15)" }}
               />
             </div>
           ))}
@@ -88,7 +88,7 @@ export default function ServiceAreasPage() {
             return (
               <div key={region.name} className="mb-14">
                 <div className="flex items-center gap-3 mb-8">
-                  <h2 style={{ fontSize: "1.4rem", color: "var(--navy)" }}>{region.name}</h2>
+                  <h2 style={{ fontSize: "1.4rem", color: "var(--heading)" }}>{region.name}</h2>
                   <div style={{ flex: 1, height: 1, background: "var(--line)" }} />
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -103,7 +103,7 @@ export default function ServiceAreasPage() {
                       <div>
                         <p
                           className="font-heading font-semibold"
-                          style={{ color: "var(--navy)", fontSize: "0.95rem" }}
+                          style={{ color: "var(--heading)", fontSize: "0.95rem" }}
                         >
                           {c.name}
                         </p>
@@ -123,7 +123,7 @@ export default function ServiceAreasPage() {
             className="rounded-[var(--radius-lg)] p-8 text-center"
             style={{ background: "var(--bg-card)", border: "1px solid var(--line)" }}
           >
-            <h2 style={{ fontSize: "1.5rem", color: "var(--navy)", marginBottom: "0.75rem" }}>
+            <h2 style={{ fontSize: "1.5rem", color: "var(--heading)", marginBottom: "0.75rem" }}>
               Don&apos;t See Your City?
             </h2>
             <p style={{ color: "var(--text-soft)", maxWidth: 520, margin: "0 auto 1.75rem", fontSize: "0.95rem" }}>

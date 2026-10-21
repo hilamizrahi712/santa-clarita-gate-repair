@@ -58,7 +58,7 @@ function BrandCard({ brand }: { brand: BrandData }) {
       <div>
         <h3
           className="font-heading font-bold"
-          style={{ fontSize: "1.1rem", color: "var(--navy)", marginBottom: "0.3rem" }}
+          style={{ fontSize: "1.1rem", color: "var(--heading)", marginBottom: "0.3rem" }}
         >
           {brand.name}
         </h3>
@@ -90,13 +90,13 @@ export default function BrandsPage() {
           <h1 style={{ color: "var(--text-warm)", marginBottom: "1rem" }}>
             Every Major Brand. <em>Expert Repair.</em>
           </h1>
-          <p style={{ color: "rgba(237,234,228,0.75)", fontSize: "1.05rem" }}>
+          <p style={{ color: "rgba(216,234,208,0.75)", fontSize: "1.05rem" }}>
             Our technicians bring hands-on experience with every leading gate operator and
             garage door manufacturer, and carry the common parts for one-visit repairs.
             Click any brand to see specific services, models, and what our customers should know.
           </p>
           <p style={{ marginTop: "1rem" }}>
-            <Link href="/gate-operator-models" style={{ color: "#C9A84C", textDecoration: "underline", fontWeight: 600 }}>
+            <Link href="/gate-operator-models" style={{ color: "#4db87a", textDecoration: "underline", fontWeight: 600 }}>
               Look up your gate opener model
             </Link>
           </p>
@@ -116,7 +116,7 @@ export default function BrandsPage() {
                   <div className="mb-7">
                     <h2
                       className="font-heading font-bold"
-                      style={{ fontSize: "1.5rem", color: "var(--navy)", marginBottom: "0.35rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
+                      style={{ fontSize: "1.5rem", color: "var(--heading)", marginBottom: "0.35rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
                     >
                       {cat.label}
                     </h2>
@@ -142,7 +142,7 @@ export default function BrandsPage() {
           <h2 style={{ color: "var(--text-warm)", marginBottom: "0.75rem" }}>
             Not Sure Which Brand You Have?
           </h2>
-          <p style={{ color: "rgba(237,234,228,0.7)", marginBottom: "2rem", fontSize: "0.95rem" }}>
+          <p style={{ color: "rgba(216,234,208,0.7)", marginBottom: "2rem", fontSize: "0.95rem" }}>
             That&apos;s fine — we&apos;ll identify your system on arrival. Call us and describe
             what&apos;s happening, and we&apos;ll send the right technician.
           </p>

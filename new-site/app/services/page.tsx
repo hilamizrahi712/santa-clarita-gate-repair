@@ -43,7 +43,7 @@ function ServiceCard({ service }: { service: ServiceData }) {
     >
       <h3
         className="font-heading font-bold"
-        style={{ fontSize: "1.05rem", color: "var(--navy)" }}
+        style={{ fontSize: "1.05rem", color: "var(--heading)" }}
       >
         {service.title}
       </h3>
@@ -69,7 +69,7 @@ export default function ServicesPage() {
           <h1 style={{ color: "var(--text-warm)", marginBottom: "1rem" }}>
             Gate &amp; Garage Door <em>Services</em>
           </h1>
-          <p style={{ color: "rgba(237,234,228,0.75)", fontSize: "1.05rem" }}>
+          <p style={{ color: "rgba(216,234,208,0.75)", fontSize: "1.05rem" }}>
             On-site repair and installation across greater Los Angeles, Ventura County, Orange
             County and the Central Valley. Most repairs are completed the same day, in a single visit.
           </p>
@@ -88,7 +88,7 @@ export default function ServicesPage() {
                   <div className="mb-7">
                     <h2
                       className="font-heading font-bold"
-                      style={{ fontSize: "1.5rem", color: "var(--navy)", marginBottom: "0.35rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
+                      style={{ fontSize: "1.5rem", color: "var(--heading)", marginBottom: "0.35rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
                     >
                       {group.label}
                     </h2>
@@ -114,7 +114,7 @@ export default function ServicesPage() {
           <h2 style={{ color: "var(--text-warm)", marginBottom: "0.75rem" }}>
             Not Sure What You Need?
           </h2>
-          <p style={{ color: "rgba(237,234,228,0.7)", marginBottom: "2rem", fontSize: "0.95rem" }}>
+          <p style={{ color: "rgba(216,234,208,0.7)", marginBottom: "2rem", fontSize: "0.95rem" }}>
             Describe what your gate or garage door is doing and we&apos;ll tell you what it takes to fix it —
             with the price before any work starts.
           </p>

@@ -9,7 +9,7 @@ export default function InlineLinks({ text }: { text: string }) {
       {parts.map((part, i) => {
         if (i % 3 === 1) return null;
         if (i % 3 === 2) {
-          return <Link key={i} href={part} style={{ color: "var(--brown)", textDecoration: "underline" }}>{parts[i - 1]}</Link>;
+          return <Link key={i} href={part} style={{ color: "var(--brown-warm)", textDecoration: "underline" }}>{parts[i - 1]}</Link>;
         }
         return part;
       })}

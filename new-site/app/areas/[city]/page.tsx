@@ -178,7 +178,7 @@ export default async function CityPage({ params }: Props) {
         />
         <div
           className="absolute inset-0"
-          style={{ background: "linear-gradient(to top, rgba(12,30,53,0.95) 0%, rgba(12,30,53,0.55) 60%, rgba(12,30,53,0.3) 100%)" }}
+          style={{ background: "linear-gradient(to top, rgba(5,8,5,0.95) 0%, rgba(5,8,5,0.55) 60%, rgba(5,8,5,0.3) 100%)" }}
         />
         <div
           className="relative z-10 container-max flex items-center"
@@ -186,13 +186,13 @@ export default async function CityPage({ params }: Props) {
         >
           <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-8 items-center w-full">
             <div>
-              <span className="eyebrow" style={{ color: "rgba(196,133,90,0.9)" }}>
+              <span className="eyebrow" style={{ color: "rgba(217,80,112,0.9)" }}>
                 {data.name}, CA
               </span>
               <h1 style={{ color: "var(--text-warm)", marginBottom: "0.75rem" }}>
                 {data.heroH1}
               </h1>
-              <p style={{ color: "rgba(237,234,228,0.8)", fontSize: "1.05rem", marginBottom: "1.5rem", maxWidth: 560 }}>
+              <p style={{ color: "rgba(216,234,208,0.8)", fontSize: "1.05rem", marginBottom: "1.5rem", maxWidth: 560 }}>
                 {data.heroSubtitle}
               </p>
               <div className="flex flex-wrap gap-3">
@@ -224,7 +224,7 @@ export default async function CityPage({ params }: Props) {
       </div>
 
       {/* TRUST BAR — gold */}
-      <div style={{ background: "#C9A84C", padding: "0.65rem 1rem" }}>
+      <div style={{ background: "#4db87a", padding: "0.65rem 1rem" }}>
         <div className="container-max">
           <div
             className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm font-semibold"
@@ -319,7 +319,7 @@ export default async function CityPage({ params }: Props) {
                     />
                   </div>
                   <div className="px-3 py-2.5 flex items-center gap-2">
-                    <span className="font-semibold text-xs" style={{ color: "var(--navy)", flex: 1, lineHeight: 1.3 }}>
+                    <span className="font-semibold text-xs" style={{ color: "var(--heading)", flex: 1, lineHeight: 1.3 }}>
                       {s.label}
                     </span>
                     <ArrowRight size={12} style={{ color: "var(--stone-light)", flexShrink: 0 }} />
@@ -362,7 +362,7 @@ export default async function CityPage({ params }: Props) {
                     />
                   </div>
                   <div className="px-3 py-2.5 flex items-center gap-2">
-                    <span className="font-semibold text-xs" style={{ color: "var(--navy)", flex: 1, lineHeight: 1.3 }}>
+                    <span className="font-semibold text-xs" style={{ color: "var(--heading)", flex: 1, lineHeight: 1.3 }}>
                       {s.label}
                     </span>
                     <ArrowRight size={12} style={{ color: "var(--stone-light)", flexShrink: 0 }} />
@@ -378,7 +378,7 @@ export default async function CityPage({ params }: Props) {
             style={{ background: "var(--bg-card)", border: "1px solid var(--line)" }}
           >
             <div>
-              <p className="font-semibold" style={{ color: "var(--navy)", marginBottom: "0.15rem" }}>
+              <p className="font-semibold" style={{ color: "var(--heading)", marginBottom: "0.15rem" }}>
                 Need same-day service in {data.name}?
               </p>
               <p style={{ fontSize: "0.82rem", color: "var(--stone)" }}>
@@ -416,7 +416,7 @@ export default async function CityPage({ params }: Props) {
               <div key={group.name}>
                 <h3
                   className="font-heading font-semibold mb-1"
-                  style={{ fontSize: "0.95rem", color: "var(--navy)" }}
+                  style={{ fontSize: "0.95rem", color: "var(--heading)" }}
                 >
                   {group.name}
                 </h3>
@@ -495,7 +495,7 @@ export default async function CityPage({ params }: Props) {
                   <div key={item.title} className="card" style={{ borderTop: "3px solid var(--brown-warm)" }}>
                     <h3
                       className="font-heading font-semibold mb-2"
-                      style={{ fontSize: "0.95rem", color: "var(--navy)" }}
+                      style={{ fontSize: "0.95rem", color: "var(--heading)" }}
                     >
                       {item.title}
                     </h3>
@@ -537,7 +537,7 @@ export default async function CityPage({ params }: Props) {
                   >
                     <h3
                       className="font-heading font-semibold mb-2"
-                      style={{ fontSize: "1rem", color: "var(--navy)" }}
+                      style={{ fontSize: "1rem", color: "var(--heading)" }}
                     >
                       {f.q}
                     </h3>
@@ -552,7 +552,7 @@ export default async function CityPage({ params }: Props) {
                 >
                   <h3
                     className="font-heading font-semibold mb-2"
-                    style={{ fontSize: "1rem", color: "var(--navy)" }}
+                    style={{ fontSize: "1rem", color: "var(--heading)" }}
                   >
                     {brandsFaqQuestion}
                   </h3>
@@ -639,7 +639,7 @@ export default async function CityPage({ params }: Props) {
                 Ready for Same-Day Service in {data.name}?
               </h2>
               <SectionRule />
-              <p style={{ color: "rgba(237,234,228,0.7)", fontSize: "0.9rem", marginTop: "1.25rem", marginBottom: "1.25rem" }}>
+              <p style={{ color: "rgba(216,234,208,0.7)", fontSize: "0.9rem", marginTop: "1.25rem", marginBottom: "1.25rem" }}>
                 Call now or fill out the form — we respond within 30 minutes during business hours.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
@@ -670,12 +670,12 @@ export default async function CityPage({ params }: Props) {
                 <Phone size={16} /> {BUSINESS.phone}
               </a>
               <TextUsCTA className="btn-secondary w-full justify-center mt-2" label="Text Us a Photo" />
-              <p style={{ fontSize: "0.78rem", color: "rgba(237,234,228,0.5)", marginTop: "0.75rem" }}>
+              <p style={{ fontSize: "0.78rem", color: "rgba(216,234,208,0.75)", marginTop: "0.75rem" }}>
                 Bonded &amp; Insured · Sun–Fri 7AM–10PM
               </p>
             </div>
 
-            <p className="text-center font-heading font-bold" style={{ color: "#C9A84C", fontSize: "1.05rem" }}>
+            <p className="text-center font-heading font-bold" style={{ color: "#4db87a", fontSize: "1.05rem" }}>
               Get a Free Estimate in {data.name}
             </p>
             <p className="text-center" style={{ fontSize: "0.8rem", color: "var(--stone)" }}>
@@ -713,7 +713,7 @@ export default async function CityPage({ params }: Props) {
                 style={{ background: "var(--bg-card)", borderTop: "1px solid var(--line)" }}
               >
                 <div>
-                  <p className="font-bold text-sm" style={{ color: "var(--navy)", lineHeight: 1.2 }}>
+                  <p className="font-bold text-sm" style={{ color: "var(--heading)", lineHeight: 1.2 }}>
                     Real Gate &amp; Garage Door
                   </p>
                   <p style={{ fontSize: "0.72rem", color: "var(--stone)", marginTop: "0.2rem" }}>

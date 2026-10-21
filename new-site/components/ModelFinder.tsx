@@ -43,7 +43,7 @@ export default function ModelFinder({ entries, currentBrandSlug }: Props) {
 
   return (
     <div className="rounded-[var(--radius-lg)] p-5" style={{ background: "var(--bg-card)", border: "1px solid var(--line)" }}>
-      <label htmlFor="model-finder" className="font-heading font-semibold block" style={{ color: "var(--navy)", marginBottom: "0.5rem" }}>
+      <label htmlFor="model-finder" className="font-heading font-semibold block" style={{ color: "var(--heading)", marginBottom: "0.5rem" }}>
         Find your model
       </label>
       <p style={{ color: "var(--text-soft)", fontSize: "0.85rem", marginBottom: "0.75rem" }}>
@@ -63,7 +63,7 @@ export default function ModelFinder({ entries, currentBrandSlug }: Props) {
           }}
           placeholder="e.g. LA400, SL150, K-2, 9050"
           className="w-full py-2.5 bg-transparent outline-none"
-          style={{ fontSize: "1rem", color: "var(--navy)" }}
+          style={{ fontSize: "1rem", color: "var(--heading)" }}
         />
       </div>
 
@@ -73,9 +73,9 @@ export default function ModelFinder({ entries, currentBrandSlug }: Props) {
             <ul className="space-y-2">
               {matches.map((m) => (
                 <li key={`${m.brandSlug}-${m.name}`} className="flex flex-wrap items-baseline gap-x-2" style={{ fontSize: "0.92rem" }}>
-                  <span className="font-semibold" style={{ color: "var(--navy)" }}>
+                  <span className="font-semibold" style={{ color: "var(--heading)" }}>
                     Yes, we repair and replace the{" "}
-                    <Link href={`/brands/${m.brandSlug}`} style={{ color: "var(--brown)", textDecoration: "underline" }}>
+                    <Link href={`/brands/${m.brandSlug}`} style={{ color: "var(--brown-warm)", textDecoration: "underline" }}>
                       {m.brand}
                     </Link>{" "}
                     {m.name}

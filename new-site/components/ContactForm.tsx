@@ -43,7 +43,7 @@ const labelStyle: React.CSSProperties = {
   display: "block",
   fontSize: "0.75rem",
   fontWeight: 600,
-  color: "rgba(237,234,228,0.65)",
+  color: "rgba(216,234,208,0.8)",
   marginBottom: "0.3rem",
   letterSpacing: "0.06em",
   textTransform: "uppercase",
@@ -98,10 +98,10 @@ export default function ContactForm({ className = "", compact = false }: { class
     >
       <div className="mb-2">
         <h3 className="font-heading font-bold" style={{ fontSize: "1.15rem", color: "var(--text-warm)", marginBottom: "0.2rem" }}>
-          {compact ? "Get a Free Estimate" : "Request a Free Estimate"}
+          {compact ? "Free On-Site Quote" : "Request a Free On-Site Quote"}
         </h3>
-        <p style={{ fontSize: "0.82rem", color: "rgba(237,234,228,0.55)" }}>
-          {compact ? "We call back in 30 min." : "We call back within 30 minutes during business hours."}
+        <p style={{ fontSize: "0.82rem", color: "rgba(216,234,208,0.8)" }}>
+          {compact ? "Leave your number, we call you back." : "Leave your number and a few details. We call you back to set a time."}
         </p>
       </div>
 
@@ -205,11 +205,11 @@ export default function ContactForm({ className = "", compact = false }: { class
         }}
       >
         <Send size={16} />
-        {isSubmitting ? "Sending…" : "Get My Free Estimate"}
+        {isSubmitting ? "Sending…" : "Request My Free Quote"}
       </button>
 
       {!compact && (
-        <p style={{ fontSize: "0.73rem", color: "rgba(237,234,228,0.35)", textAlign: "center" }}>
+        <p style={{ fontSize: "0.73rem", color: "rgba(216,234,208,0.7)", textAlign: "center" }}>
           We respect your privacy. No spam, ever.
         </p>
       )}

@@ -222,7 +222,7 @@ export default async function BrandPage({
         />
         <div
           className="absolute inset-0"
-          style={{ background: "linear-gradient(to top, rgba(12,30,53,0.95) 0%, rgba(12,30,53,0.55) 60%, rgba(12,30,53,0.25) 100%)" }}
+          style={{ background: "linear-gradient(to top, rgba(5,8,5,0.95) 0%, rgba(5,8,5,0.55) 60%, rgba(5,8,5,0.25) 100%)" }}
         />
         <div className="relative z-10 container-max pb-12 pt-32">
           {/* Logo pill */}
@@ -240,19 +240,19 @@ export default async function BrandPage({
             />
           </div>
 
-          <span className="eyebrow" style={{ color: "rgba(196,133,90,0.9)" }}>
+          <span className="eyebrow" style={{ color: "rgba(217,80,112,0.9)" }}>
             Expert Service · Los Angeles
           </span>
           <h1 style={{ color: "var(--text-warm)", marginBottom: "0.5rem" }}>
-            {brandH1(brand)} — <em style={{ color: "#C9A84C", fontStyle: "italic" }}>Los Angeles &amp; San Fernando Valley</em>
+            {brandH1(brand)} — <em style={{ color: "#4db87a", fontStyle: "italic" }}>Los Angeles &amp; San Fernando Valley</em>
           </h1>
           <p className="font-semibold" style={{ color: "var(--text-warm)", fontSize: "1.05rem", marginBottom: "0.5rem", maxWidth: 560 }}>
             {homeownerLine(brand)}
           </p>
-          <p style={{ color: "rgba(237,234,228,0.82)", fontSize: "1.05rem", marginBottom: "0.5rem", maxWidth: 560 }}>
+          <p style={{ color: "rgba(216,234,208,0.82)", fontSize: "1.05rem", marginBottom: "0.5rem", maxWidth: 560 }}>
             {brand.tagline}
           </p>
-          <p className="font-semibold" style={{ color: "#C9A84C", fontSize: "0.9rem", marginBottom: "1.5rem" }}>
+          <p className="font-semibold" style={{ color: "#4db87a", fontSize: "0.9rem", marginBottom: "1.5rem" }}>
             Fixed same-day · Most repairs in one visit
           </p>
           <div className="flex flex-wrap gap-3">
@@ -329,7 +329,7 @@ export default async function BrandPage({
               <div>
                 <h2
                   className="font-heading font-bold"
-                  style={{ fontSize: "1.5rem", color: "var(--navy)", marginBottom: "1rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
+                  style={{ fontSize: "1.5rem", color: "var(--heading)", marginBottom: "1rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
                 >
                   About {brand.name}
                 </h2>
@@ -342,7 +342,7 @@ export default async function BrandPage({
               <div>
                 <h2
                   className="font-heading font-bold"
-                  style={{ fontSize: "1.25rem", color: "var(--navy)", marginBottom: "0.75rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
+                  style={{ fontSize: "1.25rem", color: "var(--heading)", marginBottom: "0.75rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
                 >
                   {brand.name} {brand.type === "garage-door" ? "Garage Door Repair" : "Gate Repair"} Across the San Fernando Valley
                 </h2>
@@ -358,7 +358,7 @@ export default async function BrandPage({
               >
                 <h2
                   className="font-heading font-bold"
-                  style={{ fontSize: "1.25rem", color: "var(--navy)", marginBottom: "1rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
+                  style={{ fontSize: "1.25rem", color: "var(--heading)", marginBottom: "1rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
                 >
                   {brand.name} Services We Handle
                 </h2>
@@ -402,7 +402,7 @@ export default async function BrandPage({
                 <div id="models" style={{ scrollMarginTop: "6rem" }}>
                   <h2
                     className="font-heading font-bold"
-                    style={{ fontSize: "1.25rem", color: "var(--navy)", marginBottom: "0.5rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
+                    style={{ fontSize: "1.25rem", color: "var(--heading)", marginBottom: "0.5rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
                   >
                     {`${shortName} Models We Repair & Replace`}
                   </h2>
@@ -414,7 +414,7 @@ export default async function BrandPage({
                   </div>
                   <ModelList slug={brand.slug} brandName={shortName} />
                   <p style={{ marginTop: "1rem", fontSize: "0.9rem" }}>
-                    <Link href="/gate-operator-models" style={{ color: "var(--brown)", textDecoration: "underline", fontWeight: 600 }}>
+                    <Link href="/gate-operator-models" style={{ color: "var(--brown-warm)", textDecoration: "underline", fontWeight: 600 }}>
                       See every gate opener model we repair and replace
                     </Link>
                   </p>
@@ -426,7 +426,7 @@ export default async function BrandPage({
                 <div>
                   <h2
                     className="font-heading font-bold"
-                    style={{ fontSize: "1.25rem", color: "var(--navy)", marginBottom: "0.75rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
+                    style={{ fontSize: "1.25rem", color: "var(--heading)", marginBottom: "0.75rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
                   >
                     Repair or Replace Your {brand.name} Motor?
                   </h2>
@@ -436,7 +436,7 @@ export default async function BrandPage({
                     old and failing more often, when the same unit keeps breaking after repairs, or when parts for
                     your model are no longer made. If that is the case, we explain the options that fit your gate
                     and give you a clear quote before any work starts. See our{" "}
-                    <Link href="/services/gate-motor-replacement" style={{ color: "var(--brown)", textDecoration: "underline" }}>
+                    <Link href="/services/gate-motor-replacement" style={{ color: "var(--brown-warm)", textDecoration: "underline" }}>
                       gate motor replacement
                     </Link>{" "}
                     service.
@@ -455,7 +455,7 @@ export default async function BrandPage({
                 >
                   Why Choose Us for {brand.name}?
                 </h2>
-                <p style={{ color: "rgba(237,234,228,0.8)", lineHeight: 1.8, fontSize: "0.95rem", marginBottom: "1.25rem" }}>
+                <p style={{ color: "rgba(216,234,208,0.8)", lineHeight: 1.8, fontSize: "0.95rem", marginBottom: "1.25rem" }}>
                   {whyUsShort}
                 </p>
                 <div className="flex flex-wrap gap-3">
@@ -472,7 +472,7 @@ export default async function BrandPage({
               <div>
                 <h2
                   className="font-heading font-bold"
-                  style={{ fontSize: "1.5rem", color: "var(--navy)", marginBottom: "1rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
+                  style={{ fontSize: "1.5rem", color: "var(--heading)", marginBottom: "1rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
                 >
                   {brand.name} — Frequently Asked Questions
                 </h2>
@@ -485,7 +485,7 @@ export default async function BrandPage({
                     >
                       <h3
                         className="font-heading font-semibold mb-2"
-                        style={{ fontSize: "1rem", color: "var(--navy)" }}
+                        style={{ fontSize: "1rem", color: "var(--heading)" }}
                       >
                         {faq.q}
                       </h3>
@@ -501,7 +501,7 @@ export default async function BrandPage({
               <div>
                 <h2
                   className="font-heading font-bold"
-                  style={{ fontSize: "1.15rem", color: "var(--navy)", marginBottom: "1rem" }}
+                  style={{ fontSize: "1.15rem", color: "var(--heading)", marginBottom: "1rem" }}
                 >
                   Related Services
                 </h2>
@@ -523,7 +523,7 @@ export default async function BrandPage({
               <div>
                 <h2
                   className="font-heading font-bold"
-                  style={{ fontSize: "1.5rem", color: "var(--navy)", marginBottom: "1rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
+                  style={{ fontSize: "1.5rem", color: "var(--heading)", marginBottom: "1rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
                 >
                   Where We Repair {brand.name} {brand.type === "garage-door" ? "Openers" : "Operators"}
                 </h2>
@@ -532,7 +532,7 @@ export default async function BrandPage({
                 {featuredCities.length > 0 && (
                   <div
                     className="rounded-[var(--radius-lg)] p-5 mb-5"
-                    style={{ background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.4)" }}
+                    style={{ background: "rgba(77,184,122,0.08)", border: "1px solid rgba(77,184,122,0.4)" }}
                   >
                     <p className="font-heading font-semibold text-xs uppercase mb-3" style={{ letterSpacing: "0.08em", color: "var(--brown-warm)" }}>
                       Most Requested
@@ -543,7 +543,7 @@ export default async function BrandPage({
                           key={c.slug}
                           href={`/areas/${c.slug}`}
                           className="px-3 py-1.5 rounded-full text-sm font-semibold"
-                          style={{ background: "#C9A84C", color: "#1a1a1a", textDecoration: "none" }}
+                          style={{ background: "#4db87a", color: "#1a1a1a", textDecoration: "none" }}
                         >
                           {brand.name} {verb} in {c.name}
                         </Link>
@@ -554,7 +554,7 @@ export default async function BrandPage({
 
                 {/* San Fernando Valley — expanded by default, always in the HTML */}
                 <div className="mb-4">
-                  <p className="font-heading font-semibold mb-2" style={{ fontSize: "0.95rem", color: "var(--navy)" }}>
+                  <p className="font-heading font-semibold mb-2" style={{ fontSize: "0.95rem", color: "var(--heading)" }}>
                     {CITY_REGIONS[0].name}
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -580,7 +580,7 @@ export default async function BrandPage({
                   <details key={region.name} className="mb-3">
                     <summary
                       className="font-heading font-semibold cursor-pointer"
-                      style={{ fontSize: "0.95rem", color: "var(--navy)", padding: "0.4rem 0" }}
+                      style={{ fontSize: "0.95rem", color: "var(--heading)", padding: "0.4rem 0" }}
                     >
                       {region.name}
                     </summary>
@@ -621,7 +621,7 @@ export default async function BrandPage({
                 <a href={BUSINESS.phoneHref} className="btn-gold w-full justify-center">
                   <Phone size={16} /> {BUSINESS.phone}
                 </a>
-                <p style={{ fontSize: "0.78rem", color: "rgba(237,234,228,0.5)", marginTop: "0.75rem" }}>
+                <p style={{ fontSize: "0.78rem", color: "rgba(216,234,208,0.75)", marginTop: "0.75rem" }}>
                   Bonded &amp; Insured · Sun–Fri 7AM–10PM
                 </p>
               </div>
@@ -635,7 +635,7 @@ export default async function BrandPage({
               >
                 <p
                   className="font-heading font-bold"
-                  style={{ fontSize: "0.9rem", color: "var(--navy)", marginBottom: "0.75rem" }}
+                  style={{ fontSize: "0.9rem", color: "var(--heading)", marginBottom: "0.75rem" }}
                 >
                   Other Brands We Service
                 </p>
@@ -667,7 +667,7 @@ export default async function BrandPage({
             Need {brand.name} Service Today?
           </h2>
           <SectionRule />
-          <p style={{ color: "rgba(237,234,228,0.7)", marginTop: "1.25rem", marginBottom: "2rem", fontSize: "0.95rem", lineHeight: 1.75 }}>
+          <p style={{ color: "rgba(216,234,208,0.7)", marginTop: "1.25rem", marginBottom: "2rem", fontSize: "0.95rem", lineHeight: 1.75 }}>
             We offer same-day service for most {brand.name} repairs across greater Los Angeles. Call now
             and we&apos;ll have a technician at your property within hours.
           </p>

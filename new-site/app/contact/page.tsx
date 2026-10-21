@@ -20,7 +20,7 @@ export default function ContactPage() {
           <h1 style={{ color: "#ffffff", marginBottom: "0.75rem" }}>
             Contact Us — <em>Free Estimate</em>
           </h1>
-          <p style={{ color: "rgba(237,234,228,0.75)", fontSize: "1.05rem" }}>
+          <p style={{ color: "rgba(216,234,208,0.75)", fontSize: "1.05rem" }}>
             Call now, text, or fill out the form. We respond within 30 minutes during business hours.
           </p>
         </div>
@@ -50,7 +50,7 @@ export default function ContactPage() {
                     <a
                       href={BUSINESS.phoneHref}
                       className="font-bold"
-                      style={{ fontSize: "1.5rem", color: "var(--brown)", textDecoration: "none" }}
+                      style={{ fontSize: "1.5rem", color: "var(--brown-warm)", textDecoration: "none" }}
                     >
                       {BUSINESS.phone}
                     </a>
@@ -75,7 +75,7 @@ export default function ContactPage() {
                     </p>
                     <a
                       href={`mailto:${BUSINESS.email}`}
-                      style={{ color: "var(--navy)", textDecoration: "none" }}
+                      style={{ color: "var(--heading)", textDecoration: "none" }}
                     >
                       {BUSINESS.email}
                     </a>

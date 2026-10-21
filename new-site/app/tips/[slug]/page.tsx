@@ -62,7 +62,7 @@ function renderContent(content: string) {
         <h2
           key={i}
           className="font-heading font-bold mt-10 mb-4"
-          style={{ color: "var(--navy)", fontSize: "clamp(1.4rem, 2.5vw, 1.9rem)" }}
+          style={{ color: "var(--heading)", fontSize: "clamp(1.4rem, 2.5vw, 1.9rem)" }}
         >
           {parseInline(block.replace("## ", ""))}
         </h2>
@@ -211,7 +211,7 @@ export default async function TipsPostPage({ params }: Props) {
             </span>
           </div>
           <h1
-            style={{ color: "var(--navy)", marginBottom: "0.5rem" }}
+            style={{ color: "var(--heading)", marginBottom: "0.5rem" }}
           >
             {post.title}
           </h1>
@@ -232,9 +232,9 @@ export default async function TipsPostPage({ params }: Props) {
               {post.pricingDisclaimer && (
                 <div
                   className="rounded-[var(--radius-lg)] px-5 py-4 mb-8"
-                  style={{ background: "rgba(201,168,76,0.12)", border: "1px solid rgba(201,168,76,0.4)" }}
+                  style={{ background: "rgba(77,184,122,0.12)", border: "1px solid rgba(77,184,122,0.4)" }}
                 >
-                  <p className="font-semibold text-sm" style={{ color: "var(--navy)" }}>
+                  <p className="font-semibold text-sm" style={{ color: "var(--heading)" }}>
                     {post.pricingDisclaimer}
                   </p>
                 </div>
@@ -246,7 +246,7 @@ export default async function TipsPostPage({ params }: Props) {
                 <div className="mt-10">
                   <h2
                     className="font-heading font-bold mt-2 mb-4"
-                    style={{ color: "var(--navy)", fontSize: "clamp(1.4rem, 2.5vw, 1.9rem)" }}
+                    style={{ color: "var(--heading)", fontSize: "clamp(1.4rem, 2.5vw, 1.9rem)" }}
                   >
                     Frequently Asked Questions
                   </h2>
@@ -259,7 +259,7 @@ export default async function TipsPostPage({ params }: Props) {
                       >
                         <h3
                           className="font-heading font-semibold mb-2"
-                          style={{ fontSize: "1rem", color: "var(--navy)" }}
+                          style={{ fontSize: "1rem", color: "var(--heading)" }}
                         >
                           {f.q}
                         </h3>
@@ -279,7 +279,7 @@ export default async function TipsPostPage({ params }: Props) {
                 <h3 className="font-heading font-bold text-xl mb-2" style={{ color: "var(--text-warm)" }}>
                   Need Professional Help?
                 </h3>
-                <p className="text-sm mb-4" style={{ color: "rgba(237,234,228,0.7)" }}>
+                <p className="text-sm mb-4" style={{ color: "rgba(216,234,208,0.7)" }}>
                   Real Gate &amp; Garage Door provides same-day service.
                   Bonded, insured, upfront pricing.
                 </p>
@@ -300,7 +300,7 @@ export default async function TipsPostPage({ params }: Props) {
               <div className="card">
                 <h3
                   className="font-heading font-semibold mb-4"
-                  style={{ fontSize: "1rem", color: "var(--navy)" }}
+                  style={{ fontSize: "1rem", color: "var(--heading)" }}
                 >
                   More Tips
                 </h3>

@@ -135,7 +135,7 @@ export default async function ServicePage({ params }: Props) {
         />
         <div
           className="absolute inset-0"
-          style={{ background: "linear-gradient(to top, rgba(11,28,46,0.96) 0%, rgba(11,28,46,0.6) 55%, rgba(11,28,46,0.25) 100%)" }}
+          style={{ background: "linear-gradient(to top, rgba(0,0,0,0.96) 0%, rgba(0,0,0,0.6) 55%, rgba(0,0,0,0.25) 100%)" }}
         />
         {service.isEmergency && (
           <div className="absolute top-6 left-1/2 -translate-x-1/2 z-20">
@@ -149,13 +149,13 @@ export default async function ServicePage({ params }: Props) {
         )}
         <div className="relative z-10 container-max pb-12 pt-32">
           <div className="max-w-2xl">
-            <span className="eyebrow" style={{ color: "rgba(196,133,90,0.9)" }}>
+            <span className="eyebrow" style={{ color: "rgba(217,80,112,0.9)" }}>
               {service.isEmergency ? "Emergency Response" : service.isInstallation ? "Installation" : "Repair Service"}
             </span>
             <h1 style={{ color: "var(--text-warm)", marginBottom: "0.75rem" }}>
               {service.heroH1}
             </h1>
-            <p style={{ color: "rgba(237,234,228,0.82)", fontSize: "1.05rem", marginBottom: "1.5rem" }}>
+            <p style={{ color: "rgba(216,234,208,0.82)", fontSize: "1.05rem", marginBottom: "1.5rem" }}>
               {service.heroSubtitle}
             </p>
             <div className="flex flex-wrap gap-3">
@@ -242,7 +242,7 @@ export default async function ServicePage({ params }: Props) {
                       </p>
                       <h3
                         className="font-heading font-semibold mb-1"
-                        style={{ fontSize: "0.95rem", color: "var(--navy)" }}
+                        style={{ fontSize: "0.95rem", color: "var(--heading)" }}
                       >
                         {f.title}
                       </h3>
@@ -284,7 +284,7 @@ export default async function ServicePage({ params }: Props) {
                     >
                       <h3
                         className="font-heading font-semibold mb-2"
-                        style={{ fontSize: "1rem", color: "var(--navy)" }}
+                        style={{ fontSize: "1rem", color: "var(--heading)" }}
                       >
                         {faq.q}
                       </h3>
@@ -310,7 +310,7 @@ export default async function ServicePage({ params }: Props) {
                       >
                         <h3
                           className="font-heading font-semibold mb-1"
-                          style={{ fontSize: "0.95rem", color: "var(--navy)" }}
+                          style={{ fontSize: "0.95rem", color: "var(--heading)" }}
                         >
                           {r.title}
                         </h3>
@@ -319,7 +319,7 @@ export default async function ServicePage({ params }: Props) {
                         </p>
                         <span
                           className="inline-flex items-center gap-1 text-sm font-semibold"
-                          style={{ color: "var(--brown)" }}
+                          style={{ color: "var(--brown-warm)" }}
                         >
                           Learn more <ArrowRight size={12} />
                         </span>
@@ -403,7 +403,7 @@ export default async function ServicePage({ params }: Props) {
                   >
                     Same-Day Service
                   </p>
-                  <p style={{ color: "rgba(237,234,228,0.65)", fontSize: "0.82rem", marginBottom: "1rem" }}>
+                  <p style={{ color: "rgba(216,234,208,0.65)", fontSize: "0.82rem", marginBottom: "1rem" }}>
                     Call now — we confirm your appointment immediately.
                   </p>
                   <a href={BUSINESS.phoneHref} className="btn-gold w-full justify-center">

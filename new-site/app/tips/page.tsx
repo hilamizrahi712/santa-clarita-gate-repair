@@ -28,7 +28,7 @@ export default function TipsIndexPage() {
           <h1 style={{ color: "var(--text-warm)", marginBottom: "1rem" }}>
             Gate &amp; Garage Door <em>Tips</em>
           </h1>
-          <p style={{ color: "rgba(237,234,228,0.75)", fontSize: "1.1rem" }}>
+          <p style={{ color: "rgba(216,234,208,0.75)", fontSize: "1.1rem" }}>
             Cost guides, troubleshooting help, and maintenance advice from the technicians
             at {BUSINESS.name}.
           </p>
@@ -90,7 +90,7 @@ export default function TipsIndexPage() {
                     </div>
                     <h3
                       className="font-heading font-bold leading-snug"
-                      style={{ fontSize: "1.05rem", color: "var(--navy)" }}
+                      style={{ fontSize: "1.05rem", color: "var(--heading)" }}
                     >
                       {p.title}
                     </h3>
@@ -99,7 +99,7 @@ export default function TipsIndexPage() {
                     </p>
                     <span
                       className="inline-flex items-center gap-1 text-sm font-semibold"
-                      style={{ color: "var(--brown)" }}
+                      style={{ color: "var(--brown-warm)" }}
                     >
                       Read Tip <ArrowRight size={13} />
                     </span>
@@ -162,7 +162,7 @@ export default function TipsIndexPage() {
                     </div>
                     <h3
                       className="font-heading font-bold leading-snug"
-                      style={{ fontSize: "1.05rem", color: "var(--navy)" }}
+                      style={{ fontSize: "1.05rem", color: "var(--heading)" }}
                     >
                       {p.title}
                     </h3>
@@ -171,7 +171,7 @@ export default function TipsIndexPage() {
                     </p>
                     <span
                       className="inline-flex items-center gap-1 text-sm font-semibold"
-                      style={{ color: "var(--brown)" }}
+                      style={{ color: "var(--brown-warm)" }}
                     >
                       Read Tip <ArrowRight size={13} />
                     </span>
