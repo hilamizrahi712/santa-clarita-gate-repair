@@ -102,18 +102,16 @@ const faqSchema = {
   })),
 };
 
-function ServiceCard({ href, name, desc }: { href: string; name: string; desc: string }) {
+// Spec-sheet row: number, name, one line, arrow. Rows are separated by thin rules.
+function ServiceRow({ n, href, name, desc }: { n: number; href: string; name: string; desc: string }) {
   return (
-    <Link
-      href={href}
-      className="group flex flex-col gap-2 p-5 transition-colors duration-200 hover:border-[var(--sage)]"
-      style={{ background: "var(--bg-card)", border: "1px solid var(--line-strong)", borderRadius: "var(--radius-lg)", textDecoration: "none" }}
-    >
-      <h3 className="font-heading font-semibold" style={{ fontSize: "1.05rem", color: "var(--heading)" }}>{name}</h3>
-      <p style={{ color: "var(--text-soft)", fontSize: "0.9rem", lineHeight: 1.6, flexGrow: 1 }}>{desc}</p>
-      <span className="inline-flex items-center gap-1 font-semibold text-sm" style={{ color: "var(--sage)" }}>
-        Details <ArrowRight size={13} className="transition-transform group-hover:translate-x-0.5" />
+    <Link href={href} className="spec-row group">
+      <span className="spec-num">{String(n).padStart(2, "0")}</span>
+      <span>
+        <span className="spec-name">{name}</span>
+        <span className="spec-desc">{desc}</span>
       </span>
+      <ArrowRight size={16} className="spec-arrow transition-transform group-hover:translate-x-0.5" />
     </Link>
   );
 }
@@ -125,12 +123,12 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       {/* ── SPLIT HERO: copy + very large phone left, photo right ── */}
-      <section className="section-padding" style={{ background: "var(--bg-dark)" }} data-cta-location="hero">
+      <section className="section-padding grid-lines" style={{ background: "var(--bg-dark)" }} data-cta-location="hero">
         <div className="container-max grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-10 lg:gap-14 items-center">
           <div>
             <span className="eyebrow" style={{ color: "var(--sage)" }}>Santa Clarita &amp; Antelope Valley</span>
             <h1 style={{ marginBottom: "1.25rem", lineHeight: 1.05, fontSize: "clamp(2.2rem, 4.2vw, 3.6rem)" }}>
-              Gate won&apos;t open? Garage door stuck? <em>We come to you.</em>
+              Gate won&apos;t open? Garage door stuck? We come to you.
             </h1>
             <p style={{ color: "var(--text-mid)", fontSize: "1.1rem", lineHeight: 1.7, maxWidth: 560, marginBottom: "1.75rem" }}>
               Local repair for driveway gates, gate openers and garage doors, from Valencia
@@ -166,7 +164,7 @@ export default function HomePage() {
             </ul>
           </div>
 
-          <div className="relative w-full overflow-hidden" style={{ aspectRatio: "4/5", borderRadius: "var(--radius-lg)", border: "1px solid var(--line-strong)" }}>
+          <div className="relative w-full overflow-hidden" style={{ aspectRatio: "4/5", border: "1px solid var(--line-strong)" }}>
             <Image
               src={IMAGES.homeHero}
               alt="Automatic driveway gate repaired by Santa Clarita Gate Repair"
@@ -186,21 +184,22 @@ export default function HomePage() {
           <div className="container-max">
             <div className="mb-10">
               <span className="eyebrow">Services</span>
-              <h2>Gates first. <em>Garage doors too.</em></h2>
+              <h2>Gates first. Garage doors too.</h2>
             </div>
 
-            <h3 className="font-heading font-semibold mb-4" style={{ fontSize: "0.85rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--stone)" }}>
-              Gates and gate operators
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
-              {gateServices.map((s) => <ServiceCard key={s.href} {...s} />)}
-            </div>
-
-            <h3 className="font-heading font-semibold mb-4" style={{ fontSize: "0.85rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--stone)" }}>
-              Garage doors and openers
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {garageServices.map((s) => <ServiceCard key={s.href} {...s} />)}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+              <div>
+                <h3 className="spec-head">Gates and gate operators</h3>
+                <div className="spec-list">
+                  {gateServices.map((s, i) => <ServiceRow key={s.href} n={i + 1} {...s} />)}
+                </div>
+              </div>
+              <div>
+                <h3 className="spec-head">Garage doors and openers</h3>
+                <div className="spec-list">
+                  {garageServices.map((s, i) => <ServiceRow key={s.href} n={gateServices.length + i + 1} {...s} />)}
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -210,7 +209,7 @@ export default function HomePage() {
       <RevealWrapper>
         <section className="section-padding section--muted">
           <div className="container-max grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-10 lg:gap-14 items-center">
-            <div className="relative w-full overflow-hidden order-last lg:order-first" style={{ aspectRatio: "4/3", borderRadius: "var(--radius-lg)", border: "1px solid var(--line-strong)" }}>
+            <div className="relative w-full overflow-hidden order-last lg:order-first" style={{ aspectRatio: "4/3", border: "1px solid var(--line-strong)" }}>
               <Image
                 src={IMAGES.homeWhy}
                 alt="Gate operator serviced on a Santa Clarita Valley driveway"
@@ -221,11 +220,12 @@ export default function HomePage() {
             </div>
             <div>
               <span className="eyebrow">Local work</span>
-              <h2 style={{ marginBottom: "1.75rem" }}>Why SCV homeowners <em>call us</em></h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                {reasons.map((r) => (
-                  <div key={r.title} className="pl-4" style={{ borderLeft: "3px solid var(--brown)" }}>
-                    <h3 className="font-heading font-semibold mb-1.5" style={{ fontSize: "1.02rem", color: "var(--heading)" }}>{r.title}</h3>
+              <h2 style={{ marginBottom: "1.75rem" }}>Why SCV homeowners call us</h2>
+              <div className="line-grid grid-cols-1 sm:grid-cols-2">
+                {reasons.map((r, i) => (
+                  <div key={r.title} className="p-5">
+                    <span className="spec-num block mb-2">{String(i + 1).padStart(2, "0")}</span>
+                    <h3 className="font-heading font-semibold mb-1.5 uppercase" style={{ fontSize: "1.15rem", color: "var(--heading)" }}>{r.title}</h3>
                     <p style={{ color: "var(--text-soft)", fontSize: "0.9rem", lineHeight: 1.65 }}>{r.desc}</p>
                   </div>
                 ))}
@@ -241,22 +241,22 @@ export default function HomePage() {
           <div className="container-max">
             <div className="mb-10">
               <span className="eyebrow">Service areas</span>
-              <h2>Two valleys, <em>twenty communities</em></h2>
+              <h2>Two valleys, twenty communities</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {[
                 { name: "Santa Clarita Valley", cities: SCV_CITIES },
                 { name: "Antelope Valley", cities: AV_CITIES },
               ].map((g) => (
-                <div key={g.name} className="p-6" style={{ background: "var(--bg-card)", border: "1px solid var(--line)", borderRadius: "var(--radius-lg)" }}>
-                  <h3 className="font-heading font-semibold mb-4" style={{ fontSize: "1.15rem", color: "var(--heading)" }}>{g.name}</h3>
-                  <div className="flex flex-wrap gap-2">
+                <div key={g.name}>
+                  <h3 className="spec-head">{g.name}</h3>
+                  <div className="line-grid grid-cols-2">
                     {g.cities.map((c) => (
                       <Link
                         key={c.slug}
                         href={`/areas/${c.slug}`}
-                        className="px-3.5 py-1.5 rounded-full text-sm font-semibold transition-colors hover:border-[var(--sage)]"
-                        style={{ border: "1px solid var(--line-strong)", color: "var(--text-mid)", textDecoration: "none" }}
+                        className="px-4 py-3 text-sm font-semibold transition-colors hover:text-[var(--brown-warm)]"
+                        style={{ color: "var(--text-mid)", textDecoration: "none" }}
                       >
                         {c.name}
                       </Link>
@@ -278,11 +278,11 @@ export default function HomePage() {
           <div className="container-max">
             <div className="mb-10">
               <span className="eyebrow">Questions</span>
-              <h2>Before you <em>call</em></h2>
+              <h2>Before you call</h2>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div className="line-grid grid-cols-1 lg:grid-cols-2">
               {homepageFaqs.map((f) => (
-                <div key={f.q} className="p-5" style={{ border: "1px solid var(--line)", background: "var(--bg-card)", borderRadius: "var(--radius-lg)" }}>
+                <div key={f.q} className="p-5">
                   <h3 className="font-heading font-semibold mb-2" style={{ fontSize: "1rem", color: "var(--heading)" }}>{f.q}</h3>
                   <p style={{ color: "var(--text-soft)", fontSize: "0.92rem", lineHeight: 1.7 }}>{f.a}</p>
                 </div>
@@ -297,7 +297,7 @@ export default function HomePage() {
         <div className="container-max grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div>
             <span className="eyebrow">Book a technician</span>
-            <h2 style={{ marginBottom: "1.25rem" }}>Tell us what it&apos;s <em>doing</em></h2>
+            <h2 style={{ marginBottom: "1.25rem" }}>Tell us what it&apos;s doing</h2>
             <p style={{ color: "var(--text-mid)", marginBottom: "1.75rem", maxWidth: 520 }}>
               A gate that hums but won&apos;t move, a door that slammed shut, a keypad that went dark.
               Call or text and we will set up a visit and a free on-site quote.

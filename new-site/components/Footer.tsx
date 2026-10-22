@@ -39,101 +39,104 @@ const areaGroups = [
 export default function Footer() {
   return (
     <footer className="footer-dark" data-cta-location="footer">
-      {/* CTA Strip */}
+      {/* CTA band: hard-edged, phone number as the headline */}
       <div className="footer-cta-strip">
-        <div className="container-max flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="container-max grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 items-end">
           <div>
             <p className="footer-cta-title">Gate stuck or door off track?</p>
             <p className="footer-cta-sub">Call or text {BUSINESS.shortName}. Free on-site quote, 24/7 emergency dispatch.</p>
           </div>
-          <div className="flex flex-wrap gap-3">
-            <a href={BUSINESS.phoneHref} className="btn-gold">
-              <Phone size={18} />
-              Call {BUSINESS.phone}
+          <div className="flex flex-col gap-3 md:items-end">
+            <a href={BUSINESS.phoneHref} className="font-heading font-bold leading-none" style={{ color: "#ffffff", fontSize: "clamp(2.2rem, 5vw, 3.5rem)" }}>
+              {BUSINESS.phone}
             </a>
-            <a href={BUSINESS.smsHref} className="btn-ghost">
-              <MessageSquareText size={18} />
-              Text Us
-            </a>
+            <div className="flex flex-wrap gap-3">
+              <a href={BUSINESS.phoneHref} className="btn-primary">
+                <Phone size={18} />
+                Call Now
+              </a>
+              <a href={BUSINESS.smsHref} className="btn-secondary">
+                <MessageSquareText size={18} />
+                Text Us
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Main Grid */}
-      <div className="container-max py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        {/* Business Column */}
-        <div>
-          <p className="footer-col-brand">{BUSINESS.name}</p>
-          <p className="footer-tagline">{BUSINESS.tagline}</p>
-          <div className="space-y-2 footer-contact">
-            <a href={BUSINESS.phoneHref} className="footer-link flex items-center gap-2">
-              <Phone size={13} /> {BUSINESS.phone}
-            </a>
-            <a href={BUSINESS.smsHref} className="footer-link flex items-center gap-2">
-              <MessageSquareText size={13} /> Text {BUSINESS.phone}
-            </a>
-            {BUSINESS.email && (
-              <a href={`mailto:${BUSINESS.email}`} className="footer-link flex items-center gap-2">
-                <Mail size={13} /> {BUSINESS.email}
+      {/* Spec grid: numbered cells separated by thin lines */}
+      <div className="container-max py-12">
+        <div className="footer-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="footer-cell">
+            <p className="footer-col-heading"><span className="footer-num">01</span>{BUSINESS.name}</p>
+            <p className="footer-tagline">{BUSINESS.tagline}</p>
+            <div className="space-y-2 footer-contact">
+              <a href={BUSINESS.phoneHref} className="footer-link flex items-center gap-2">
+                <Phone size={13} /> {BUSINESS.phone}
               </a>
-            )}
-            <div className="footer-link flex items-start gap-2">
-              <MapPin size={13} className="mt-1 flex-shrink-0" />
-              <span>{BUSINESS.address}</span>
+              <a href={BUSINESS.smsHref} className="footer-link flex items-center gap-2">
+                <MessageSquareText size={13} /> Text {BUSINESS.phone}
+              </a>
+              {BUSINESS.email && (
+                <a href={`mailto:${BUSINESS.email}`} className="footer-link flex items-center gap-2">
+                  <Mail size={13} /> {BUSINESS.email}
+                </a>
+              )}
+              <div className="footer-link flex items-start gap-2">
+                <MapPin size={13} className="mt-1 flex-shrink-0" />
+                <span>{BUSINESS.address}</span>
+              </div>
+              <div className="footer-link flex items-start gap-2" style={{ lineHeight: 1.6 }}>
+                <Clock size={13} className="mt-1 flex-shrink-0" />
+                <span>{BUSINESS.hours}</span>
+              </div>
             </div>
-            <div className="footer-link flex items-start gap-2" style={{ lineHeight: 1.6 }}>
-              <Clock size={13} className="mt-1 flex-shrink-0" />
-              <span>{BUSINESS.hours}</span>
-            </div>
+            <ul className="space-y-2 mt-6">
+              {companyLinks.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="footer-link text-sm">{l.label}</Link>
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
 
-        {/* Gate Services */}
-        <div>
-          <p className="footer-col-heading">Gate Services</p>
-          <ul className="space-y-2.5">
-            {gateServiceLinks.map((l) => (
-              <li key={l.href}>
-                <Link href={l.href} className="footer-link text-sm">{l.label}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+          <div className="footer-cell">
+            <p className="footer-col-heading"><span className="footer-num">02</span>Gate Services</p>
+            <ul className="space-y-2.5">
+              {gateServiceLinks.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="footer-link text-sm">{l.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        {/* Garage Door + Company */}
-        <div>
-          <p className="footer-col-heading">Garage Door Services</p>
-          <ul className="space-y-2.5 mb-6">
-            {garageDoorLinks.map((l) => (
-              <li key={l.href}>
-                <Link href={l.href} className="footer-link text-sm">{l.label}</Link>
-              </li>
-            ))}
-          </ul>
-          <p className="footer-col-heading">Company</p>
-          <ul className="space-y-2.5">
-            {companyLinks.map((l) => (
-              <li key={l.href}>
-                <Link href={l.href} className="footer-link text-sm">{l.label}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+          <div className="footer-cell">
+            <p className="footer-col-heading"><span className="footer-num">03</span>Garage Door Services</p>
+            <ul className="space-y-2.5">
+              {garageDoorLinks.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="footer-link text-sm">{l.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        {/* Service Areas: all 20 cities */}
-        <div>
-          {areaGroups.map((g) => (
-            <div key={g.name} className="mb-5">
-              <p className="footer-col-heading">{g.name}</p>
-              <ul className="space-y-2 columns-2">
-                {g.cities.map((c) => (
-                  <li key={c.slug}>
-                    <Link href={`/areas/${c.slug}`} className="footer-link text-sm">{c.name}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div className="footer-cell">
+            <p className="footer-col-heading"><span className="footer-num">04</span>Service Areas</p>
+            {areaGroups.map((g) => (
+              <div key={g.name} className="mb-5">
+                <p className="footer-brands-label uppercase tracking-wider">{g.name}</p>
+                <ul className="space-y-2 columns-2">
+                  {g.cities.map((c) => (
+                    <li key={c.slug}>
+                      <Link href={`/areas/${c.slug}`} className="footer-link text-sm">{c.name}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -141,7 +144,7 @@ export default function Footer() {
       <nav
         aria-label="Site"
         className="footer-top-areas"
-        style={{ borderTop: "1px solid rgba(216,234,208,0.1)" }}
+        style={{ borderTop: "1px solid rgba(238,241,239,0.1)" }}
       >
         <div className="container-max py-5 flex flex-wrap gap-x-6 gap-y-2 text-sm">
           <a href="/services" className="footer-link">Services</a>

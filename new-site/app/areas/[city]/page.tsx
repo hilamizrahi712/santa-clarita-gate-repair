@@ -10,10 +10,7 @@ import { IMAGES, IMAGE_ALT } from "@/lib/images";
 import { BUSINESS, ORG_ID } from "@/lib/constants";
 import ContactForm from "@/components/ContactForm";
 import BrandsMarquee from "@/components/BrandsMarquee";
-import ArchImage from "@/components/ArchImage";
-import IronDivider from "@/components/IronDivider";
 import InlineLinks from "@/components/InlineLinks";
-import SectionRule from "@/components/SectionRule";
 import TextUsCTA from "@/components/TextUsCTA";
 
 interface Props {
@@ -147,7 +144,7 @@ export default async function CityPage({ params }: Props) {
               <h1 style={{ color: "var(--text-warm)", marginBottom: "0.75rem" }}>
                 {data.heroH1}
               </h1>
-              <p style={{ color: "rgba(216,234,208,0.8)", fontSize: "1.05rem", marginBottom: "1.5rem", maxWidth: 560 }}>
+              <p style={{ color: "rgba(238,241,239,0.8)", fontSize: "1.05rem", marginBottom: "1.5rem", maxWidth: 560 }}>
                 {data.heroSubtitle}
               </p>
               <div className="flex flex-wrap gap-3">
@@ -169,7 +166,6 @@ export default async function CityPage({ params }: Props) {
         </div>
       </section>
 
-      <IronDivider />
 
       {/* MOBILE FORM — directly below hero */}
       <div className="lg:hidden" style={{ background: "var(--bg-muted)", padding: "1.5rem" }}>
@@ -179,11 +175,11 @@ export default async function CityPage({ params }: Props) {
       </div>
 
       {/* TRUST BAR — gold */}
-      <div style={{ background: "#4db87a", padding: "0.65rem 1rem" }}>
+      <div style={{ background: "var(--brown)", padding: "0.65rem 1rem" }}>
         <div className="container-max">
           <div
             className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm font-semibold"
-            style={{ color: "#1a1a1a", letterSpacing: "0.02em" }}
+            style={{ color: "#ffffff", letterSpacing: "0.02em" }}
           >
             <span>✦ Same-day service in {data.name}</span>
             <span style={{ opacity: 0.5 }}>·</span>
@@ -224,7 +220,7 @@ export default async function CityPage({ params }: Props) {
                   className="card flex flex-col overflow-hidden transition-all hover:shadow-md"
                   style={{ textDecoration: "none", padding: 0 }}
                 >
-                  <div className="relative" style={{ height: 100, overflow: "hidden", borderRadius: "12px 12px 0 0" }}>
+                  <div className="relative" style={{ height: 100, overflow: "hidden", borderRadius: 0 }}>
                     <Image
                       src={s.img}
                       alt={`${s.label} in ${data.name}`}
@@ -267,7 +263,7 @@ export default async function CityPage({ params }: Props) {
                   className="card flex flex-col overflow-hidden transition-all hover:shadow-md"
                   style={{ textDecoration: "none", padding: 0 }}
                 >
-                  <div className="relative" style={{ height: 100, overflow: "hidden", borderRadius: "12px 12px 0 0" }}>
+                  <div className="relative" style={{ height: 100, overflow: "hidden", borderRadius: 0 }}>
                     <Image
                       src={s.img}
                       alt={`${s.label} in ${data.name}`}
@@ -351,7 +347,7 @@ export default async function CityPage({ params }: Props) {
               <Link
                 key={b.slug}
                 href={`/brands/${b.slug}`}
-                className="px-3 py-1.5 rounded-full text-sm"
+                className="px-3 py-1.5 rounded-[var(--radius)] text-sm"
                 style={{ background: "var(--bg-muted)", border: "1px solid var(--line)", color: "var(--text-mid)", textDecoration: "none" }}
               >
                 {b.name} {anchorVerb(b.type)} in {data.name}
@@ -366,13 +362,9 @@ export default async function CityPage({ params }: Props) {
         <div className="container-max">
           <div className="grid grid-cols-3 gap-3">
             {photoStrip.map((photo, i) => (
-              <ArchImage
-                key={i}
-                src={photo.src}
-                alt={`${photo.alt} in ${data.name}`}
-                aspect="3/4"
-                sizes="(max-width: 768px) 33vw, 20vw"
-              />
+              <div key={i} className="relative overflow-hidden" style={{ aspectRatio: "3/4", border: "1px solid var(--line-strong)" }}>
+                <Image src={photo.src} alt={`${photo.alt} in ${data.name}`} fill className="object-cover" sizes="(max-width: 768px) 33vw, 20vw" />
+              </div>
             ))}
           </div>
         </div>
@@ -481,7 +473,7 @@ export default async function CityPage({ params }: Props) {
                     <Link
                       key={c.slug}
                       href={`/areas/${c.slug}`}
-                      className="px-3 py-1.5 rounded-full text-sm transition-colors"
+                      className="px-3 py-1.5 rounded-[var(--radius)] text-sm transition-colors"
                       style={{
                         background: "var(--bg-muted)",
                         color: "var(--text-mid)",
@@ -511,7 +503,7 @@ export default async function CityPage({ params }: Props) {
                     <Link
                       key={s.slug}
                       href={`/services/${s.slug}`}
-                      className="px-3 py-1.5 rounded-full text-sm transition-colors"
+                      className="px-3 py-1.5 rounded-[var(--radius)] text-sm transition-colors"
                       style={{
                         background: "var(--bg-muted)",
                         color: "var(--text-mid)",
@@ -534,8 +526,7 @@ export default async function CityPage({ params }: Props) {
               <h2 className="font-heading font-bold text-xl mb-2" style={{ color: "var(--text-warm)" }}>
                 Book a technician in {data.name}
               </h2>
-              <SectionRule />
-              <p style={{ color: "rgba(216,234,208,0.7)", fontSize: "0.9rem", marginTop: "1.25rem", marginBottom: "1.25rem" }}>
+              <p style={{ color: "rgba(238,241,239,0.7)", fontSize: "0.9rem", marginTop: "1.25rem", marginBottom: "1.25rem" }}>
                 Call, text a photo of the problem, or send the form. A technician looks at it on site and quotes it free.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
@@ -566,12 +557,12 @@ export default async function CityPage({ params }: Props) {
                 <Phone size={16} /> {BUSINESS.phone}
               </a>
               <TextUsCTA className="btn-secondary w-full justify-center mt-2" label="Text Us a Photo" />
-              <p style={{ fontSize: "0.78rem", color: "rgba(216,234,208,0.75)", marginTop: "0.75rem" }}>
+              <p style={{ fontSize: "0.78rem", color: "rgba(238,241,239,0.75)", marginTop: "0.75rem" }}>
                 Bonded &amp; Insured · Sun–Fri 7AM–10PM
               </p>
             </div>
 
-            <p className="text-center font-heading font-bold" style={{ color: "#4db87a", fontSize: "1.05rem" }}>
+            <p className="text-center font-heading font-bold" style={{ color: "var(--sage)", fontSize: "1.05rem" }}>
               Free on-site quote in {data.name}
             </p>
             <p className="text-center" style={{ fontSize: "0.8rem", color: "var(--stone)" }}>

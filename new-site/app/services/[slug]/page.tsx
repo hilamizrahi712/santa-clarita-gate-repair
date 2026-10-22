@@ -19,7 +19,6 @@ const GATE_CITY_SIGNAL_SLUGS = [
   "gate-motor-replacement",
 ];
 import ContactForm from "@/components/ContactForm";
-import ArchImage from "@/components/ArchImage";
 import InlineLinks from "@/components/InlineLinks";
 import BrandsMarquee from "@/components/BrandsMarquee";
 import TextUsCTA from "@/components/TextUsCTA";
@@ -119,7 +118,7 @@ export default async function ServicePage({ params }: Props) {
         {service.isEmergency && (
           <div className="absolute top-6 left-1/2 -translate-x-1/2 z-20">
             <span
-              className="font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full"
+              className="font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-[var(--radius)]"
               style={{ background: "#B03025", color: "#fff" }}
             >
               24/7 Emergency Service
@@ -134,7 +133,7 @@ export default async function ServicePage({ params }: Props) {
             <h1 style={{ color: "var(--text-warm)", marginBottom: "0.75rem" }}>
               {service.heroH1}
             </h1>
-            <p style={{ color: "rgba(216,234,208,0.82)", fontSize: "1.05rem", marginBottom: "1.5rem" }}>
+            <p style={{ color: "rgba(238,241,239,0.82)", fontSize: "1.05rem", marginBottom: "1.5rem" }}>
               {service.heroSubtitle}
             </p>
             <div className="flex flex-wrap gap-3">
@@ -196,7 +195,7 @@ export default async function ServicePage({ params }: Props) {
                         <Link
                           key={c.slug}
                           href={`/areas/${c.slug}`}
-                          className="px-3 py-1 rounded-full text-sm"
+                          className="px-3 py-1 rounded-[var(--radius)] text-sm"
                           style={{ background: "var(--bg-muted)", color: "var(--text-mid)", border: "1px solid var(--line)", textDecoration: "none" }}
                         >
                           {c.name}
@@ -213,7 +212,7 @@ export default async function ServicePage({ params }: Props) {
                 style={{ background: "var(--bg-card)", border: "1px solid var(--line)" }}
               >
                 <h2 style={{ marginBottom: "1rem", fontSize: "1.4rem" }}>
-                  Is Your {service.isInstallation ? "Property" : "Gate or Door"} <em>Doing This?</em>
+                  Is Your {service.isInstallation ? "Property" : "Gate or Door"} Doing This?
                 </h2>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
                   {service.symptoms.map((s) => (
@@ -226,17 +225,14 @@ export default async function ServicePage({ params }: Props) {
               </div>
 
               {/* Photo */}
-              <ArchImage
-                src={heroImg}
-                alt={IMAGE_ALT[heroImg] ?? service.title}
-                aspect="4/5"
-                sizes="(max-width: 1024px) 100vw, 66vw"
-              />
+              <div className="relative overflow-hidden" style={{ aspectRatio: "4/5", border: "1px solid var(--line-strong)" }}>
+                <Image src={heroImg} alt={IMAGE_ALT[heroImg] ?? service.title} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 66vw" />
+              </div>
 
               {/* Features */}
               <div>
                 <h2 style={{ marginBottom: "1.25rem", fontSize: "1.75rem" }}>
-                  {service.title}: <em>What We Fix</em>
+                  {service.title}: What We Fix
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   {service.features.map((f, i) => (
@@ -266,7 +262,7 @@ export default async function ServicePage({ params }: Props) {
                   {service.howItWorks.map((step, i) => (
                     <li key={i} className="flex gap-4 items-start">
                       <span
-                        className="flex-shrink-0 w-8 h-8 rounded-full font-bold flex items-center justify-center text-sm"
+                        className="flex-shrink-0 w-8 h-8 rounded-[var(--radius)] font-bold flex items-center justify-center text-sm"
                         style={{ background: "var(--brown)", color: "var(--text-warm)" }}
                       >
                         {i + 1}
@@ -352,7 +348,7 @@ export default async function ServicePage({ params }: Props) {
                     <Link
                       key={c.slug}
                       href={`/areas/${c.slug}`}
-                      className="px-3 py-1 rounded-full text-sm transition-colors"
+                      className="px-3 py-1 rounded-[var(--radius)] text-sm transition-colors"
                       style={{
                         background: "var(--bg-muted)",
                         color: "var(--text-mid)",
@@ -383,7 +379,7 @@ export default async function ServicePage({ params }: Props) {
                         <Link
                           key={c.slug}
                           href={`/areas/${c.slug}`}
-                          className="px-3 py-1 rounded-full text-sm transition-colors"
+                          className="px-3 py-1 rounded-[var(--radius)] text-sm transition-colors"
                           style={{
                             background: "var(--bg-muted)",
                             color: "var(--text-mid)",
@@ -417,7 +413,7 @@ export default async function ServicePage({ params }: Props) {
                   >
                     Talk to a Local Tech
                   </p>
-                  <p style={{ color: "rgba(216,234,208,0.65)", fontSize: "0.82rem", marginBottom: "1rem" }}>
+                  <p style={{ color: "rgba(238,241,239,0.65)", fontSize: "0.82rem", marginBottom: "1rem" }}>
                     Call or text and we set your visit while you are on the line.
                   </p>
                   <a href={BUSINESS.phoneHref} className="btn-gold w-full justify-center">

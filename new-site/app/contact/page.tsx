@@ -18,9 +18,9 @@ export default function ContactPage() {
         <div className="container-max max-w-2xl">
           <span className="eyebrow">Get in Touch</span>
           <h1 style={{ color: "#ffffff", marginBottom: "0.75rem" }}>
-            Call, Text or <em>Send the Form</em>
+            Call, Text or Send the Form
           </h1>
-          <p style={{ color: "rgba(216,234,208,0.75)", fontSize: "1.05rem" }}>
+          <p style={{ color: "rgba(238,241,239,0.75)", fontSize: "1.05rem" }}>
             Tell us what the gate or garage door is doing. A photo of the operator or its sticker helps us bring the right parts.
           </p>
         </div>

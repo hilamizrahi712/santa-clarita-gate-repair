@@ -193,7 +193,7 @@ export default async function TipsPostPage({ params }: Props) {
           </Link>
           <div className="flex items-center gap-3 mb-4 flex-wrap">
             <span
-              className="text-xs font-bold uppercase tracking-widest px-2.5 py-1 rounded-full"
+              className="text-xs font-bold uppercase tracking-widest px-2.5 py-1 rounded-[var(--radius)]"
               style={{
                 background: post.category === "gate" ? "var(--navy)" : "var(--brown)",
                 color: "var(--text-warm)",
@@ -230,7 +230,7 @@ export default async function TipsPostPage({ params }: Props) {
               {post.pricingDisclaimer && (
                 <div
                   className="rounded-[var(--radius-lg)] px-5 py-4 mb-8"
-                  style={{ background: "rgba(77,184,122,0.12)", border: "1px solid rgba(77,184,122,0.4)" }}
+                  style={{ background: "rgba(200,16,46,0.12)", border: "1px solid rgba(200,16,46,0.4)" }}
                 >
                   <p className="font-semibold text-sm" style={{ color: "var(--heading)" }}>
                     {post.pricingDisclaimer}
@@ -277,7 +277,7 @@ export default async function TipsPostPage({ params }: Props) {
                 <h3 className="font-heading font-bold text-xl mb-2" style={{ color: "var(--text-warm)" }}>
                   Want a Technician to Take a Look?
                 </h3>
-                <p className="text-sm mb-4" style={{ color: "rgba(216,234,208,0.7)" }}>
+                <p className="text-sm mb-4" style={{ color: "rgba(238,241,239,0.7)" }}>
                   {BUSINESS.name} covers the Santa Clarita and Antelope Valleys with same-day service.
                   Bonded &amp; Insured, written quote before any work.
                 </p>

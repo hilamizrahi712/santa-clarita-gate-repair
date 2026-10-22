@@ -34,27 +34,15 @@ const GROUPS = [
   },
 ];
 
-function ServiceCard({ service }: { service: ServiceData }) {
+function ServiceRow({ service, n }: { service: ServiceData; n: number }) {
   return (
-    <Link
-      href={`/services/${service.slug}`}
-      className="card flex flex-col gap-3 transition-all duration-200 hover:shadow-md"
-      style={{ textDecoration: "none" }}
-    >
-      <h3
-        className="font-heading font-bold"
-        style={{ fontSize: "1.05rem", color: "var(--heading)" }}
-      >
-        {service.title}
-      </h3>
-      <p style={{ fontSize: "0.88rem", color: "var(--text-soft)", lineHeight: 1.55, flexGrow: 1 }}>
-        {service.heroSubtitle}
-      </p>
-      <span
-        style={{ fontSize: "0.82rem", fontWeight: 600, color: "var(--brown-warm)", marginTop: "auto" }}
-      >
-        {service.isInstallation ? "Plan an install →" : "What we fix →"}
+    <Link href={`/services/${service.slug}`} className="spec-row">
+      <span className="spec-num">{String(n).padStart(2, "0")}</span>
+      <span>
+        <span className="spec-name">{service.title}</span>
+        <span className="spec-desc">{service.heroSubtitle}</span>
       </span>
+      <span className="spec-arrow text-sm font-semibold">{service.isInstallation ? "Install →" : "Repair →"}</span>
     </Link>
   );
 }
@@ -67,9 +55,9 @@ export default function ServicesPage() {
         <div className="container-max max-w-2xl">
           <span className="eyebrow">Gates First, Then Garage Doors</span>
           <h1 style={{ color: "var(--text-warm)", marginBottom: "1rem" }}>
-            Everything We Fix in the <em>SCV and AV</em>
+            Everything We Fix in the SCV and AV
           </h1>
-          <p style={{ color: "rgba(216,234,208,0.75)", fontSize: "1.05rem" }}>
+          <p style={{ color: "rgba(238,241,239,0.75)", fontSize: "1.05rem" }}>
             Local technicians for homes first and businesses second, from Valencia and Saugus out to
             Palmdale and Lancaster. Call or text a photo and we take it from there.
           </p>
@@ -96,9 +84,9 @@ export default function ServicesPage() {
                       {group.description}
                     </p>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                    {services.map((service) => (
-                      <ServiceCard key={service.slug} service={service} />
+                  <div className="spec-list">
+                    {services.map((service, i) => (
+                      <ServiceRow key={service.slug} service={service} n={i + 1} />
                     ))}
                   </div>
                 </div>
@@ -114,7 +102,7 @@ export default function ServicesPage() {
           <h2 style={{ color: "var(--text-warm)", marginBottom: "0.75rem" }}>
             Can&apos;t Tell What Broke?
           </h2>
-          <p style={{ color: "rgba(216,234,208,0.7)", marginBottom: "2rem", fontSize: "0.95rem" }}>
+          <p style={{ color: "rgba(238,241,239,0.7)", marginBottom: "2rem", fontSize: "0.95rem" }}>
             That is our job. Call or text a photo of the gate or door and a technician will find the
             cause on site and give you a free quote before any work.
           </p>

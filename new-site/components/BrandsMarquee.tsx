@@ -86,7 +86,7 @@ export default function BrandsMarquee() {
     <section className="brands-bar">
       <div className="brands-head">
         <span className="eyebrow">Brands</span>
-        <h2>Openers and operators <em>we work on</em></h2>
+        <h2>Openers and operators we work on</h2>
         <p>Gate operators, garage door openers and entry systems from the brands you find around both valleys.</p>
       </div>
 

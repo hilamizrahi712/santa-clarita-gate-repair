@@ -9,9 +9,6 @@ import { BUSINESS, ALL_CITIES, ORG_ID } from "@/lib/constants";
 import { CITY_REGIONS } from "@/lib/city-regions";
 import { PRIORITY_CITY_SLUGS } from "@/lib/cities-data";
 import ContactForm from "@/components/ContactForm";
-import ArchImage from "@/components/ArchImage";
-import IronDivider from "@/components/IronDivider";
-import SectionRule from "@/components/SectionRule";
 import ModelFinder from "@/components/ModelFinder";
 import ModelList from "@/components/ModelList";
 import { BRAND_MODELS, finderEntries, modelVariants, shortBrandName } from "@/lib/brand-models";
@@ -199,15 +196,15 @@ export default async function BrandPage({
             Santa Clarita Valley · Antelope Valley
           </span>
           <h1 style={{ color: "var(--text-warm)", marginBottom: "0.5rem" }}>
-            {brandH1(brand)} — <em style={{ color: "#4db87a", fontStyle: "italic" }}>Santa Clarita &amp; Antelope Valley</em>
+            {brandH1(brand)} — Santa Clarita &amp; Antelope Valley
           </h1>
           <p className="font-semibold" style={{ color: "var(--text-warm)", fontSize: "1.05rem", marginBottom: "0.5rem", maxWidth: 560 }}>
             {homeownerLine(brand)}
           </p>
-          <p style={{ color: "rgba(216,234,208,0.82)", fontSize: "1.05rem", marginBottom: "0.5rem", maxWidth: 560 }}>
+          <p style={{ color: "rgba(238,241,239,0.82)", fontSize: "1.05rem", marginBottom: "0.5rem", maxWidth: 560 }}>
             {brand.tagline}
           </p>
-          <p className="font-semibold" style={{ color: "#4db87a", fontSize: "0.9rem", marginBottom: "1.5rem" }}>
+          <p className="font-semibold" style={{ color: "var(--sage)", fontSize: "0.9rem", marginBottom: "1.5rem" }}>
             Same-day service · Parts for common {brand.name} failures on the truck
           </p>
           <div className="flex flex-wrap gap-3">
@@ -222,7 +219,6 @@ export default async function BrandPage({
         </div>
       </section>
 
-      <IronDivider />
 
       {/* TRUST BAR */}
       <div style={{ background: "var(--brown)", padding: "0.65rem 1rem" }}>
@@ -343,12 +339,9 @@ export default async function BrandPage({
               </div>
 
               {/* Photo */}
-              <ArchImage
-                src={images.photo}
-                alt={IMAGE_ALT[images.photo]}
-                aspect="4/5"
-                sizes="(max-width: 1024px) 100vw, 66vw"
-              />
+              <div className="relative overflow-hidden" style={{ aspectRatio: "4/5", border: "1px solid var(--line-strong)" }}>
+                <Image src={images.photo} alt={IMAGE_ALT[images.photo]} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 66vw" />
+              </div>
 
               {/* Models: every model with its other spellings, plus a finder */}
               {BRAND_MODELS[brand.slug] && (
@@ -408,7 +401,7 @@ export default async function BrandPage({
                 >
                   Why Call Us About Your {brand.name}
                 </h2>
-                <p style={{ color: "rgba(216,234,208,0.8)", lineHeight: 1.8, fontSize: "0.95rem", marginBottom: "1.25rem" }}>
+                <p style={{ color: "rgba(238,241,239,0.8)", lineHeight: 1.8, fontSize: "0.95rem", marginBottom: "1.25rem" }}>
                   {whyUsShort}
                 </p>
                 <div className="flex flex-wrap gap-3">
@@ -463,7 +456,7 @@ export default async function BrandPage({
                     <Link
                       key={s.href}
                       href={s.href}
-                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-sm"
+                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-[var(--radius)] text-sm"
                       style={{ background: "var(--bg-muted)", border: "1px solid var(--line)", color: "var(--text-mid)", textDecoration: "none" }}
                     >
                       {s.label} <ArrowRight size={12} />
@@ -485,7 +478,7 @@ export default async function BrandPage({
                 {featuredCities.length > 0 && (
                   <div
                     className="rounded-[var(--radius-lg)] p-5 mb-5"
-                    style={{ background: "rgba(77,184,122,0.08)", border: "1px solid rgba(77,184,122,0.4)" }}
+                    style={{ background: "rgba(200,16,46,0.08)", border: "1px solid rgba(200,16,46,0.4)" }}
                   >
                     <p className="font-heading font-semibold text-xs uppercase mb-3" style={{ letterSpacing: "0.08em", color: "var(--brown-warm)" }}>
                       Most Requested
@@ -495,8 +488,8 @@ export default async function BrandPage({
                         <Link
                           key={c.slug}
                           href={`/areas/${c.slug}`}
-                          className="px-3 py-1.5 rounded-full text-sm font-semibold"
-                          style={{ background: "#4db87a", color: "#1a1a1a", textDecoration: "none" }}
+                          className="px-3 py-1.5 rounded-[var(--radius)] text-sm font-semibold"
+                          style={{ background: "var(--brown)", color: "#ffffff", textDecoration: "none" }}
                         >
                           {brand.name} {verb} in {c.name}
                         </Link>
@@ -519,7 +512,7 @@ export default async function BrandPage({
                           <Link
                             key={c.slug}
                             href={`/areas/${c.slug}`}
-                            className="px-3 py-1.5 rounded-full text-sm"
+                            className="px-3 py-1.5 rounded-[var(--radius)] text-sm"
                             style={{ background: "var(--bg-muted)", border: "1px solid var(--line)", color: "var(--text-mid)", textDecoration: "none" }}
                           >
                             {brand.name} {verb} in {c.name}
@@ -548,7 +541,7 @@ export default async function BrandPage({
                 <a href={BUSINESS.phoneHref} className="btn-gold w-full justify-center">
                   <Phone size={16} /> {BUSINESS.phone}
                 </a>
-                <p style={{ fontSize: "0.78rem", color: "rgba(216,234,208,0.75)", marginTop: "0.75rem" }}>
+                <p style={{ fontSize: "0.78rem", color: "rgba(238,241,239,0.75)", marginTop: "0.75rem" }}>
                   Bonded &amp; Insured · Sun–Fri 7AM–10PM
                 </p>
               </div>
@@ -593,8 +586,7 @@ export default async function BrandPage({
           <h2 style={{ color: "var(--text-warm)", marginBottom: "0.75rem" }}>
             Get Your {brand.name} Working Again
           </h2>
-          <SectionRule />
-          <p style={{ color: "rgba(216,234,208,0.7)", marginTop: "1.25rem", marginBottom: "2rem", fontSize: "0.95rem", lineHeight: 1.75 }}>
+          <p style={{ color: "rgba(238,241,239,0.7)", marginTop: "1.25rem", marginBottom: "2rem", fontSize: "0.95rem", lineHeight: 1.75 }}>
             Tell us the model on the sticker, or text a photo of it, and we send a technician who knows
             {" "}{brand.name}. Same-day service is available across most of the Santa Clarita and Antelope Valleys.
           </p>

@@ -33,9 +33,9 @@ export default function ServiceAreasPage() {
         <div className="container-max max-w-2xl">
           <span className="eyebrow">Where We Work</span>
           <h1 style={{ color: "var(--text-warm)", marginBottom: "1rem" }}>
-            {ALL_CITIES.length} Communities, <em>Two Valleys</em>
+            {ALL_CITIES.length} Communities, Two Valleys
           </h1>
-          <p style={{ color: "rgba(216,234,208,0.75)", fontSize: "1.05rem" }}>
+          <p style={{ color: "rgba(238,241,239,0.75)", fontSize: "1.05rem" }}>
             Our technicians cover the Santa Clarita Valley and the Antelope Valley, from Stevenson Ranch
             and Castaic in the west to Lancaster, Littlerock and Pearblossom in the east.
           </p>

@@ -16,9 +16,9 @@ interface FormData {
 
 const wrapStyle: React.CSSProperties = {
   background: "var(--navy)",
-  borderRadius: "50% 50% 0 0 / 50px 50px 0 0",
-  padding: "2.75rem 1.75rem 2rem",
-  overflow: "hidden",
+  borderRadius: 0,
+  borderTop: "4px solid var(--brown)",
+  padding: "2rem 1.75rem",
 };
 
 const compactWrapStyle: React.CSSProperties = {
@@ -43,7 +43,7 @@ const labelStyle: React.CSSProperties = {
   display: "block",
   fontSize: "0.75rem",
   fontWeight: 600,
-  color: "rgba(216,234,208,0.8)",
+  color: "rgba(238,241,239,0.8)",
   marginBottom: "0.3rem",
   letterSpacing: "0.06em",
   textTransform: "uppercase",
@@ -100,7 +100,7 @@ export default function ContactForm({ className = "", compact = false }: { class
         <h3 className="font-heading font-bold" style={{ fontSize: "1.15rem", color: "var(--text-warm)", marginBottom: "0.2rem" }}>
           {compact ? "Free On-Site Quote" : "Request a Free On-Site Quote"}
         </h3>
-        <p style={{ fontSize: "0.82rem", color: "rgba(216,234,208,0.8)" }}>
+        <p style={{ fontSize: "0.82rem", color: "rgba(238,241,239,0.8)" }}>
           {compact ? "Leave your number, we call you back." : "Leave your number and a few details. We call you back to set a time."}
         </p>
       </div>
@@ -196,7 +196,7 @@ export default function ContactForm({ className = "", compact = false }: { class
           background: "var(--brown)",
           color: "#fff",
           border: "none",
-          borderRadius: "999px",
+          borderRadius: "var(--radius)",
           padding: "0.8rem 1.5rem",
           fontSize: "0.95rem",
           cursor: isSubmitting ? "not-allowed" : "pointer",
@@ -209,7 +209,7 @@ export default function ContactForm({ className = "", compact = false }: { class
       </button>
 
       {!compact && (
-        <p style={{ fontSize: "0.73rem", color: "rgba(216,234,208,0.7)", textAlign: "center" }}>
+        <p style={{ fontSize: "0.73rem", color: "rgba(238,241,239,0.7)", textAlign: "center" }}>
           Your details go only to our office, never to marketers.
         </p>
       )}

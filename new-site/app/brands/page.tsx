@@ -39,12 +39,12 @@ function BrandCard({ brand }: { brand: BrandData }) {
   return (
     <Link
       href={`/brands/${brand.slug}`}
-      className="card flex flex-col gap-4 transition-all duration-200 hover:shadow-md"
+      className="flex flex-col gap-4 p-5 transition-colors duration-200 hover:bg-[var(--bg-muted)]"
       style={{ textDecoration: "none" }}
     >
       <div
-        className="flex items-center justify-center rounded-[var(--radius)]"
-        style={{ height: 80, background: "var(--bg-muted)", padding: "1rem" }}
+        className="flex items-center justify-center"
+        style={{ height: 80, background: "#ffffff", padding: "1rem" }}
       >
         {brand.logo ? (
           <Image
@@ -56,7 +56,7 @@ function BrandCard({ brand }: { brand: BrandData }) {
             unoptimized
           />
         ) : (
-          <span className="font-heading font-bold" style={{ color: "var(--heading)" }}>{brand.name}</span>
+          <span className="font-heading font-bold" style={{ color: "#111111" }}>{brand.name}</span>
         )}
       </div>
       <div>
@@ -92,14 +92,14 @@ export default function BrandsPage() {
         <div className="container-max max-w-2xl">
           <span className="eyebrow">Brands We Service</span>
           <h1 style={{ color: "var(--text-warm)", marginBottom: "1rem" }}>
-            The Brands on <em>Your Gate and Garage</em>
+            The Brands on Your Gate and Garage
           </h1>
-          <p style={{ color: "rgba(216,234,208,0.75)", fontSize: "1.05rem" }}>
+          <p style={{ color: "rgba(238,241,239,0.75)", fontSize: "1.05rem" }}>
             Pick the name printed on your operator or opener to see the models we work on, current
             and discontinued, and the problems that usually bring SCV and AV homeowners to call us.
           </p>
           <p style={{ marginTop: "1rem" }}>
-            <Link href="/gate-operator-models" style={{ color: "#4db87a", textDecoration: "underline", fontWeight: 600 }}>
+            <Link href="/gate-operator-models" style={{ color: "var(--sage)", textDecoration: "underline", fontWeight: 600 }}>
               Look up your gate opener model
             </Link>
           </p>
@@ -127,7 +127,7 @@ export default function BrandsPage() {
                       {cat.description}
                     </p>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+                  <div className="line-grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                     {brands.map((brand) => (
                       <BrandCard key={brand.slug} brand={brand} />
                     ))}
@@ -145,7 +145,7 @@ export default function BrandsPage() {
           <h2 style={{ color: "var(--text-warm)", marginBottom: "0.75rem" }}>
             Not Sure Which Brand You Have?
           </h2>
-          <p style={{ color: "rgba(216,234,208,0.7)", marginBottom: "2rem", fontSize: "0.95rem" }}>
+          <p style={{ color: "rgba(238,241,239,0.7)", marginBottom: "2rem", fontSize: "0.95rem" }}>
             Text us a photo of the operator or the sticker on it. We will tell you the make and
             model and send a technician with the right parts.
           </p>

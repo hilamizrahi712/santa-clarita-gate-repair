@@ -4,7 +4,6 @@ import Image from "next/image";
 import { Phone, CheckCircle } from "lucide-react";
 import { IMAGES, IMAGE_ALT } from "@/lib/images";
 import { BUSINESS } from "@/lib/constants";
-import SectionRule from "@/components/SectionRule";
 import TextUsCTA from "@/components/TextUsCTA";
 
 export const metadata: Metadata = {
@@ -38,9 +37,9 @@ export default function AboutPage() {
         <div className="container-max max-w-2xl">
           <span className="eyebrow">About Us</span>
           <h1 style={{ color: "var(--text-warm)", marginBottom: "1rem" }}>
-            Gate Repair for the <em>Two Valleys</em>
+            Gate Repair for the Two Valleys
           </h1>
-          <p style={{ color: "rgba(216,234,208,0.75)", fontSize: "1.05rem" }}>
+          <p style={{ color: "rgba(238,241,239,0.75)", fontSize: "1.05rem" }}>
             {BUSINESS.name} repairs driveway, ranch and community gates and the garage doors behind
             them, from Castaic and Stevenson Ranch out to Lancaster and Pearblossom.
           </p>
@@ -53,7 +52,7 @@ export default function AboutPage() {
             <div>
               <span className="eyebrow">What We Do</span>
               <h2 style={{ marginBottom: "1.5rem" }}>
-                Gates First. <em>Garage Doors Too.</em>
+                Gates First. Garage Doors Too.
               </h2>
               <div style={{ color: "var(--text-mid)", lineHeight: 1.85, fontSize: "1.02rem" }}>
                 <p style={{ marginBottom: "1.25rem" }}>
@@ -132,10 +131,9 @@ export default function AboutPage() {
             <h2 style={{ color: "var(--text-warm)", marginBottom: "1rem", fontSize: "1.9rem", lineHeight: 1.2 }}>
               Gate or Garage Door Giving You Trouble?
             </h2>
-            <SectionRule />
             <p
               style={{
-                color: "rgba(216,234,208,0.72)",
+                color: "rgba(238,241,239,0.72)",
                 maxWidth: 520,
                 margin: "1.25rem auto 2rem",
                 fontSize: "0.97rem",

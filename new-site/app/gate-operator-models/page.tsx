@@ -57,9 +57,9 @@ export default function GateOperatorModelsPage() {
         <div className="container-max max-w-3xl">
           <span className="eyebrow">Gate Motor Models</span>
           <h1 style={{ color: "var(--text-warm)", marginBottom: "1rem" }}>
-            Find Your <em>Gate Operator Model</em>
+            Find Your Gate Operator Model
           </h1>
-          <p style={{ color: "rgba(216,234,208,0.8)", fontSize: "1.05rem", marginBottom: "1.5rem" }}>
+          <p style={{ color: "rgba(238,241,239,0.8)", fontSize: "1.05rem", marginBottom: "1.5rem" }}>
             The model is printed on a label on the operator housing or inside its cover. Type it below, however it
             is written, to see what it is. We service these operators across the Santa Clarita and Antelope Valleys,
             including models that are no longer made.
@@ -109,10 +109,10 @@ export default function GateOperatorModelsPage() {
             <h2 className="font-heading font-bold" style={{ fontSize: "1.2rem", color: "var(--text-warm)", marginBottom: "0.5rem" }}>
               Can&apos;t find your model?
             </h2>
-            <p style={{ color: "rgba(216,234,208,0.8)", marginBottom: "1rem" }}>
+            <p style={{ color: "rgba(238,241,239,0.8)", marginBottom: "1rem" }}>
               Text us a photo of the sticker on your gate motor. We&apos;ll tell you whether it&apos;s worth repairing or
               time to replace it, and see our{" "}
-              <Link href="/services/gate-motor-replacement" style={{ color: "#4db87a", textDecoration: "underline" }}>
+              <Link href="/services/gate-motor-replacement" style={{ color: "var(--sage)", textDecoration: "underline" }}>
                 gate motor replacement
               </Link>{" "}
               service for how a replacement works.

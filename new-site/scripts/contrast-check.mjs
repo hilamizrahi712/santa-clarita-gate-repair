@@ -18,27 +18,22 @@ assert.equal(ratio(hex("#000000"), hex("#ffffff")).toFixed(0), "21");
 
 const C = {
   base: "#080d0a", deep: "#050805", muted: "#0d1610", card: "#101a13",
-  navy: "#0e3321", green: "#1a5c3a", greenHover: "#217048", burgundy: "#8B2235", sage: "#4db87a",
-  heading: "#d8ead0", mid: "#c2d6c8", soft: "#9fb5a8", stone: "#8ca496", stoneLight: "#7f988a",
-  rose: "#d95070", white: "#ffffff", error: "#f87171", nearBlack: "#1a1a1a",
+  navy: "#15191b", navyMid: "#262c2f", red: "#C8102E", redHover: "#a50d26", redText: "#FF5A5A",
+  heading: "#eef1ef", mid: "#cad0cd", soft: "#a7afab", stone: "#959d99", stoneLight: "#8a928e",
+  white: "#ffffff", error: "#f87171", ink: "#111111",
 };
 const ink = hex(C.heading);
 
 // [label, foreground, background, large?]  foreground may be [hex, alpha] for translucent cream text.
-const darkBgs = ["base", "deep", "muted", "card"];
+const darkBgs = ["base", "deep", "muted", "card", "navy"];
 const pairs = [
-  ...darkBgs.flatMap((bg) => ["heading", "mid", "soft", "stone", "stoneLight", "rose", "sage", "error"].map((fg) => [`${fg} on ${bg}`, C[fg], C[bg]])),
-  ...["heading", "mid", "soft", "stone", "sage", "error"].map((fg) => [`${fg} on navy`, C[fg], C.navy]),
-  ["rose h2 em on navy (large)", C.rose, C.navy, true],
-  ["white on green (btn-primary)", C.white, C.green],
-  ["white on green hover", C.white, C.greenHover],
-  ["white on burgundy (emergency bar, submit, sticky)", C.white, C.burgundy],
-  ["heading on burgundy (footer CTA)", C.heading, C.burgundy],
-  ["deep on sage (btn-gold)", C.deep, C.sage],
-  ["#1a1a1a on sage (city trust bar)", C.nearBlack, C.sage],
-  ["heading on navy (form, blocks)", C.heading, C.navy],
-  ["footer cta-sub 0.92 on burgundy", [C.heading, 0.92], C.burgundy],
-  ...[0.6, 0.65, 0.7, 0.72, 0.75].flatMap((a) => [
+  ...darkBgs.flatMap((bg) => ["heading", "mid", "soft", "stone", "stoneLight", "redText", "error"].map((fg) => [`${fg} on ${bg}`, C[fg], C[bg]])),
+  ["white on red (btn-primary, top bar, submit, sticky, trust bar)", C.white, C.red],
+  ["white on red hover", C.white, C.redHover],
+  ["white on navyMid (sticky CTA border cells)", C.white, C.navy],
+  ["ink on white (logo tiles fallback text)", C.ink, C.white],
+  ["red on white (brand name hover)", C.red, C.white],
+  ...[0.6, 0.65, 0.7, 0.72, 0.75, 0.78, 0.92].flatMap((a) => [
     [`cream ${a} on deep (footer)`, [C.heading, a], C.deep],
     [`cream ${a} on navy`, [C.heading, a], C.navy],
   ]),

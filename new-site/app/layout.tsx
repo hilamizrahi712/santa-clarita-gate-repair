@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Manrope } from "next/font/google";
+import { Barlow_Condensed, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -10,15 +10,16 @@ import { BUSINESS, ALL_CITIES, ORG_ID, GA4_ID } from "@/lib/constants";
 import { BRANDS } from "@/lib/brands-data";
 import { SERVICES } from "@/lib/services-data";
 
-const spaceGrotesk = Space_Grotesk({
+const barlow = Barlow_Condensed({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  weight: ["600", "700"],
+  variable: "--font-barlow",
   display: "swap",
 });
 
-const manrope = Manrope({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-manrope",
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -107,10 +108,8 @@ const localBusinessSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${manrope.variable}`}>
+    <html lang="en" className={`${barlow.variable} ${inter.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}

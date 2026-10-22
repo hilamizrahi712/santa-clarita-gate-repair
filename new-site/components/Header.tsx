@@ -60,14 +60,18 @@ export default function Header() {
   return (
     <div className="sticky top-0 z-40" data-cta-location="header">
       {/* Emergency bar: part of the same sticky unit as the header so they scroll together */}
-      <div
-        className="text-center py-2 px-4 text-sm font-semibold"
-        style={{ background: "var(--brown)", color: "#ffffff" }}
-      >
-        Emergency? Call now, 24/7 dispatch:{" "}
-        <a href={BUSINESS.phoneHref} className="underline hover:no-underline whitespace-nowrap">
-          {BUSINESS.phone}
-        </a>
+      <div className="py-1.5 text-sm font-semibold" style={{ background: "var(--brown)", color: "#ffffff" }}>
+        <div className="container-max flex items-center justify-between gap-4">
+          <span className="uppercase tracking-wider text-xs sm:text-sm">
+            Emergency? Call now, 24/7 dispatch
+          </span>
+          <span className="flex items-center gap-4">
+            <span className="hidden md:inline text-xs uppercase tracking-wider" style={{ opacity: 0.9 }}>Sun to Fri 7AM to 10PM</span>
+            <a href={BUSINESS.phoneHref} className="underline hover:no-underline whitespace-nowrap">
+              {BUSINESS.phone}
+            </a>
+          </span>
+        </div>
       </div>
 
       {/* Main Header */}
@@ -75,21 +79,25 @@ export default function Header() {
         className={headerBg}
         style={{ height: "var(--nav-h)", background: "var(--bg-dark)", borderBottom: "1px solid var(--line)" }}
       >
-        <div className="container-max flex items-center justify-between h-full gap-4">
+        <div className="container-max flex items-center justify-between h-full gap-4" style={{ paddingRight: 0 }}>
           {/* Logo: plain text wordmark (no logo file exists for this business) */}
-          <Link href="/" className="flex-shrink-0" aria-label={`${BUSINESS.name}, home`}>
-            <span className="font-heading font-bold text-xl leading-tight block" style={{ color: "var(--heading)" }}>
-              <span className="hidden sm:inline">
-                Santa Clarita <em style={{ color: "var(--sage)" }}>Gate Repair</em>
+          <Link
+            href="/"
+            className="flex-shrink-0 self-stretch flex items-center pr-5"
+            style={{ borderRight: "1px solid var(--line-strong)" }}
+            aria-label={`${BUSINESS.name}, home`}
+          >
+            <span className="font-heading font-bold uppercase leading-none block" style={{ color: "var(--heading)" }}>
+              <span className="block text-2xl tracking-wide">
+                <span className="hidden sm:inline">Santa Clarita</span>
+                <span className="sm:hidden">SCV</span>
               </span>
-              <span className="sm:hidden">
-                SCV <em style={{ color: "var(--sage)" }}>Gate Repair</em>
-              </span>
+              <span className="block text-xs tracking-[0.3em] mt-1" style={{ color: "var(--brown-warm)" }}>Gate Repair</span>
             </span>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className={`hidden lg:flex items-center gap-5 text-sm font-semibold whitespace-nowrap ${linkColor}`}>
+          <nav className={`hidden lg:flex items-center gap-5 text-sm font-semibold uppercase tracking-wide whitespace-nowrap mr-auto ${linkColor}`}>
             {/* Gate Services */}
             <div className="relative group">
               <Link href="/services" className="flex items-center gap-1 py-2 hover:opacity-70 transition-opacity">
@@ -191,20 +199,30 @@ export default function Header() {
             <Link href="/contact" className="hover:opacity-70 transition-opacity py-2">Contact</Link>
           </nav>
 
-          {/* Phone + SMS CTA */}
-          <div className="hidden lg:flex items-center gap-2">
-            <a href={BUSINESS.smsHref} className="btn-secondary text-sm !hidden xl:!inline-flex" style={{ padding: "0.65rem 1.1rem" }}>
+          {/* Phone + SMS CTA: hard-edged blocks the full height of the header */}
+          <div className="hidden lg:flex self-stretch items-stretch">
+            <a
+              href={BUSINESS.smsHref}
+              className="!hidden xl:!flex items-center gap-2 px-4 text-sm font-semibold uppercase tracking-wider"
+              style={{ borderLeft: "1px solid var(--line-strong)", color: "var(--heading)" }}
+            >
               <MessageSquareText size={15} />
               Text
             </a>
-            <a href={BUSINESS.phoneHref} className="btn-primary text-sm">
-              <Phone size={15} />
-              {BUSINESS.phone}
+            <a
+              href={BUSINESS.phoneHref}
+              className="flex flex-col justify-center px-5 font-heading"
+              style={{ background: "var(--brown)", color: "#ffffff" }}
+            >
+              <span className="text-xs uppercase tracking-[0.2em]" style={{ opacity: 0.9 }}>Call now</span>
+              <span className="text-xl font-bold leading-none flex items-center gap-2">
+                <Phone size={16} /> {BUSINESS.phone}
+              </span>
             </a>
           </div>
 
           {/* Mobile */}
-          <div className="lg:hidden flex items-center gap-3">
+          <div className="lg:hidden flex items-center gap-3 pr-6">
             <a href={BUSINESS.smsHref} aria-label="Text us" style={{ color: "var(--heading)" }}>
               <MessageSquareText size={22} />
             </a>

@@ -26,9 +26,9 @@ export default function TipsIndexPage() {
         <div className="container-max max-w-2xl">
           <span className="eyebrow">Local Know-How</span>
           <h1 style={{ color: "var(--text-warm)", marginBottom: "1rem" }}>
-            Gate &amp; Garage Door <em>Tips</em>
+            Gate &amp; Garage Door Tips
           </h1>
-          <p style={{ color: "rgba(216,234,208,0.75)", fontSize: "1.1rem" }}>
+          <p style={{ color: "rgba(238,241,239,0.75)", fontSize: "1.1rem" }}>
             Short reads on how local conditions affect gates and garage doors, the warning signs to
             watch for, and when it is time to call {BUSINESS.name}.
           </p>
@@ -70,7 +70,7 @@ export default function TipsIndexPage() {
                   <div className="flex flex-col gap-3 p-5" style={{ flexGrow: 1 }}>
                     <div className="flex items-center gap-3 flex-wrap">
                       <span
-                        className="text-xs font-bold uppercase tracking-widest px-2.5 py-1 rounded-full"
+                        className="text-xs font-bold uppercase tracking-widest px-2.5 py-1 rounded-[var(--radius)]"
                         style={{ background: "var(--navy)", color: "var(--text-warm)" }}
                       >
                         Gate
@@ -142,7 +142,7 @@ export default function TipsIndexPage() {
                   <div className="flex flex-col gap-3 p-5" style={{ flexGrow: 1 }}>
                     <div className="flex items-center gap-3 flex-wrap">
                       <span
-                        className="text-xs font-bold uppercase tracking-widest px-2.5 py-1 rounded-full"
+                        className="text-xs font-bold uppercase tracking-widest px-2.5 py-1 rounded-[var(--radius)]"
                         style={{ background: "var(--brown)", color: "var(--text-warm)" }}
                       >
                         Garage Door
