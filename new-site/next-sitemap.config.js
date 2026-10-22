@@ -40,7 +40,8 @@ module.exports = {
     // The wildcard policy already allows every crawler, AI included. These entries
     // are listed explicitly so the intent to allow AI-engine crawling is documented
     // in the file itself, not just implied by the absence of a disallow rule.
-    policies: [
+    // NEXT_PUBLIC_NOINDEX=1 (preview deploys): block everything.
+    policies: process.env.NEXT_PUBLIC_NOINDEX === "1" ? [{ userAgent: "*", disallow: "/" }] : [
       { userAgent: "*", allow: "/" },
       { userAgent: "GPTBot", allow: "/" },
       { userAgent: "ClaudeBot", allow: "/" },

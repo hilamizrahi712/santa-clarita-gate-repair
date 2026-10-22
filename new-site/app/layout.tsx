@@ -28,6 +28,8 @@ const gscVerification = process.env.NEXT_PUBLIC_GSC_VERIFICATION;
 const gaId = process.env.NEXT_PUBLIC_GA_ID || GA4_ID;
 const gaEnabled = !!gaId && !gaId.startsWith("G-XXX");
 const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID;
+// Preview deploys: NEXT_PUBLIC_NOINDEX=1 keeps every page out of search (robots.txt: next-sitemap.config.js).
+const noindex = process.env.NEXT_PUBLIC_NOINDEX === "1";
 
 // City-center pin for Santa Clarita (service-area business, no street address).
 const GEO_LAT = 34.3917;
@@ -41,7 +43,7 @@ export const metadata: Metadata = {
   },
   description:
     `Driveway gate, gate opener and garage door repair across the Santa Clarita and Antelope Valleys. 24/7 emergency dispatch and free on-site quotes. Call ${BUSINESS.phone}.`,
-  robots: { index: true, follow: true },
+  robots: { index: !noindex, follow: !noindex },
   openGraph: {
     type: "website",
     locale: "en_US",
