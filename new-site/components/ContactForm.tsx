@@ -210,7 +210,7 @@ export default function ContactForm({ className = "", compact = false }: { class
 
       {!compact && (
         <p style={{ fontSize: "0.73rem", color: "rgba(216,234,208,0.7)", textAlign: "center" }}>
-          We respect your privacy. No spam, ever.
+          Your details go only to our office, never to marketers.
         </p>
       )}
     </form>

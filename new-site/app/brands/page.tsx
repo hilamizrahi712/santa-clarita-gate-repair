@@ -6,9 +6,9 @@ import { BRANDS, type BrandData } from "@/lib/brands-data";
 import { BUSINESS } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Gate & Garage Door Brands We Service | Real Gate & Garage Door",
+  title: `Gate Operator & Opener Brands We Repair | ${BUSINESS.name}`,
   description:
-    "We repair and service all major gate operator and garage door brands — LiftMaster, Viking, Genie, DoorKing, Chamberlain, and more. Insured technicians across greater Los Angeles.",
+    "LiftMaster, All-O-Matic, Elite, Viking, Ramset, DoorKing, Eagle, Linear, Genie, Chamberlain and DoorBird repair across the Santa Clarita and Antelope Valleys. Free on-site quote.",
   alternates: { canonical: "/brands" },
 };
 
@@ -16,22 +16,22 @@ const CATEGORIES = [
   {
     key: "gate",
     label: "Gate Operators",
-    description: "Brands specializing in driveway and commercial gate automation.",
+    description: "Makers of the motors that open driveway, ranch and community gates.",
   },
   {
     key: "both",
     label: "Gate & Garage Door",
-    description: "Brands offering full solutions for both gates and garage doors.",
+    description: "Makers whose equipment runs both the gate out front and the door in the garage.",
   },
   {
     key: "garage-door",
     label: "Garage Door Openers",
-    description: "Leading manufacturers of residential and commercial garage door openers.",
+    description: "Openers that lift the garage door on most homes in our area.",
   },
   {
     key: "access-control",
     label: "Access Control Systems",
-    description: "Intercoms, telephone entry, and integrated access control brands.",
+    description: "Callboxes, video stations and keypads that decide who gets through the gate.",
   },
 ] as const;
 
@@ -46,14 +46,18 @@ function BrandCard({ brand }: { brand: BrandData }) {
         className="flex items-center justify-center rounded-[var(--radius)]"
         style={{ height: 80, background: "var(--bg-muted)", padding: "1rem" }}
       >
-        <Image
-          src={brand.logo}
-          alt={`${brand.name} logo`}
-          width={160}
-          height={56}
-          style={{ objectFit: "contain", maxHeight: 56, width: "auto" }}
-          unoptimized
-        />
+        {brand.logo ? (
+          <Image
+            src={brand.logo}
+            alt={`${brand.name} logo`}
+            width={160}
+            height={56}
+            style={{ objectFit: "contain", maxHeight: 56, width: "auto" }}
+            unoptimized
+          />
+        ) : (
+          <span className="font-heading font-bold" style={{ color: "var(--heading)" }}>{brand.name}</span>
+        )}
       </div>
       <div>
         <h3
@@ -88,12 +92,11 @@ export default function BrandsPage() {
         <div className="container-max max-w-2xl">
           <span className="eyebrow">Brands We Service</span>
           <h1 style={{ color: "var(--text-warm)", marginBottom: "1rem" }}>
-            Every Major Brand. <em>Expert Repair.</em>
+            The Brands on <em>Your Gate and Garage</em>
           </h1>
           <p style={{ color: "rgba(216,234,208,0.75)", fontSize: "1.05rem" }}>
-            Our technicians bring hands-on experience with every leading gate operator and
-            garage door manufacturer, and carry the common parts for one-visit repairs.
-            Click any brand to see specific services, models, and what our customers should know.
+            Pick the name printed on your operator or opener to see the models we work on, current
+            and discontinued, and the problems that usually bring SCV and AV homeowners to call us.
           </p>
           <p style={{ marginTop: "1rem" }}>
             <Link href="/gate-operator-models" style={{ color: "#4db87a", textDecoration: "underline", fontWeight: 600 }}>
@@ -143,8 +146,8 @@ export default function BrandsPage() {
             Not Sure Which Brand You Have?
           </h2>
           <p style={{ color: "rgba(216,234,208,0.7)", marginBottom: "2rem", fontSize: "0.95rem" }}>
-            That&apos;s fine — we&apos;ll identify your system on arrival. Call us and describe
-            what&apos;s happening, and we&apos;ll send the right technician.
+            Text us a photo of the operator or the sticker on it. We will tell you the make and
+            model and send a technician with the right parts.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a href={BUSINESS.phoneHref} className="btn-gold">

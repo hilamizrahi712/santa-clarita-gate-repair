@@ -21,16 +21,16 @@ import TextUsCTA from "@/components/TextUsCTA";
 function brandH1(brand: BrandData) {
   if (brand.slug === "doorbird") return "DoorBird Intercom Repair & Installation";
   if (brand.type === "garage-door") return `${brand.name} Garage Door Opener Repair`;
-  if (brand.type === "both") return `${brand.name} Gate & Garage Door Repair`;
+  if (brand.type === "both") return `${brand.name} Gate Operator & Opener Repair`;
   return `${brand.name} Gate Repair`;
 }
 
 // One plain line under the H1 so homeowners know straight away this page is for them.
 function homeownerLine(brand: BrandData) {
-  if (brand.slug === "doorbird") return "Installation and repair of DoorBird intercoms on home gates and entries, same day across LA and the Valley.";
-  if (brand.type === "garage-door") return `Repair or replacement for ${brand.name} openers on home garage doors, same day across LA and the Valley.`;
-  if (brand.type === "both") return `Repair or replacement for ${brand.name} operators on home driveway gates and garage doors, same day across LA and the Valley.`;
-  return `Repair or replacement for ${brand.name} operators on home driveway gates, same day across LA and the Valley.`;
+  if (brand.slug === "doorbird") return "DoorBird video stations installed and repaired at home gates and front entries in the Santa Clarita and Antelope Valleys.";
+  if (brand.type === "garage-door") return `${brand.name} garage door openers repaired or replaced at homes from Castaic to Pearblossom.`;
+  if (brand.type === "both") return `${brand.name} gate operators and garage door openers repaired or replaced at homes from Castaic to Pearblossom.`;
+  return `${brand.name} driveway gate operators repaired or replaced at homes from Castaic to Pearblossom.`;
 }
 
 // Brands that make gate operators get the repair-or-replace section.
@@ -87,13 +87,6 @@ const TYPE_INFO: Record<string, { services: { href: string; label: string }[] }>
   },
 };
 
-const SYMPTOMS = [
-  "Not responding to the remote or keypad",
-  "Stops or reverses mid-travel",
-  "Beeping or flashing an error light",
-  "Making grinding or unusual noise before failing",
-];
-
 export default async function BrandPage({
   params,
 }: {
@@ -105,6 +98,7 @@ export default async function BrandPage({
 
   const images = IMAGES.brands[brand.slug] ?? IMAGES.brandFallback;
   const typeInfo = TYPE_INFO[brand.type];
+  const verbTitle = brand.type === "garage-door" ? "Opener Repair" : "Gate Repair";
   const whyUsShort = brand.whyUs.split(". ")[0] + ".";
   const verb = anchorVerb(brand.type);
   // LiftMaster is the Search Console priority brand — feature the priority cities first.
@@ -138,7 +132,7 @@ export default async function BrandPage({
     serviceType: `${brand.name} Repair`,
     description: brand.metaDescription,
     provider: { "@id": ORG_ID },
-    areaServed: { "@type": "AdministrativeArea", name: "Los Angeles County, CA" },
+    areaServed: ALL_CITIES.map((c) => ({ "@type": "City", name: `${c.name}, CA` })),
   };
 
   const breadcrumbSchema = {
@@ -150,14 +144,7 @@ export default async function BrandPage({
     ],
   };
 
-  // Valley FAQ is added to every brand here so the visible list and the schema stay in sync.
-  const faqs = [
-    ...brand.faqs,
-    {
-      q: `Do you repair ${brand.name} in North Hollywood and the rest of the Valley?`,
-      a: `Yes. We repair ${brand.name} systems same day in North Hollywood, Studio City, Sherman Oaks, Encino, Van Nuys and Burbank, and across the rest of the San Fernando Valley. Call or text ${BUSINESS.phone}.`,
-    },
-  ];
+  const faqs = brand.faqs;
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -191,7 +178,8 @@ export default async function BrandPage({
           style={{ background: "linear-gradient(to top, rgba(5,8,5,0.95) 0%, rgba(5,8,5,0.55) 60%, rgba(5,8,5,0.25) 100%)" }}
         />
         <div className="relative z-10 container-max pb-12 pt-32">
-          {/* Logo pill */}
+          {/* Logo pill: skipped for brands without a usable logo */}
+          {brand.logo && (
           <div
             className="inline-flex items-center justify-center rounded-[var(--radius)] mb-5"
             style={{ background: "rgba(255,255,255,0.12)", padding: "0.6rem 1.25rem", backdropFilter: "blur(6px)" }}
@@ -205,12 +193,13 @@ export default async function BrandPage({
               unoptimized
             />
           </div>
+          )}
 
           <span className="eyebrow" style={{ color: "rgba(217,80,112,0.9)" }}>
-            Expert Service · Los Angeles
+            Santa Clarita Valley · Antelope Valley
           </span>
           <h1 style={{ color: "var(--text-warm)", marginBottom: "0.5rem" }}>
-            {brandH1(brand)} — <em style={{ color: "#4db87a", fontStyle: "italic" }}>Los Angeles &amp; San Fernando Valley</em>
+            {brandH1(brand)} — <em style={{ color: "#4db87a", fontStyle: "italic" }}>Santa Clarita &amp; Antelope Valley</em>
           </h1>
           <p className="font-semibold" style={{ color: "var(--text-warm)", fontSize: "1.05rem", marginBottom: "0.5rem", maxWidth: 560 }}>
             {homeownerLine(brand)}
@@ -219,7 +208,7 @@ export default async function BrandPage({
             {brand.tagline}
           </p>
           <p className="font-semibold" style={{ color: "#4db87a", fontSize: "0.9rem", marginBottom: "1.5rem" }}>
-            Fixed same-day · Most repairs in one visit
+            Same-day service · Parts for common {brand.name} failures on the truck
           </p>
           <div className="flex flex-wrap gap-3">
             <a href={BUSINESS.phoneHref} className="btn-gold">
@@ -242,18 +231,16 @@ export default async function BrandPage({
             className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm font-semibold"
             style={{ color: "#fff", letterSpacing: "0.02em" }}
           >
-            <span>✦ {brand.name} Specialists</span>
-            <span style={{ opacity: 0.45 }}>·</span>
-            <span>Same-Day Service</span>
-            <span style={{ opacity: 0.45 }}>·</span>
-            <span>5★ Rated</span>
+            <span>✦ We work on {brand.name}</span>
             <span style={{ opacity: 0.45 }}>·</span>
             <span>Bonded &amp; Insured</span>
             <span style={{ opacity: 0.45 }}>·</span>
-            <span>Free Estimates</span>
+            <span>Same-day service</span>
+            <span style={{ opacity: 0.45 }}>·</span>
+            <span>Free on-site quote</span>
           </div>
           <p className="text-center text-sm font-medium mt-1.5" style={{ color: "rgba(255,255,255,0.85)" }}>
-            On-site service across greater Los Angeles, Ventura County, Orange County and the Central Valley.
+            Technicians across all 20 communities we cover in the Santa Clarita and Antelope Valleys.
           </p>
         </div>
       </div>
@@ -266,16 +253,16 @@ export default async function BrandPage({
             {/* Main column */}
             <div className="lg:col-span-2 flex flex-col gap-10">
 
-              {/* Symptoms */}
+              {/* Common reasons people call: symptoms only */}
               <div
                 className="rounded-[var(--radius-lg)] p-6"
                 style={{ background: "var(--bg-card)", border: "1px solid var(--line)" }}
               >
                 <h2 style={{ marginBottom: "1rem", fontSize: "1.4rem" }}>
-                  Is Your {brand.name} <em>Doing This?</em>
+                  Common Reasons People Call About {brand.name}
                 </h2>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
-                  {SYMPTOMS.map((s) => (
+                  {brand.callReasons.map((s) => (
                     <li key={s} className="flex items-start gap-2.5">
                       <AlertCircle size={16} className="flex-shrink-0 mt-0.5" style={{ color: "var(--brown-warm)" }} />
                       <span style={{ color: "var(--text-mid)", fontSize: "0.92rem" }}>{s}</span>
@@ -287,7 +274,7 @@ export default async function BrandPage({
               {/* Timing & availability */}
               <div style={{ background: "var(--brown)", borderRadius: "var(--radius-lg)", padding: "0.85rem 1.5rem", textAlign: "center" }}>
                 <p className="font-semibold" style={{ color: "var(--text-warm)", fontSize: "0.95rem" }}>
-                  Fixed same-day · Free on-site estimate · Most repairs done in one visit
+                  Same-day service in most of our area · Free on-site quote before any work
                 </p>
               </div>
 
@@ -304,16 +291,16 @@ export default async function BrandPage({
                 </p>
               </div>
 
-              {/* SFV paragraph */}
+              {/* Local paragraph */}
               <div>
                 <h2
                   className="font-heading font-bold"
                   style={{ fontSize: "1.25rem", color: "var(--heading)", marginBottom: "0.75rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
                 >
-                  {brand.name} {brand.type === "garage-door" ? "Garage Door Repair" : "Gate Repair"} Across the San Fernando Valley
+                  {brand.name} {verbTitle} in the Santa Clarita and Antelope Valleys
                 </h2>
                 <p style={{ color: "var(--text-mid)", lineHeight: 1.8, fontSize: "1rem" }}>
-                  {brand.sfvParagraph}
+                  {brand.localParagraph}
                 </p>
               </div>
 
@@ -326,7 +313,7 @@ export default async function BrandPage({
                   className="font-heading font-bold"
                   style={{ fontSize: "1.25rem", color: "var(--heading)", marginBottom: "1rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
                 >
-                  {brand.name} Services We Handle
+                  What We Fix on {brand.name} Equipment
                 </h2>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
                   {brand.services.map((s, i) => (
@@ -347,7 +334,7 @@ export default async function BrandPage({
                   style={{ borderTop: "1px solid var(--line)" }}
                 >
                   <p style={{ color: "var(--text-soft)", fontSize: "0.88rem" }}>
-                    Need any of these services? We respond within 30 minutes.
+                    Need one of these? Call or text and we book you while you are on the line.
                   </p>
                   <a href={BUSINESS.phoneHref} className="btn-primary" style={{ flexShrink: 0 }}>
                     <Phone size={15} /> Call Now
@@ -370,7 +357,7 @@ export default async function BrandPage({
                     className="font-heading font-bold"
                     style={{ fontSize: "1.25rem", color: "var(--heading)", marginBottom: "0.5rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
                   >
-                    {`${shortName} Models We Repair & Replace`}
+                    {`${shortName} Models: Current and Discontinued`}
                   </h2>
                   <p style={{ color: "var(--text-mid)", fontSize: "0.95rem", marginBottom: "1.25rem" }}>
                     Current and older {shortName} models, including discontinued units. Find yours below or type the model from the sticker.
@@ -394,14 +381,14 @@ export default async function BrandPage({
                     className="font-heading font-bold"
                     style={{ fontSize: "1.25rem", color: "var(--heading)", marginBottom: "0.75rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
                   >
-                    Repair or Replace Your {brand.name} Motor?
+                    Fix It or Replace the {brand.name} Operator?
                   </h2>
                   <p style={{ color: "var(--text-mid)", lineHeight: 1.8 }}>
-                    We always check first whether your {brand.name} operator can be repaired, because a new control
-                    board, gear or sensor often gets it running again. Replacement makes sense when the motor is
-                    old and failing more often, when the same unit keeps breaking after repairs, or when parts for
-                    your model are no longer made. If that is the case, we explain the options that fit your gate
-                    and give you a clear quote before any work starts. See our{" "}
+                    A failed {brand.name} operator is not always a dead one. Our first step is to find the part
+                    that quit, whether that is a board, a gear set, a battery or a sensor, and replace just that.
+                    We only suggest a new operator when yours is worn out, keeps failing after repairs, or uses
+                    parts the maker has stopped producing, and then we show you which current models suit your
+                    gate and quote it in writing. More on our{" "}
                     <Link href="/services/gate-motor-replacement" style={{ color: "var(--brown-warm)", textDecoration: "underline" }}>
                       gate motor replacement
                     </Link>{" "}
@@ -419,7 +406,7 @@ export default async function BrandPage({
                   className="font-heading font-bold"
                   style={{ fontSize: "1.15rem", color: "var(--text-warm)", marginBottom: "0.75rem" }}
                 >
-                  Why Choose Us for {brand.name}?
+                  Why Call Us About Your {brand.name}
                 </h2>
                 <p style={{ color: "rgba(216,234,208,0.8)", lineHeight: 1.8, fontSize: "0.95rem", marginBottom: "1.25rem" }}>
                   {whyUsShort}
@@ -440,7 +427,7 @@ export default async function BrandPage({
                   className="font-heading font-bold"
                   style={{ fontSize: "1.5rem", color: "var(--heading)", marginBottom: "1rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
                 >
-                  {brand.name} — Frequently Asked Questions
+                  {brand.name} Questions We Get
                 </h2>
                 <div className="space-y-4">
                   {faqs.map((faq, i) => (
@@ -491,7 +478,7 @@ export default async function BrandPage({
                   className="font-heading font-bold"
                   style={{ fontSize: "1.5rem", color: "var(--heading)", marginBottom: "1rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
                 >
-                  Where We Repair {brand.name} {brand.type === "garage-door" ? "Openers" : "Operators"}
+                  {brand.name} {verbTitle} by City
                 </h2>
 
                 {/* LiftMaster only — Search Console priority cities, featured above the full list */}
@@ -518,39 +505,13 @@ export default async function BrandPage({
                   </div>
                 )}
 
-                {/* San Fernando Valley — expanded by default, always in the HTML */}
-                <div className="mb-4">
-                  <p className="font-heading font-semibold mb-2" style={{ fontSize: "0.95rem", color: "var(--heading)" }}>
-                    {CITY_REGIONS[0].name}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {CITY_REGIONS[0].citySlugs.map((slug) => {
-                      const c = ALL_CITIES.find((city) => city.slug === slug);
-                      if (!c) return null;
-                      return (
-                        <Link
-                          key={c.slug}
-                          href={`/areas/${c.slug}`}
-                          className="px-3 py-1.5 rounded-full text-sm"
-                          style={{ background: "var(--bg-muted)", border: "1px solid var(--line)", color: "var(--text-mid)", textDecoration: "none" }}
-                        >
-                          {brand.name} {verb} in {c.name}
-                        </Link>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                {/* Other regions — collapsible on mobile, but rendered server-side so every link is in the HTML */}
-                {CITY_REGIONS.slice(1).map((region) => (
-                  <details key={region.name} className="mb-3">
-                    <summary
-                      className="font-heading font-semibold cursor-pointer"
-                      style={{ fontSize: "0.95rem", color: "var(--heading)", padding: "0.4rem 0" }}
-                    >
+                {/* Every city, grouped by valley, all links in the HTML */}
+                {CITY_REGIONS.map((region) => (
+                  <div key={region.name} className="mb-4">
+                    <p className="font-heading font-semibold mb-2" style={{ fontSize: "0.95rem", color: "var(--heading)" }}>
                       {region.name}
-                    </summary>
-                    <div className="flex flex-wrap gap-2 mt-2">
+                    </p>
+                    <div className="flex flex-wrap gap-2">
                       {region.citySlugs.map((slug) => {
                         const c = ALL_CITIES.find((city) => city.slug === slug);
                         if (!c) return null;
@@ -566,7 +527,7 @@ export default async function BrandPage({
                         );
                       })}
                     </div>
-                  </details>
+                  </div>
                 ))}
               </div>
             </div>
@@ -582,7 +543,7 @@ export default async function BrandPage({
                   className="font-heading font-bold mb-3"
                   style={{ fontSize: "1rem", color: "var(--text-warm)" }}
                 >
-                  {brand.name} Repair — Same Day
+                  Same-day {brand.name} service
                 </p>
                 <a href={BUSINESS.phoneHref} className="btn-gold w-full justify-center">
                   <Phone size={16} /> {BUSINESS.phone}
@@ -628,21 +589,21 @@ export default async function BrandPage({
       {/* Bottom CTA */}
       <section className="section-padding section--dark">
         <div className="container-max max-w-2xl text-center">
-          <span className="eyebrow" style={{ color: "var(--brown-warm)" }}>Ready to Get Started?</span>
+          <span className="eyebrow" style={{ color: "var(--brown-warm)" }}>{brand.name} Trouble?</span>
           <h2 style={{ color: "var(--text-warm)", marginBottom: "0.75rem" }}>
-            Need {brand.name} Service Today?
+            Get Your {brand.name} Working Again
           </h2>
           <SectionRule />
           <p style={{ color: "rgba(216,234,208,0.7)", marginTop: "1.25rem", marginBottom: "2rem", fontSize: "0.95rem", lineHeight: 1.75 }}>
-            We offer same-day service for most {brand.name} repairs across greater Los Angeles. Call now
-            and we&apos;ll have a technician at your property within hours.
+            Tell us the model on the sticker, or text a photo of it, and we send a technician who knows
+            {" "}{brand.name}. Same-day service is available across most of the Santa Clarita and Antelope Valleys.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a href={BUSINESS.phoneHref} className="btn-gold">
               <Phone size={16} /> Call {BUSINESS.phone}
             </a>
             <Link href="/contact" className="btn-secondary">
-              Request Estimate Online
+              Ask for a Free Quote
             </Link>
           </div>
         </div>
