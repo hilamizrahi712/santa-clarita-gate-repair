@@ -403,7 +403,7 @@ export default async function ServicePage({ params }: Props) {
                 >
                   <div className="space-y-2.5">
                     {[
-                      { Icon: Shield, label: "Free on-site quote" },
+                      { Icon: Shield, label: "Bonded & Insured" },
                       { Icon: Clock, label: "Sun to Fri 7AM to 10PM" },
                       { Icon: Star, label: "24/7 emergency dispatch" },
                     ].map(({ Icon, label }) => (

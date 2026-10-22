@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Phone, ArrowRight } from "lucide-react";
 import { CITIES, getCityBySlug, PRIORITY_CITY_SLUGS } from "@/lib/cities-data";
 import { SERVICES } from "@/lib/services-data";
-import { BRANDS, anchorVerb, BRAND_CATEGORY_GROUPS } from "@/lib/brands-data";
+import { BRANDS, anchorVerb } from "@/lib/brands-data";
 import { IMAGES, IMAGE_ALT } from "@/lib/images";
 import { BUSINESS, ORG_ID } from "@/lib/constants";
 import ContactForm from "@/components/ContactForm";
@@ -94,22 +94,15 @@ export default async function CityPage({ params }: Props) {
       : {}),
   };
 
-  // Generated from BRANDS data (Part 2) — every brand added there appears here automatically.
-  const cityBrandNames = BRANDS.map((b) => b.name).join(", ");
-  const brandsFaqAnswer = `We repair all major gate operator and garage door opener brands in ${data.name}, including ${cityBrandNames}. Our most-requested brands are LiftMaster, Viking, and Elite.`;
-  const brandsFaqQuestion = `Which gate operator brands do you repair in ${data.name}?`;
 
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: [
-      ...data.faq.map((f) => ({
-        "@type": "Question",
-        name: f.q,
-        acceptedAnswer: { "@type": "Answer", text: f.a },
-      })),
-      { "@type": "Question", name: brandsFaqQuestion, acceptedAnswer: { "@type": "Answer", text: brandsFaqAnswer } },
-    ],
+    mainEntity: data.faq.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
   };
 
   const breadcrumbSchema = {
@@ -163,7 +156,7 @@ export default async function CityPage({ params }: Props) {
                 </a>
                 <TextUsCTA className="btn-ghost" />
                 <Link href="/contact" className="btn-ghost">
-                  Get Free Estimate
+                  Free on-site quote
                 </Link>
               </div>
             </div>
@@ -194,55 +187,15 @@ export default async function CityPage({ params }: Props) {
           >
             <span>✦ Serving {data.name}</span>
             <span style={{ opacity: 0.5 }}>·</span>
-            <span>{data.arrivalTime} to {data.name}</span>
-            <span style={{ opacity: 0.5 }}>·</span>
-            <span>Same-Day Service</span>
-            <span style={{ opacity: 0.5 }}>·</span>
-            <span>5★ Rated</span>
+            <span>24/7 emergency dispatch</span>
             <span style={{ opacity: 0.5 }}>·</span>
             <span>Bonded &amp; Insured</span>
             <span style={{ opacity: 0.5 }}>·</span>
-            <span>Free Estimates</span>
+            <span>Free on-site quote</span>
           </div>
         </div>
       </div>
 
-      {/* LIFTMASTER + BRAND SECTION — priority cities only (Search Console: strongest brand+city signal) */}
-      {data.liftmasterSection && data.brandCompact && (
-        <section className="section-padding" style={{ background: "var(--bg-base)" }}>
-          <div className="container-max">
-            <h2
-              style={{
-                marginBottom: "1rem",
-                fontSize: "1.75rem",
-                borderLeft: "4px solid var(--brown)",
-                paddingLeft: "0.75rem",
-              }}
-            >
-              LiftMaster Gate Repair in {data.name}
-            </h2>
-            {data.liftmasterSection.map((para, i) => (
-              <p
-                key={i}
-                className="leading-relaxed mb-4"
-                style={{ color: "var(--text-mid)", fontSize: "1rem", paddingLeft: "0.75rem" }}
-              >
-                {para}
-              </p>
-            ))}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6" style={{ paddingLeft: "0.75rem" }}>
-              {data.brandCompact.map((b) => (
-                <div key={b.slug} className="card" style={{ borderTop: "3px solid var(--brown-warm)" }}>
-                  <p
-                    style={{ color: "var(--text-soft)", fontSize: "0.88rem" }}
-                    dangerouslySetInnerHTML={{ __html: b.text }}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* SERVICES */}
       <section className="section-padding" style={{ background: "var(--bg-base)" }}>
@@ -261,7 +214,7 @@ export default async function CityPage({ params }: Props) {
               Gate Repair in {data.name}
             </h2>
             <p style={{ color: "var(--text-soft)", fontSize: "0.92rem", marginBottom: "1.25rem", paddingLeft: "0.75rem" }}>
-              Sliding, swing, and automatic gates — motors, sensors, hinges, and tracks fixed same-day for {data.name} homes and businesses.
+              Operators, hinges, tracks, sensors and keypads on {data.name} driveway, ranch and community gates.
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {gateCityServices.map((s) => (
@@ -304,7 +257,7 @@ export default async function CityPage({ params }: Props) {
               Garage Door Repair in {data.name}
             </h2>
             <p style={{ color: "var(--text-soft)", fontSize: "0.92rem", marginBottom: "1.25rem", paddingLeft: "0.75rem" }}>
-              Springs, cables, openers, and emergencies — our technicians carry the parts for one-visit repairs across {data.name}.
+              Broken springs, frayed cables, dead openers and doors off their tracks on {data.name} homes.
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {garageCityServices.map((s) => (
@@ -334,6 +287,23 @@ export default async function CityPage({ params }: Props) {
             </div>
           </div>
 
+          {/* Installation: one short section per city, no separate per-city install pages */}
+          <div>
+            <h2
+              style={{
+                marginBottom: "0.5rem",
+                fontSize: "1.75rem",
+                borderLeft: "4px solid var(--brown)",
+                paddingLeft: "0.75rem",
+              }}
+            >
+              New gate or garage door installation in {data.name}
+            </h2>
+            <p className="leading-relaxed" style={{ color: "var(--text-mid)", fontSize: "0.98rem", paddingLeft: "0.75rem" }}>
+              <InlineLinks text={data.install} />
+            </p>
+          </div>
+
           {/* Inline CTA */}
           <div
             className="flex flex-wrap items-center justify-between gap-4 rounded-[var(--radius-lg)] px-5 py-4"
@@ -341,10 +311,10 @@ export default async function CityPage({ params }: Props) {
           >
             <div>
               <p className="font-semibold" style={{ color: "var(--heading)", marginBottom: "0.15rem" }}>
-                Need same-day service in {data.name}?
+                Gate or door acting up in {data.name}?
               </p>
               <p style={{ fontSize: "0.82rem", color: "var(--stone)" }}>
-                We respond within 30 minutes during business hours.
+                Call or text and we set your visit while you are on the line.
               </p>
             </div>
             <div className="flex flex-wrap gap-3" style={{ flexShrink: 0 }}>
@@ -360,48 +330,32 @@ export default async function CityPage({ params }: Props) {
       {/* BRANDS */}
       <BrandsMarquee />
 
-      {/* BRANDS WE REPAIR — generated from BRANDS data, every brand added there appears automatically */}
+      {/* BRANDS WE REPAIR: one link per brand page, wording per city from cities-data */}
       <section className="section-padding" style={{ background: "var(--bg-base)" }}>
         <div className="container-max">
           <h2
             style={{
-              marginBottom: "1.5rem",
+              marginBottom: "0.5rem",
               fontSize: "1.75rem",
               borderLeft: "4px solid var(--brown)",
               paddingLeft: "0.75rem",
             }}
           >
-            Gate Operator and Opener Brands We Repair in {data.name}
+            {data.brandsHeading}
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {BRAND_CATEGORY_GROUPS.map((group) => (
-              <div key={group.name}>
-                <h3
-                  className="font-heading font-semibold mb-1"
-                  style={{ fontSize: "0.95rem", color: "var(--heading)" }}
-                >
-                  {group.name}
-                </h3>
-                <p style={{ color: "var(--text-soft)", fontSize: "0.82rem", marginBottom: "0.75rem" }}>
-                  {group.sentence}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {group.slugs.map((slug) => {
-                    const b = BRANDS.find((brand) => brand.slug === slug);
-                    if (!b) return null;
-                    return (
-                      <Link
-                        key={b.slug}
-                        href={`/brands/${b.slug}`}
-                        className="px-3 py-1.5 rounded-full text-sm"
-                        style={{ background: "var(--bg-muted)", border: "1px solid var(--line)", color: "var(--text-mid)", textDecoration: "none" }}
-                      >
-                        {b.name} {anchorVerb(b.type)} in {data.name}
-                      </Link>
-                    );
-                  })}
-                </div>
-              </div>
+          <p style={{ color: "var(--text-soft)", fontSize: "0.92rem", marginBottom: "1.25rem", paddingLeft: "0.75rem" }}>
+            {data.brandsIntro}
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {BRANDS.map((b) => (
+              <Link
+                key={b.slug}
+                href={`/brands/${b.slug}`}
+                className="px-3 py-1.5 rounded-full text-sm"
+                style={{ background: "var(--bg-muted)", border: "1px solid var(--line)", color: "var(--text-mid)", textDecoration: "none" }}
+              >
+                {b.name} {anchorVerb(b.type)} in {data.name}
+              </Link>
             ))}
           </div>
         </div>
@@ -450,7 +404,7 @@ export default async function CityPage({ params }: Props) {
                   paddingLeft: "0.75rem",
                 }}
               >
-                Why {data.name} Residents Choose Us
+                Why {data.name} homeowners call us
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {data.whyUs.map((item) => (
@@ -473,7 +427,7 @@ export default async function CityPage({ params }: Props) {
                 </a>
                 <TextUsCTA className="btn-secondary" />
                 <Link href="/contact" className="btn-secondary">
-                  Request Free Estimate
+                  Request a free quote
                 </Link>
               </div>
             </div>
@@ -488,7 +442,7 @@ export default async function CityPage({ params }: Props) {
                   paddingLeft: "0.75rem",
                 }}
               >
-                {data.name} — Frequently Asked Questions
+                Questions we hear in {data.name}
               </h2>
               <div className="space-y-4">
                 {data.faq.map((f, i) => (
@@ -506,26 +460,6 @@ export default async function CityPage({ params }: Props) {
                     <p style={{ color: "var(--text-soft)", fontSize: "0.92rem" }}>{f.a}</p>
                   </div>
                 ))}
-
-                {/* Generated from BRANDS data — new brands appear here automatically */}
-                <div
-                  className="rounded-[var(--radius-lg)] p-5"
-                  style={{ border: "1px solid var(--line)", background: "var(--bg-card)" }}
-                >
-                  <h3
-                    className="font-heading font-semibold mb-2"
-                    style={{ fontSize: "1rem", color: "var(--heading)" }}
-                  >
-                    {brandsFaqQuestion}
-                  </h3>
-                  <p style={{ color: "var(--text-soft)", fontSize: "0.92rem" }}>
-                    We repair all major gate operator and garage door opener brands in {data.name}, including {cityBrandNames}.
-                    Our most-requested brands are{" "}
-                    <Link href="/brands/liftmaster" className="rg-link">LiftMaster</Link>,{" "}
-                    <Link href="/brands/viking" className="rg-link">Viking</Link>, and{" "}
-                    <Link href="/brands/elite" className="rg-link">Elite</Link>.
-                  </p>
-                </div>
               </div>
             </div>
 
@@ -540,7 +474,7 @@ export default async function CityPage({ params }: Props) {
                     paddingLeft: "0.75rem",
                   }}
                 >
-                  Nearby Areas We Serve
+                  Also near {data.name}
                 </h2>
                 <div className="flex flex-wrap gap-2">
                   {nearbyCities.map((c) => (
@@ -598,11 +532,11 @@ export default async function CityPage({ params }: Props) {
               style={{ background: "var(--navy)" }}
             >
               <h2 className="font-heading font-bold text-xl mb-2" style={{ color: "var(--text-warm)" }}>
-                Ready for Same-Day Service in {data.name}?
+                Book a technician in {data.name}
               </h2>
               <SectionRule />
               <p style={{ color: "rgba(216,234,208,0.7)", fontSize: "0.9rem", marginTop: "1.25rem", marginBottom: "1.25rem" }}>
-                Call now or fill out the form — we respond within 30 minutes during business hours.
+                Call, text a photo of the problem, or send the form. A technician looks at it on site and quotes it free.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <a href={BUSINESS.phoneHref} className="btn-gold">
@@ -610,7 +544,7 @@ export default async function CityPage({ params }: Props) {
                 </a>
                 <TextUsCTA className="btn-secondary" />
                 <Link href="/contact" className="btn-secondary">
-                  Get Free Estimate
+                  Free on-site quote
                 </Link>
               </div>
             </div>
@@ -626,7 +560,7 @@ export default async function CityPage({ params }: Props) {
                 className="font-heading font-bold mb-3"
                 style={{ fontSize: "1rem", color: "var(--text-warm)" }}
               >
-                Same-Day Service in {data.name}
+                Talk to a local tech
               </p>
               <a href={BUSINESS.phoneHref} className="btn-gold w-full justify-center">
                 <Phone size={16} /> {BUSINESS.phone}
@@ -638,10 +572,10 @@ export default async function CityPage({ params }: Props) {
             </div>
 
             <p className="text-center font-heading font-bold" style={{ color: "#4db87a", fontSize: "1.05rem" }}>
-              Get a Free Estimate in {data.name}
+              Free on-site quote in {data.name}
             </p>
             <p className="text-center" style={{ fontSize: "0.8rem", color: "var(--stone)" }}>
-              Call and a technician diagnoses it on-site — you get the price in writing before any work.
+              The technician checks the gate or door at your property and writes the quote before any work starts.
             </p>
             <ContactForm />
 
@@ -676,10 +610,10 @@ export default async function CityPage({ params }: Props) {
               >
                 <div>
                   <p className="font-bold text-sm" style={{ color: "var(--heading)", lineHeight: 1.2 }}>
-                    Real Gate &amp; Garage Door
+                    {BUSINESS.name}
                   </p>
                   <p style={{ fontSize: "0.72rem", color: "var(--stone)", marginTop: "0.2rem" }}>
-                    ★★★★★ 5-Star Rated · Bonded &amp; Insured
+                    Bonded &amp; Insured
                   </p>
                 </div>
                 <a
