@@ -1,3 +1,19 @@
 /blog /tips 301
 /blog/* /tips/:splat 301
 /pricing /contact 301
+
+# Old static site URLs (Search Console history), with and without .html
+/index.html / 301
+/index / 301
+/santa-clarita-gate-repair.html /areas/santa-clarita 301
+/santa-clarita-gate-repair /areas/santa-clarita 301
+/valencia-gate-repair.html /areas/valencia 301
+/valencia-gate-repair /areas/valencia 301
+/newhall-gate-repair.html /areas/newhall 301
+/newhall-gate-repair /areas/newhall 301
+/castaic-gate-repair.html /areas/castaic 301
+/castaic-gate-repair /areas/castaic 301
+/saugus-gate-repair.html /areas/saugus 301
+/saugus-gate-repair /areas/saugus 301
+/canyon-country-gate-repair.html /areas/canyon-country 301
+/canyon-country-gate-repair /areas/canyon-country 301
