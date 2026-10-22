@@ -7,7 +7,7 @@ export default function ServiceMap() {
           <span className="eyebrow">Map</span>
           <h2>Where our technicians drive</h2>
         </div>
-        <div style={{ border: "1px solid var(--line-strong)", aspectRatio: "16/9", minHeight: 320 }}>
+        <div style={{ border: "1px solid var(--line-strong)", height: "clamp(320px, 45vw, 520px)" }}>
           <iframe
             title="Map of Santa Clarita, CA and the surrounding service area"
             src="https://www.google.com/maps?q=Santa+Clarita,+CA&z=10&output=embed"

@@ -108,7 +108,7 @@ export default async function ServicePage({ params }: Props) {
           alt={IMAGE_ALT[heroImg] ?? service.heroH1}
           fill
           className="object-cover"
-          priority
+          loading="eager"
           fetchPriority="high"
         />
         <div

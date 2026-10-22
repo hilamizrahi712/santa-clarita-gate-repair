@@ -125,7 +125,7 @@ export default async function CityPage({ params }: Props) {
           alt={`Gate and garage door repair in ${data.name}, CA`}
           fill
           className="object-cover"
-          priority
+          loading="eager"
           fetchPriority="high"
         />
         <div
@@ -313,7 +313,7 @@ export default async function CityPage({ params }: Props) {
                 Call or text and we set your visit while you are on the line.
               </p>
             </div>
-            <div className="flex flex-wrap gap-3" style={{ flexShrink: 0 }}>
+            <div className="flex flex-wrap gap-3 min-w-0">
               <a href={BUSINESS.phoneHref} className="btn-primary">
                 <Phone size={15} /> Call Now
               </a>

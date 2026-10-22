@@ -167,7 +167,7 @@ export default async function BrandPage({
           alt={IMAGE_ALT[images.hero]}
           fill
           className="object-cover"
-          priority
+          loading="eager"
           fetchPriority="high"
         />
         <div

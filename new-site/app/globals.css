@@ -9,13 +9,10 @@
   --bg-muted:        #0d1610;
   --bg-card:         #101a13;
   --bg-dark:         #050805;
-  --bg-dark-2:       #0d1610;
-  --bg-marquee:      #0d1610;
 
   --navy:            #15191b;
   --navy-mid:        #262c2f;
   --navy-light:      #262c2f;
-  --navy-glow:       rgba(200, 16, 46, 0.10);
 
   --heading:         #eef1ef;
   --green:           #C8102E;
@@ -26,7 +23,6 @@
   --brown-light:     #FF5A5A;
   --brown-tint:      rgba(200, 16, 46, 0.15);
   --brown-warm:      #FF5A5A;
-  --brown-glow:      rgba(200, 16, 46, 0.12);
 
   --stone:           #959d99;
   --stone-light:     #8a928e;
@@ -239,6 +235,11 @@ main { counter-reset: sec; }
 }
 .btn-ghost:hover { border-color: var(--text-warm); background: rgba(238,241,239,0.08); }
 
+/* Narrow phones: let long button labels (phone numbers) wrap instead of pushing the page wide */
+@media (max-width: 480px) {
+  .btn-primary, .btn-gold, .btn-secondary, .btn-ghost { white-space: normal; max-width: 100%; }
+}
+
 /* ─── Layout ─── */
 .container-max {
   max-width: 1200px;
@@ -288,15 +289,6 @@ main > section + section, main > div + section, main > section + div > section {
   padding: 1.5rem;
 }
 
-.card-dark {
-  background: rgba(238,241,239,0.06);
-  border: 1px solid rgba(238,241,239,0.10);
-  border-radius: var(--radius-lg);
-  padding: 1.5rem;
-}
-
-/* ─── Stars ─── */
-.stars { color: var(--brown-warm); }
 
 /* ─── Brands grid: logos on white tiles ─── */
 .line-grid > .brand-tile { background: #ffffff; }
@@ -321,7 +313,6 @@ main > section + section, main > div + section, main > section + div > section {
 .footer-num { color: var(--brown-warm); margin-right: 0.6rem; }
 .footer-cta-title { font-family: var(--font-barlow,'Barlow Condensed',system-ui); font-weight: 700; font-size: 1.6rem; text-transform: uppercase; color: var(--text-warm); margin-bottom: 0.25rem; }
 .footer-cta-sub { color: rgba(238,241,239,0.92); font-size: 0.9rem; }
-.footer-col-brand { font-family: var(--font-barlow,'Barlow Condensed',system-ui); font-weight: 800; font-size: 1.05rem; color: var(--text-warm); margin-bottom: 0.25rem; }
 .footer-tagline { font-size: 0.82rem; margin-bottom: 1.25rem; color: rgba(238,241,239,0.7); }
 .footer-contact { font-size: 0.875rem; }
 .footer-col-heading { font-family: var(--font-barlow,'Barlow Condensed',system-ui); font-weight: 600; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-warm); margin-bottom: 1rem; }
@@ -343,189 +334,3 @@ main > section + section, main > div + section, main > section + div > section {
   text-decoration-thickness: 1px;
 }
 .tips-link:hover { color: var(--heading); }
-
-/* ─── Diagnostic Widget ─── */
-.diag-subhead {
-  font-family: var(--font-inter, 'Inter', system-ui, sans-serif);
-  font-size: 1.1rem;
-  color: var(--text-soft);
-  max-width: 520px;
-  margin: 0.75rem auto 0;
-  line-height: 1.6;
-}
-
-.diag-card {
-  background: var(--bg-card);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  padding: clamp(1.5rem, 4vw, 2.5rem);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
-  /* Reserve height so stepping through the questions doesn't reflow the page. */
-  min-height: 30rem;
-}
-@media (max-width: 480px) { .diag-card { min-height: 34rem; } }
-
-/* Progress dots */
-.diag-progress {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 1.25rem;
-}
-.diag-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 0;
-  background: var(--line-strong);
-  transition: background 0.25s, transform 0.25s;
-}
-.diag-dot.done { background: var(--brown-light); }
-.diag-dot.active { background: var(--brown); transform: scale(1.4); }
-
-.diag-step-counter {
-  font-family: var(--font-inter, 'Inter', system-ui, sans-serif);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--stone-light);
-  margin-bottom: 0.6rem;
-}
-
-.diag-question {
-  font-size: clamp(1.15rem, 2.5vw, 1.5rem);
-  color: var(--text-dark);
-  margin-bottom: 1.5rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-
-.diag-options {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-@media (max-width: 480px) { .diag-options { grid-template-columns: 1fr; } }
-
-.diag-option {
-  padding: 14px 18px;
-  border: 1.5px solid var(--line-strong);
-  border-radius: var(--radius-lg);
-  background: var(--bg-muted);
-  color: var(--text-mid);
-  font-family: var(--font-inter, 'Inter', system-ui, sans-serif);
-  font-size: 0.92rem;
-  font-weight: 500;
-  text-align: left;
-  cursor: pointer;
-  transition: border-color 0.2s, background 0.2s, color 0.2s;
-  line-height: 1.4;
-}
-.diag-option:hover {
-  border-color: var(--brown-warm);
-  background: var(--brown-tint);
-  color: var(--heading);
-}
-
-/* Result card */
-.diag-type-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 4px 12px;
-  border-radius: var(--radius-pill);
-  font-family: var(--font-inter, 'Inter', system-ui, sans-serif);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: white;
-  margin-bottom: 14px;
-}
-
-.diag-result-title {
-  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-  color: var(--text-dark);
-  margin-bottom: 10px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-
-.diag-result-msg {
-  font-size: 0.97rem;
-  color: var(--text-mid);
-  line-height: 1.7;
-}
-
-.diag-answer-chip {
-  display: inline-flex;
-  align-items: center;
-  padding: 5px 12px;
-  border-radius: var(--radius-pill);
-  background: var(--bg-muted);
-  border: 1px solid var(--line-strong);
-  font-family: var(--font-inter, 'Inter', system-ui, sans-serif);
-  font-size: 0.78rem;
-  color: var(--text-mid);
-}
-
-/* Selected option (brief flash before auto-advance) */
-.diag-option.selected {
-  border-color: var(--brown-warm);
-  background: var(--brown-tint);
-  color: var(--text-dark);
-  font-weight: 600;
-}
-.diag-option:disabled { cursor: default; }
-
-/* Result card elements */
-.diag-result-cta-line {
-  font-family: var(--font-inter, 'Inter', system-ui, sans-serif);
-  font-size: 0.97rem;
-  font-weight: 600;
-  color: var(--heading);
-  margin-top: 14px;
-  line-height: 1.5;
-}
-
-.diag-result-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 0;
-}
-
-.diag-reassurance {
-  font-family: var(--font-inter, 'Inter', system-ui, sans-serif);
-  font-size: 0.78rem;
-  color: var(--stone-light);
-  margin-top: 14px;
-  letter-spacing: 0.01em;
-}
-
-.diag-reset {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 20px;
-  background: none;
-  border: none;
-  font-family: var(--font-inter, 'Inter', system-ui, sans-serif);
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--stone);
-  cursor: pointer;
-  text-decoration: underline;
-}
-.diag-reset:hover { color: var(--text-mid); }
-
-@media (max-width: 480px) {
-  .diag-result-actions { flex-direction: column; }
-  .diag-result-actions a { justify-content: center; }
-}
-
-/* Inline text links inside data-driven copy (e.g. brand mentions on city pages) */
-.rg-link {
-  color: var(--brown-warm);
-  font-weight: 600;
-  text-decoration: underline;
-}
-.rg-link:hover { color: var(--heading); }

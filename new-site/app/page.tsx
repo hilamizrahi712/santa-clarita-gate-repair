@@ -172,7 +172,7 @@ export default function HomePage() {
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 45vw"
-              priority
+              loading="eager"
               fetchPriority="high"
             />
           </div>

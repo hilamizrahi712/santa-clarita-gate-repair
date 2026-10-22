@@ -1,7 +1,11 @@
 // Converts this site's own photos (SITE-BRIEF.md "Photos") to WebP in public/images/.
 // sharp drops EXIF/GPS by default (no withMetadata call). Run: node scripts/convert-images.mjs
+// Each photo gets 640 / 1024 / 1600 widths (name-640.webp, name-1024.webp, name.webp = 1600) for
+// srcset (lib/image-loader.ts), each compressed to under MAX_BYTES.
+// Brand logos are REAL's files copied by slug (IMAGE-GAPS.md), not generated here.
 import sharp from "sharp";
-import { mkdirSync } from "node:fs";
+import assert from "node:assert/strict";
+import { mkdirSync, statSync } from "node:fs";
 
 const SRC = "../my images scv/";
 const PHOTOS = {
@@ -13,30 +17,24 @@ const PHOTOS = {
   "iron gate 1.jpeg": "hillside-slat-slide-gate",
   "iron gold gate.jpeg": "ornate-iron-swing-gate",
 };
-// Viking and Ramset sources are black art on black, unusable (see IMAGE-GAPS.md).
-const LOGOS = {
-  "allomatic tp.jpeg": "all-o-matic",
-  "chamberlin tp.jpeg": "chamberlain",
-  "doorbird tp.jpeg": "doorbird",
-  "doorking tp.jpeg": "doorking",
-  "elite tp.jpeg": "elite",
-  "genie tp.jpeg": "genie",
-  "lift master tp.jpeg": "liftmaster",
-  "linear tp.jpeg": "linear",
-};
+// Keep in sync with lib/image-loader.ts and next.config.ts deviceSizes.
+const WIDTHS = [640, 1024, 1600];
+const MAX_BYTES = 150 * 1024;
 
 mkdirSync("public/images/photos", { recursive: true });
-mkdirSync("public/images/logos", { recursive: true });
 mkdirSync("public/images/og", { recursive: true });
 
 for (const [src, name] of Object.entries(PHOTOS)) {
-  await sharp(SRC + src).resize({ width: 1600, withoutEnlargement: true }).webp({ quality: 78 })
-    .toFile(`public/images/photos/${name}.webp`);
-}
-// Logo files are wide padded canvases on a flat background; trim to the mark itself.
-for (const [src, name] of Object.entries(LOGOS)) {
-  await sharp(SRC + src).trim({ threshold: 30 }).resize({ width: 400, withoutEnlargement: true })
-    .webp({ quality: 85 }).toFile(`public/images/logos/${name}.webp`);
+  for (const w of WIDTHS) {
+    const out = `public/images/photos/${name}${w === 1600 ? "" : `-${w}`}.webp`;
+    // Step quality down until the file fits the budget.
+    for (let q = 78; ; q -= 6) {
+      await sharp(SRC + src).resize({ width: w, withoutEnlargement: true }).webp({ quality: q }).toFile(out);
+      if (statSync(out).size < MAX_BYTES) break;
+      assert(q > 40, `${out} still over budget at quality ${q}`);
+    }
+    console.log(out, Math.round(statSync(out).size / 1024) + "KB");
+  }
 }
 await sharp(SRC + "bronze gate.jpeg").resize(1200, 630, { fit: "cover" }).jpeg({ quality: 80 })
   .toFile("public/images/og/og-default.jpg");
