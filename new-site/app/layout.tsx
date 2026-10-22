@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
 import ConversionTracking from "@/components/ConversionTracking";
 import { IMAGES } from "@/lib/images";
-import { BUSINESS, ALL_CITIES, ORG_ID } from "@/lib/constants";
+import { BUSINESS, ALL_CITIES, ORG_ID, GA4_ID } from "@/lib/constants";
 import { BRANDS } from "@/lib/brands-data";
 import { SERVICES } from "@/lib/services-data";
 
@@ -22,10 +22,10 @@ const manrope = Manrope({
   display: "swap",
 });
 
-// Set NEXT_PUBLIC_GSC_VERIFICATION / NEXT_PUBLIC_GA_ID in Cloudflare Pages → Settings →
-// Environment Variables. See .env.example / README for details.
+// Set NEXT_PUBLIC_GSC_VERIFICATION in Cloudflare Pages → Settings → Environment Variables.
+// GA4 defaults to the existing property in lib/constants.ts; NEXT_PUBLIC_GA_ID overrides it.
 const gscVerification = process.env.NEXT_PUBLIC_GSC_VERIFICATION;
-const gaId = process.env.NEXT_PUBLIC_GA_ID;
+const gaId = process.env.NEXT_PUBLIC_GA_ID || GA4_ID;
 const gaEnabled = !!gaId && !gaId.startsWith("G-XXX");
 const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID;
 
