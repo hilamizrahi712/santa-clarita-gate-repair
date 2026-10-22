@@ -9,7 +9,7 @@ import { BUSINESS, ALL_CITIES, SCV_CITIES, AV_CITIES } from "@/lib/constants";
 export const metadata: Metadata = {
   title: `Service Areas: Santa Clarita & Antelope Valley | ${BUSINESS.name}`,
   description:
-    `Gate and garage door repair in ${ALL_CITIES.length} communities across the Santa Clarita and Antelope Valleys, from Castaic and Valencia to Lancaster and Pearblossom.`,
+    `Gate and garage door repair in ${ALL_CITIES.length} communities across Santa Clarita & Antelope Valley, from Castaic and Valencia to Lancaster and Pearblossom.`,
   alternates: { canonical: "/service-areas" },
 };
 
@@ -34,7 +34,7 @@ export default function ServiceAreasPage() {
         <div className="container-max max-w-2xl">
           <span className="eyebrow">Where We Work</span>
           <h1 style={{ color: "var(--text-warm)", marginBottom: "1rem" }}>
-            {ALL_CITIES.length} Communities, Two Valleys
+            {ALL_CITIES.length} Communities, Castaic to Pearblossom
           </h1>
           <p style={{ color: "rgba(238,241,239,0.75)", fontSize: "1.05rem" }}>
             Our technicians cover the Santa Clarita Valley and the Antelope Valley, from Stevenson Ranch

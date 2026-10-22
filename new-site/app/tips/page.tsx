@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Calendar, Clock, ArrowRight } from "lucide-react";
+import { Clock, ArrowRight } from "lucide-react";
 import { BLOG_POSTS } from "@/lib/blog-data";
 import { BUSINESS } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: `Gate & Garage Door Tips for SCV and the AV | ${BUSINESS.name}`,
   description:
-    "What desert wind, summer heat, HOA rules and ranch driveways mean for your gate and garage door, from technicians who work the Santa Clarita and Antelope Valleys.",
+    "What desert wind, summer heat, HOA rules and ranch driveways mean for your gate and garage door, from technicians who work Santa Clarita & Antelope Valley.",
   alternates: { canonical: "/tips" },
 };
 
@@ -79,12 +79,6 @@ export default function TipsIndexPage() {
                         className="flex items-center gap-1 text-xs"
                         style={{ color: "var(--stone-light)" }}
                       >
-                        <Calendar size={11} /> {p.publishDate}
-                      </span>
-                      <span
-                        className="flex items-center gap-1 text-xs"
-                        style={{ color: "var(--stone-light)" }}
-                      >
                         <Clock size={11} /> {p.readTime}
                       </span>
                     </div>
@@ -146,12 +140,6 @@ export default function TipsIndexPage() {
                         style={{ background: "var(--brown)", color: "var(--text-warm)" }}
                       >
                         Garage Door
-                      </span>
-                      <span
-                        className="flex items-center gap-1 text-xs"
-                        style={{ color: "var(--stone-light)" }}
-                      >
-                        <Calendar size={11} /> {p.publishDate}
                       </span>
                       <span
                         className="flex items-center gap-1 text-xs"

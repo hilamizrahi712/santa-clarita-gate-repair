@@ -61,7 +61,7 @@ export default function GateOperatorModelsPage() {
           </h1>
           <p style={{ color: "rgba(238,241,239,0.8)", fontSize: "1.05rem", marginBottom: "1.5rem" }}>
             The model is printed on a label on the operator housing or inside its cover. Type it below, however it
-            is written, to see what it is. We service these operators across the Santa Clarita and Antelope Valleys,
+            is written, to see what it is. We service these operators across Santa Clarita & Antelope Valley,
             including models that are no longer made.
           </p>
           <div className="flex flex-wrap gap-3">

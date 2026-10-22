@@ -63,7 +63,7 @@ export const BRANDS: BrandData[] = [
       "Garage door reverses before it touches the floor",
     ],
     whyUs:
-      "LiftMaster is the brand we see most across both valleys, so the boards, arms and sensors that fail most often ride on our trucks. We tell you plainly whether your unit is worth fixing.",
+      "LiftMaster is the brand we see most from Valencia to Lancaster, so the boards, arms and sensors that fail most often ride on our trucks. We tell you plainly whether your unit is worth fixing.",
     localParagraph:
       "LiftMaster calls come from every part of our area: HOA entries in Valencia and Stevenson Ranch, hillside swing gates in Canyon Country and Castaic, ranch gates on solar power in Agua Dulce and Acton, and garage door openers in Palmdale and Lancaster homes that take a beating from desert heat.",
     faqs: [
@@ -107,7 +107,7 @@ export const BRANDS: BrandData[] = [
       { q: "Can you tell which control board my All-O-Matic has?", a: "Yes. The technician identifies the board on site, whether it is an AC or DC version, and replaces it if that is the fault." },
     ],
     metaTitle: `All-O-Matic Gate Operator Repair Santa Clarita Valley | ${N}`,
-    metaDescription: `All-O-Matic slide and swing gate operator repair across the Santa Clarita and Antelope Valleys. PRO and older models. Call or text ${P} for a free on-site quote.`,
+    metaDescription: `All-O-Matic slide and swing gate operator repair across Santa Clarita & Antelope Valley. PRO and older models. Call or text ${P} for a free on-site quote.`,
   },
   {
     slug: "elite",
@@ -212,7 +212,7 @@ export const BRANDS: BrandData[] = [
       { q: "Can a Ramset operator be replaced with a different brand?", a: "Yes, if that is the better option. We size the replacement to your gate and explain the choices on site." },
     ],
     metaTitle: `Ramset Gate Operator Repair Santa Clarita & Lancaster | ${N}`,
-    metaDescription: `Ramset swing and slide gate operator repair in the Santa Clarita and Antelope Valleys. Ram 300, Ram 3000, Ram 1000 and more. Free on-site quote: call or text ${P}.`,
+    metaDescription: `Ramset swing and slide gate operator repair in Santa Clarita & Antelope Valley. Ram 300, Ram 3000, Ram 1000 and more. Free on-site quote: call or text ${P}.`,
   },
   {
     slug: "doorking",
@@ -282,7 +282,7 @@ export const BRANDS: BrandData[] = [
       { q: "Can you repair a DoorBird that went offline?", a: "Yes. We check the station, power and network connection and get it back online." },
     ],
     metaTitle: `DoorBird Intercom Installation Santa Clarita & AV | ${N}`,
-    metaDescription: `DoorBird video intercom installation and repair at gates and entries across the Santa Clarita and Antelope Valleys. Free on-site quote: call or text ${P}.`,
+    metaDescription: `DoorBird video intercom installation and repair at gates and entries across Santa Clarita & Antelope Valley. Free on-site quote: call or text ${P}.`,
   },
   {
     slug: "linear",
@@ -359,9 +359,9 @@ export const BRANDS: BrandData[] = [
     name: "Genie",
     logo: logo("genie"),
     type: "garage-door",
-    tagline: "Chain, belt and screw drive openers on garages across both valleys.",
+    tagline: "Chain, belt and screw drive openers on garages from Valencia to Lancaster.",
     intro:
-      "Genie openers are a common sight in garages across the Santa Clarita and Antelope Valleys. We work on the ChainMax 1000, StealthDrive 750, PowerMax 1500 screw drive and the SilentMax 1000 belt drive, plus the Wi-Fi StealthDrive Connect 7155-TKV and older units like the 2042-TKH.",
+      "Genie openers are a common sight in garages across Santa Clarita & Antelope Valley. We work on the ChainMax 1000, StealthDrive 750, PowerMax 1500 screw drive and the SilentMax 1000 belt drive, plus the Wi-Fi StealthDrive Connect 7155-TKV and older units like the 2042-TKH.",
     services: [
       "Genie opener repair, chain, belt and screw drive",
       "Circuit board and travel module replacement",

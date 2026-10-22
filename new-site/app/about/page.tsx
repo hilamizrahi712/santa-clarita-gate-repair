@@ -9,7 +9,7 @@ import TextUsCTA from "@/components/TextUsCTA";
 export const metadata: Metadata = {
   title: `About ${BUSINESS.name} | Gates & Garage Doors in SCV and the AV`,
   description:
-    "Local gate and garage door repair for the Santa Clarita and Antelope Valleys: driveway, ranch and community gates first, garage doors too. Bonded and insured.",
+    "Local gate and garage door repair for Santa Clarita & Antelope Valley: driveway, ranch and community gates first, garage doors too. Bonded and insured.",
   alternates: { canonical: "/about" },
 };
 
@@ -37,7 +37,7 @@ export default function AboutPage() {
         <div className="container-max max-w-2xl">
           <span className="eyebrow">About Us</span>
           <h1 style={{ color: "var(--text-warm)", marginBottom: "1rem" }}>
-            Gate Repair for the Two Valleys
+            Gate Repair for Santa Clarita & Antelope Valley
           </h1>
           <p style={{ color: "rgba(238,241,239,0.75)", fontSize: "1.05rem" }}>
             {BUSINESS.name} repairs driveway, ranch and community gates and the garage doors behind

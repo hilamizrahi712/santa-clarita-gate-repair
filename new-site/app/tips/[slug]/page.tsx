@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { Phone, MessageSquareText, Calendar, Clock, ArrowLeft } from "lucide-react";
+import { Phone, MessageSquareText, Clock, ArrowLeft } from "lucide-react";
 import { BLOG_POSTS, getBlogPostBySlug } from "@/lib/blog-data";
 import { IMAGES } from "@/lib/images";
 import { BUSINESS, ORG_ID } from "@/lib/constants";
@@ -28,11 +28,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: { title: post.metaTitle, description: post.metaDescription, type: "article", url, images: [ogImage] },
     twitter: { card: "summary_large_image", images: [ogImage.url] },
   };
-}
-
-function formatMonthYear(dateStr: string): string {
-  const [year, month] = dateStr.split("-").map(Number);
-  return new Date(year, month - 1, 1).toLocaleDateString("en-US", { month: "long", year: "numeric" });
 }
 
 function parseInline(text: string): React.ReactNode {
@@ -202,9 +197,6 @@ export default async function TipsPostPage({ params }: Props) {
               {post.category === "gate" ? "Gate Tips" : "Garage Door Tips"}
             </span>
             <span className="flex items-center gap-1 text-xs" style={{ color: "var(--stone-light)" }}>
-              <Calendar size={11} /> {post.publishDate}
-            </span>
-            <span className="flex items-center gap-1 text-xs" style={{ color: "var(--stone-light)" }}>
               <Clock size={11} /> {post.readTime}
             </span>
           </div>
@@ -213,11 +205,6 @@ export default async function TipsPostPage({ params }: Props) {
           >
             {post.title}
           </h1>
-          {post.updatedAt && (
-            <p className="text-xs" style={{ color: "var(--stone-light)", marginBottom: "0.75rem" }}>
-              Last updated: {formatMonthYear(post.updatedAt)}
-            </p>
-          )}
           <p style={{ color: "var(--text-soft)", fontSize: "1.05rem" }}>{post.excerpt}</p>
         </div>
       </section>
@@ -278,7 +265,7 @@ export default async function TipsPostPage({ params }: Props) {
                   Want a Technician to Take a Look?
                 </h3>
                 <p className="text-sm mb-4" style={{ color: "rgba(238,241,239,0.7)" }}>
-                  {BUSINESS.name} covers the Santa Clarita and Antelope Valleys with same-day service.
+                  {BUSINESS.name} covers Santa Clarita & Antelope Valley with same-day service.
                   Bonded &amp; Insured, written quote before any work.
                 </p>
                 <div className="flex flex-wrap gap-3">

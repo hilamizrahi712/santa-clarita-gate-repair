@@ -61,7 +61,7 @@ const reasons = [
 const homepageFaqs = [
   {
     q: "Do you come out to Lancaster and Palmdale, or only Santa Clarita?",
-    a: `Both valleys. We cover twenty communities, from Stevenson Ranch and Castaic over to Lancaster, Palmdale and Pearblossom. Call ${BUSINESS.phone} with your address and we will tell you when a technician can be there.`,
+    a: `Yes. We cover twenty communities across Santa Clarita & Antelope Valley, from Stevenson Ranch and Castaic over to Lancaster, Palmdale and Pearblossom. Call ${BUSINESS.phone} with your address and we will tell you when a technician can be there.`,
   },
   {
     q: "How is the price of a repair decided?",
@@ -242,7 +242,7 @@ export default function HomePage() {
           <div className="container-max">
             <div className="mb-10">
               <span className="eyebrow">Service areas</span>
-              <h2>Two valleys, twenty communities</h2>
+              <h2>Twenty communities, Valencia to Lancaster</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {[

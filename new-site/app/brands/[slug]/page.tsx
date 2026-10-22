@@ -24,7 +24,7 @@ function brandH1(brand: BrandData) {
 
 // One plain line under the H1 so homeowners know straight away this page is for them.
 function homeownerLine(brand: BrandData) {
-  if (brand.slug === "doorbird") return "DoorBird video stations installed and repaired at home gates and front entries in the Santa Clarita and Antelope Valleys.";
+  if (brand.slug === "doorbird") return "DoorBird video stations installed and repaired at home gates and front entries in Santa Clarita & Antelope Valley.";
   if (brand.type === "garage-door") return `${brand.name} garage door openers repaired or replaced at homes from Castaic to Pearblossom.`;
   if (brand.type === "both") return `${brand.name} gate operators and garage door openers repaired or replaced at homes from Castaic to Pearblossom.`;
   return `${brand.name} driveway gate operators repaired or replaced at homes from Castaic to Pearblossom.`;
@@ -236,7 +236,7 @@ export default async function BrandPage({
             <span>Free on-site quote</span>
           </div>
           <p className="text-center text-sm font-medium mt-1.5" style={{ color: "rgba(255,255,255,0.85)" }}>
-            Technicians across all 20 communities we cover in the Santa Clarita and Antelope Valleys.
+            Technicians across all 20 communities we cover in Santa Clarita & Antelope Valley.
           </p>
         </div>
       </div>
@@ -293,7 +293,7 @@ export default async function BrandPage({
                   className="font-heading font-bold"
                   style={{ fontSize: "1.25rem", color: "var(--heading)", marginBottom: "0.75rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
                 >
-                  {brand.name} {verbTitle} in the Santa Clarita and Antelope Valleys
+                  {brand.name} {verbTitle} in Santa Clarita & Antelope Valley
                 </h2>
                 <p style={{ color: "var(--text-mid)", lineHeight: 1.8, fontSize: "1rem" }}>
                   {brand.localParagraph}
@@ -588,7 +588,7 @@ export default async function BrandPage({
           </h2>
           <p style={{ color: "rgba(238,241,239,0.7)", marginTop: "1.25rem", marginBottom: "2rem", fontSize: "0.95rem", lineHeight: 1.75 }}>
             Tell us the model on the sticker, or text a photo of it, and we send a technician who knows
-            {" "}{brand.name}. Same-day service is available across most of the Santa Clarita and Antelope Valleys.
+            {" "}{brand.name}. Same-day service is available across most of Santa Clarita & Antelope Valley.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a href={BUSINESS.phoneHref} className="btn-gold">

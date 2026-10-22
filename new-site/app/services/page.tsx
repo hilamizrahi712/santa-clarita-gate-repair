@@ -7,7 +7,7 @@ import TextUsCTA from "@/components/TextUsCTA";
 
 export const metadata: Metadata = {
   title: `Gate & Garage Door Services | ${BUSINESS.name}`,
-  description: `Gate repair, gate operators, iron work, garage door springs, openers and installs across the Santa Clarita and Antelope Valleys. Free on-site quote. Call or text ${BUSINESS.phone}.`,
+  description: `Gate repair, gate operators, iron work, garage door springs, openers and installs across Santa Clarita & Antelope Valley. Free on-site quote. Call or text ${BUSINESS.phone}.`,
   alternates: { canonical: "/services" },
 };
 

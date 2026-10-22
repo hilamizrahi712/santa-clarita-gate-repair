@@ -8,7 +8,7 @@ import { BUSINESS } from "@/lib/constants";
 export const metadata: Metadata = {
   title: `Gate Operator & Opener Brands We Repair | ${BUSINESS.name}`,
   description:
-    "LiftMaster, All-O-Matic, Elite, Viking, Ramset, DoorKing, Eagle, Linear, Genie, Chamberlain and DoorBird repair across the Santa Clarita and Antelope Valleys. Free on-site quote.",
+    "LiftMaster, All-O-Matic, Elite, Viking, Ramset, DoorKing, Eagle, Linear, Genie, Chamberlain and DoorBird repair across Santa Clarita & Antelope Valley. Free on-site quote.",
   alternates: { canonical: "/brands" },
 };
 

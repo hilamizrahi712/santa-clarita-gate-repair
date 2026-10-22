@@ -39,14 +39,14 @@ const RAW: Omit<ServiceData, "heroImg">[] = [
     metaTitle: `Gate Repair Santa Clarita & Antelope Valley | ${N}`,
     metaDescription: `Driveway, slide and swing gate repair from Valencia to Lancaster. Local technicians, free on-site quote, 24/7 emergency dispatch. Call or text ${P}.`,
     primaryKeyword: "gate repair santa clarita",
-    heroH1: "Gate Repair Across the Santa Clarita and Antelope Valleys",
+    heroH1: "Gate Repair Across Santa Clarita & Antelope Valley",
     heroSubtitle: "Slide gates, swing gates, HOA entries and ranch gates. Call or text a photo and a local tech heads your way.",
     isInstallation: false,
     intro: `Gates out here work harder than most. Summer heat bakes the operators in Canyon Country and Saugus, the wind off the high desert shoves swing leaves around in Palmdale and Lancaster, and the dust gets into every roller and track. When yours quits, we come to you, find the real cause and fix it on the spot whenever the part is on the truck.
 
 We handle every kind of residential gate first, from a single swing leaf on a Newhall bungalow to a long slide gate at the bottom of a hillside driveway, and we take care of [commercial gates](/services/commercial-gate-repair) too. If the trouble is in the motor or control board, see [gate opener repair](/services/gate-opener-repair).`,
     features: [
-      { icon: "🧭", title: "Local Dispatch", desc: "Technicians who drive these valleys every day, from Castaic to Pearblossom." },
+      { icon: "🧭", title: "Local Dispatch", desc: "Technicians on the road every day, from Castaic to Pearblossom." },
       { icon: "🔩", title: "Every Gate Style", desc: "Slide, swing, cantilever, wrought iron, wood, aluminum and chain link." },
       { icon: "📋", title: "Quote Before Work", desc: "You get a free on-site quote and decide before anything is replaced." },
     ],
@@ -303,7 +303,7 @@ We repair the metal itself: welding, straightening, hinge and post work and rust
     heroH1: "Commercial and HOA Gate Repair",
     heroSubtitle: "Business lots, industrial yards, apartment entries and HOA gates kept running for the people who depend on them.",
     isInstallation: false,
-    intro: `Commercial gates cycle all day and a failure affects everyone at once: tenants, employees, deliveries and residents. We service business parks and industrial yards around Santa Clarita and Valencia, apartment and condo entries, and community gates across the Santa Clarita and Antelope Valleys, including properties in Palmdale and Lancaster.
+    intro: `Commercial gates cycle all day and a failure affects everyone at once: tenants, employees, deliveries and residents. We service business parks and industrial yards around Santa Clarita and Valencia, apartment and condo entries, and community gates across Santa Clarita & Antelope Valley, including properties in Palmdale and Lancaster.
 
 We work on heavy-duty slide and swing operators, access control and safety devices, and we can coordinate with property managers so repairs fit around your traffic. For roll-up and sectional doors at the same property, see [commercial garage doors](/services/commercial-garage-door).`,
     features: [
@@ -335,7 +335,7 @@ We work on heavy-duty slide and swing operators, access control and safety devic
     slug: "emergency-gate-repair",
     title: "Emergency Gate Repair",
     metaTitle: `24/7 Emergency Gate Repair Santa Clarita | ${N}`,
-    metaDescription: `Gate stuck open, stuck shut or hit by a car? 24/7 emergency gate repair across the Santa Clarita and Antelope Valleys. Call ${P} now.`,
+    metaDescription: `Gate stuck open, stuck shut or hit by a car? 24/7 emergency gate repair across Santa Clarita & Antelope Valley. Call ${P} now.`,
     primaryKeyword: "emergency gate repair",
     heroH1: "24/7 Emergency Gate Repair",
     heroSubtitle: "Gate stuck open overnight or car trapped inside? Call now and we dispatch a technician, any day of the week.",
@@ -380,7 +380,7 @@ When you call, tell us what is happening and we get a technician moving. The fir
     isInstallation: true,
     intro: `A good gate install starts with the property. A slide gate needs room to travel; a swing gate needs space to clear the driveway and a grade it can handle. Hillside homes in Castaic, ranch entries in Acton and Agua Dulce, and windy lots in Lancaster and Quartz Hill all call for different choices.
 
-We walk the site with you, talk through styles like wrought iron, wood and steel, and horizontal slat, and pair the gate with an operator that suits its size and use. Remotes, keypads, safety sensors and battery backup can all be part of the plan. The sections below cover the four settings we install in most across the two valleys.`,
+We walk the site with you, talk through styles like wrought iron, wood and steel, and horizontal slat, and pair the gate with an operator that suits its size and use. Remotes, keypads, safety sensors and battery backup can all be part of the plan. The sections below cover the four settings we install in most across Santa Clarita & Antelope Valley.`,
     features: [
       { icon: "📐", title: "Planned On Site", desc: "Layout based on your driveway width, slope and clearance." },
       { icon: "🎨", title: "Style Options", desc: "Wrought iron, horizontal slat, wood and steel and more." },
@@ -442,7 +442,7 @@ Gates on hillside lots tend to be heavy, and an undersized operator strains ever
     slug: "garage-door-repair",
     title: "Garage Door Repair",
     metaTitle: `Garage Door Repair Santa Clarita & Palmdale | ${N}`,
-    metaDescription: `Garage door stuck, noisy or off track? Garage door repair across the Santa Clarita and Antelope Valleys. Free on-site quote. Call or text ${P}.`,
+    metaDescription: `Garage door stuck, noisy or off track? Garage door repair across Santa Clarita & Antelope Valley. Free on-site quote. Call or text ${P}.`,
     primaryKeyword: "garage door repair santa clarita",
     heroH1: "Garage Door Repair for SCV and Antelope Valley Homes",
     heroSubtitle: "Springs, cables, openers, rollers and panels. We fix the door you use every day so it opens without a fight.",
@@ -553,7 +553,7 @@ We repair LiftMaster, Chamberlain, Genie and other common openers. When an opene
     slug: "garage-door-cable-repair",
     title: "Garage Door Cable Repair",
     metaTitle: `Garage Door Cable Repair Santa Clarita | ${N}`,
-    metaDescription: `Garage door cable snapped or off the drum? Cable repair and replacement across the Santa Clarita and Antelope Valleys. Call or text ${P}.`,
+    metaDescription: `Garage door cable snapped or off the drum? Cable repair and replacement across Santa Clarita & Antelope Valley. Call or text ${P}.`,
     primaryKeyword: "garage door cable repair",
     heroH1: "Garage Door Cable Repair",
     heroSubtitle: "Frayed, snapped or unwound lift cables replaced so the door rises level again.",

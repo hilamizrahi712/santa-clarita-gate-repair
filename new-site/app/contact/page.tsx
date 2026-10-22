@@ -6,7 +6,7 @@ import TextUsCTA from "@/components/TextUsCTA";
 
 export const metadata: Metadata = {
   title: `Contact ${BUSINESS.name} | Free On-Site Quote`,
-  description: `Call or text ${BUSINESS.phone} for gate and garage door repair in the Santa Clarita and Antelope Valleys, or send the form for a free on-site quote.`,
+  description: `Call or text ${BUSINESS.phone} for gate and garage door repair in Santa Clarita & Antelope Valley, or send the form for a free on-site quote.`,
   alternates: { canonical: "/contact" },
 };
 

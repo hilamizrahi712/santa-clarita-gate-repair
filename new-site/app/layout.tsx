@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description:
-    `Driveway gate, gate opener and garage door repair across the Santa Clarita and Antelope Valleys. 24/7 emergency dispatch and free on-site quotes. Call ${BUSINESS.phone}.`,
+    `Driveway gate, gate opener and garage door repair across Santa Clarita & Antelope Valley. 24/7 emergency dispatch and free on-site quotes. Call ${BUSINESS.phone}.`,
   robots: { index: !noindex, follow: !noindex },
   openGraph: {
     type: "website",
