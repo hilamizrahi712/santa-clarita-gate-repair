@@ -46,7 +46,18 @@ export function shingles(p) {
   return out;
 }
 
+// Boilerplate that must match REAL's pattern: "{Brand} gate repair in {City}" link lists and the hours line.
+const CITIES = [...readFileSync(new URL("../lib/constants.ts", import.meta.url), "utf8").matchAll(/name: "([^"]+)", slug:/g)].map((m) => m[1]);
+const WHITELIST = [
+  new RegExp(`^.+ gate repair in (${CITIES.join("|")})$`, "i"),
+  /^Sunday to Friday, 7 AM to 10 PM$/,
+];
+export const whitelisted = (p) => WHITELIST.some((re) => re.test(p));
+
 // Self-check of the text helpers.
+assert.equal(CITIES.length, 20);
+assert.ok(whitelisted("Viking Access Systems gate repair in Lake Hughes"));
+assert.ok(!whitelisted("Viking Access Systems gate repair in Encino"));
 assert.deepEqual(
   paragraphs("<head><title>x</title></head><body><p>Hello <b>big</b> world.</p><script>var a=1</script><li>Two</li></body>"),
   ["Hello big world.", "Two"],
@@ -81,6 +92,7 @@ const flaggedParas = new Map();
 for (const f of htmlFiles(OURS)) {
   const page = relative(OURS, f);
   for (const p of paragraphs(readFileSync(f, "utf8"))) {
+    if (whitelisted(p)) continue;
     for (const s of sentences(p)) {
       const key = words(s).join(" ");
       if (!realSentences.has(key)) continue;

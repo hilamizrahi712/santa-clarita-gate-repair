@@ -478,7 +478,7 @@ export default async function BrandPage({
                   className="font-heading font-bold"
                   style={{ fontSize: "1.5rem", color: "var(--heading)", marginBottom: "1rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
                 >
-                  {brand.name} {verbTitle} by City
+                  {brand.name} Service Calls Across Our 20 Cities
                 </h2>
 
                 {/* LiftMaster only — Search Console priority cities, featured above the full list */}

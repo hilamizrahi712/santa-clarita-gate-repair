@@ -100,7 +100,7 @@ const localBusinessSchema = {
     opens: "07:00",
     closes: "22:00",
   },
-  // TODO(client): sameAs profile URLs (Google Business Profile, Yelp, Facebook) once they exist.
+  // No sameAs yet: add profile URLs (Google Business Profile, Yelp, Facebook) once they exist (see UPGRADE-REPORT.md).
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
