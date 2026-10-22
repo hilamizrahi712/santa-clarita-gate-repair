@@ -4,11 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { Phone, CheckCircle, ArrowRight, Clock, Shield, Star, AlertCircle } from "lucide-react";
 import { SERVICES, getServiceBySlug } from "@/lib/services-data";
-import { IMAGES } from "@/lib/images";
-import { BUSINESS, SCV_CITIES, ORG_ID } from "@/lib/constants";
+import { IMAGES, IMAGE_ALT } from "@/lib/images";
+import { BUSINESS, SCV_CITIES, AV_CITIES, ALL_CITIES, ORG_ID } from "@/lib/constants";
 import { CITIES, PRIORITY_CITY_SLUGS } from "@/lib/cities-data";
 
-// Services that compete most directly with the city pages for "gate repair <city>" —
+// Services that compete most directly with the city pages for "gate repair <city>";
 // these get a "Gate repair by city" block pointing search signal at the priority cities.
 const GATE_CITY_SIGNAL_SLUGS = [
   "gate-repair",
@@ -47,7 +47,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-// Map service slugs to real uploaded images — each service gets a unique photo
 export default async function ServicePage({ params }: Props) {
   const { slug } = await params;
   const service = getServiceBySlug(slug);
@@ -63,10 +62,10 @@ export default async function ServicePage({ params }: Props) {
     serviceType: service.title,
     description: service.metaDescription,
     provider: { "@id": ORG_ID },
-    areaServed: { "@type": "AdministrativeArea", name: "Los Angeles County, CA" },
+    areaServed: ALL_CITIES.map((c) => ({ "@type": "City", name: `${c.name}, CA` })),
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: `${service.title} — Related Services`,
+      name: `${service.title}: related services`,
       itemListElement: related.map((s) => ({
         "@type": "Offer",
         itemOffered: {
@@ -107,7 +106,7 @@ export default async function ServicePage({ params }: Props) {
       <section className="relative flex flex-col justify-end overflow-hidden" style={{ minHeight: "50vh" }}>
         <Image
           src={heroImg}
-          alt={service.heroH1}
+          alt={IMAGE_ALT[heroImg] ?? service.heroH1}
           fill
           className="object-cover"
           priority
@@ -144,7 +143,7 @@ export default async function ServicePage({ params }: Props) {
               </a>
               <TextUsCTA className="btn-ghost" />
               <Link href="/contact" className="btn-ghost">
-                Get Free Estimate
+                Request a Free Quote
               </Link>
             </div>
           </div>
@@ -155,10 +154,10 @@ export default async function ServicePage({ params }: Props) {
       <div style={{ background: "var(--brown)", padding: "0.85rem 1rem" }}>
         <div className="container-max text-center">
           <p className="font-semibold" style={{ color: "var(--text-warm)", fontSize: "0.95rem" }}>
-            {service.isInstallation ? "Free on-site quote" : "Fixed same-day · Free on-site estimate"}
+            {service.isEmergency ? "24/7 emergency dispatch · Call now" : "Free on-site quote · Call or text a photo"}
           </p>
           <p className="text-sm font-medium mt-1.5" style={{ color: "rgba(255,255,255,0.85)" }}>
-            On-site service across greater Los Angeles, Ventura County, Orange County and the Central Valley.
+            Technicians covering the Santa Clarita Valley and the Antelope Valley, Castaic to Pearblossom.
           </p>
         </div>
       </div>
@@ -186,7 +185,7 @@ export default async function ServicePage({ params }: Props) {
                 style={{ background: "var(--bg-card)", border: "1px solid var(--line)" }}
               >
                 <h2 style={{ marginBottom: "1rem", fontSize: "1.4rem" }}>
-                  Sound <em>Familiar?</em>
+                  Is Your {service.isInstallation ? "Property" : "Gate or Door"} <em>Doing This?</em>
                 </h2>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
                   {service.symptoms.map((s) => (
@@ -201,7 +200,7 @@ export default async function ServicePage({ params }: Props) {
               {/* Photo */}
               <ArchImage
                 src={heroImg}
-                alt={`${service.title} in Los Angeles`}
+                alt={IMAGE_ALT[heroImg] ?? service.title}
                 aspect="4/5"
                 sizes="(max-width: 1024px) 100vw, 66vw"
               />
@@ -209,7 +208,7 @@ export default async function ServicePage({ params }: Props) {
               {/* Features */}
               <div>
                 <h2 style={{ marginBottom: "1.25rem", fontSize: "1.75rem" }}>
-                  What We Do for {service.title}
+                  {service.title}: <em>What We Fix</em>
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   {service.features.map((f, i) => (
@@ -234,7 +233,7 @@ export default async function ServicePage({ params }: Props) {
 
               {/* How It Works */}
               <div>
-                <h2 style={{ marginBottom: "1.25rem", fontSize: "1.75rem" }}>How It Works</h2>
+                <h2 style={{ marginBottom: "1.25rem", fontSize: "1.75rem" }}>From Your Call to a Working {service.slug.includes("garage") ? "Door" : "Gate"}</h2>
                 <ol className="space-y-4">
                   {service.howItWorks.map((step, i) => (
                     <li key={i} className="flex gap-4 items-start">
@@ -253,7 +252,7 @@ export default async function ServicePage({ params }: Props) {
               {/* FAQ */}
               <div>
                 <h2 style={{ marginBottom: "1.25rem", fontSize: "1.75rem" }}>
-                  Frequently Asked Questions
+                  {service.title} Questions from SCV Homeowners
                 </h2>
                 <div className="space-y-4">
                   {service.faqs.map((faq, i) => (
@@ -279,7 +278,7 @@ export default async function ServicePage({ params }: Props) {
               {/* Related Services */}
               {related.length > 0 && (
                 <div>
-                  <h2 style={{ marginBottom: "1rem", fontSize: "1.75rem" }}>Related Services</h2>
+                  <h2 style={{ marginBottom: "1rem", fontSize: "1.75rem" }}>You May Also Need</h2>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     {related.map((r) => (
                       <Link
@@ -301,7 +300,7 @@ export default async function ServicePage({ params }: Props) {
                           className="inline-flex items-center gap-1 text-sm font-semibold"
                           style={{ color: "var(--brown-warm)" }}
                         >
-                          Learn more <ArrowRight size={12} />
+                          View service <ArrowRight size={12} />
                         </span>
                       </Link>
                     ))}
@@ -311,12 +310,17 @@ export default async function ServicePage({ params }: Props) {
 
               {/* Service Areas */}
               <div>
-                <h2 style={{ marginBottom: "0.75rem", fontSize: "1.75rem" }}>Service Areas</h2>
-                <p style={{ color: "var(--text-soft)", fontSize: "0.9rem", marginBottom: "1rem" }}>
-                  We provide {service.title.toLowerCase()} across greater Los Angeles:
+                <h2 style={{ marginBottom: "0.75rem", fontSize: "1.75rem" }}>Where We Send Technicians</h2>
+                {[
+                  { label: "Santa Clarita Valley", cities: SCV_CITIES },
+                  { label: "Antelope Valley", cities: AV_CITIES },
+                ].map((region) => (
+                <div key={region.label} className="mb-4">
+                <p style={{ color: "var(--text-soft)", fontSize: "0.9rem", marginBottom: "0.6rem" }}>
+                  {service.title} in the {region.label}:
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {SCV_CITIES.map((c) => (
+                  {region.cities.map((c) => (
                     <Link
                       key={c.slug}
                       href={`/areas/${c.slug}`}
@@ -332,14 +336,16 @@ export default async function ServicePage({ params }: Props) {
                     </Link>
                   ))}
                 </div>
+                </div>
+                ))}
               </div>
 
-              {/* Gate Repair By City — priority cities, signals the city page for "gate repair <city>" */}
+              {/* Gate Repair By City: priority cities, signals the city page for "gate repair <city>" */}
               {GATE_CITY_SIGNAL_SLUGS.includes(slug) && (
                 <div>
-                  <h2 style={{ marginBottom: "0.75rem", fontSize: "1.5rem" }}>Gate Repair by City</h2>
+                  <h2 style={{ marginBottom: "0.75rem", fontSize: "1.5rem" }}>Local Gate Repair Pages</h2>
                   <p style={{ color: "var(--text-soft)", fontSize: "0.9rem", marginBottom: "1rem" }}>
-                    We cover all of greater Los Angeles. Here's more on gate repair in the areas we serve most:
+                    See how we handle gates in the communities that call us most:
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {PRIORITY_CITY_SLUGS.map((citySlug) => {
@@ -368,7 +374,7 @@ export default async function ServicePage({ params }: Props) {
 
             {/* Sidebar */}
             <div className="space-y-6 lg:sticky lg:self-start" style={{ top: "7rem" }}>
-              {/* Same-Day CTA box */}
+              {/* Call/text CTA box */}
               <div
                 className="rounded-[var(--radius-lg)] overflow-hidden"
                 style={{ border: "1px solid var(--line)" }}
@@ -381,10 +387,10 @@ export default async function ServicePage({ params }: Props) {
                     className="font-heading font-bold mb-1"
                     style={{ fontSize: "1.1rem", color: "var(--text-warm)" }}
                   >
-                    Same-Day Service
+                    Talk to a Local Tech
                   </p>
                   <p style={{ color: "rgba(216,234,208,0.65)", fontSize: "0.82rem", marginBottom: "1rem" }}>
-                    Call now — we confirm your appointment immediately.
+                    Call or text and we set your visit while you are on the line.
                   </p>
                   <a href={BUSINESS.phoneHref} className="btn-gold w-full justify-center">
                     <Phone size={16} /> {BUSINESS.phone}
@@ -397,9 +403,9 @@ export default async function ServicePage({ params }: Props) {
                 >
                   <div className="space-y-2.5">
                     {[
-                      { Icon: Shield, label: "Bonded & Insured" },
-                      { Icon: Clock, label: "Sun–Fri, 24/7 for Emergencies" },
-                      { Icon: Star, label: "Upfront Pricing — No Surprises" },
+                      { Icon: Shield, label: "Free on-site quote" },
+                      { Icon: Clock, label: "Sun to Fri 7AM to 10PM" },
+                      { Icon: Star, label: "24/7 emergency dispatch" },
                     ].map(({ Icon, label }) => (
                       <div key={label} className="flex items-center gap-2">
                         <Icon size={14} className="flex-shrink-0" style={{ color: "var(--brown-light)" }} />

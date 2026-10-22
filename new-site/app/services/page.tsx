@@ -3,11 +3,11 @@ import Link from "next/link";
 import { Phone } from "lucide-react";
 import { SERVICES, type ServiceData } from "@/lib/services-data";
 import { BUSINESS } from "@/lib/constants";
+import TextUsCTA from "@/components/TextUsCTA";
 
 export const metadata: Metadata = {
-  title: "Gate & Garage Door Services | Real Gate & Garage Door",
-  description:
-    "Every gate and garage door service we offer across greater Los Angeles — repair, opener and spring service, iron gate work, installation, and 24/7 emergency response. Call (818) 915-5715.",
+  title: `Gate & Garage Door Services | ${BUSINESS.name}`,
+  description: `Gate repair, gate operators, iron work, garage door springs, openers and installs across the Santa Clarita and Antelope Valleys. Free on-site quote. Call or text ${BUSINESS.phone}.`,
   alternates: { canonical: "/services" },
 };
 
@@ -20,17 +20,17 @@ const GROUPS = [
   {
     key: "gate" as const,
     label: "Gate Services",
-    description: "Repair and service for driveway, sliding, swing, iron, and commercial gates and their operators.",
+    description: "Slide, swing, iron, HOA and ranch gates, plus the operators, sensors and keypads that run them.",
   },
   {
     key: "garage" as const,
     label: "Garage Door Services",
-    description: "Springs, cables, openers, panels, and emergency service for residential and commercial doors.",
+    description: "Broken springs, snapped cables, worn openers and dented panels on home and business doors.",
   },
   {
     key: "install" as const,
     label: "Installation",
-    description: "New gate and garage door systems, sized and fitted to your property.",
+    description: "New driveway gates, operators and garage doors planned around your property.",
   },
 ];
 
@@ -53,7 +53,7 @@ function ServiceCard({ service }: { service: ServiceData }) {
       <span
         style={{ fontSize: "0.82rem", fontWeight: 600, color: "var(--brown-warm)", marginTop: "auto" }}
       >
-        {service.isInstallation ? "See installation details →" : "See repair details →"}
+        {service.isInstallation ? "Plan an install →" : "What we fix →"}
       </span>
     </Link>
   );
@@ -65,13 +65,13 @@ export default function ServicesPage() {
       {/* Hero */}
       <section className="py-20 section--dark">
         <div className="container-max max-w-2xl">
-          <span className="eyebrow">What We Do</span>
+          <span className="eyebrow">Gates First, Then Garage Doors</span>
           <h1 style={{ color: "var(--text-warm)", marginBottom: "1rem" }}>
-            Gate &amp; Garage Door <em>Services</em>
+            Everything We Fix in the <em>SCV and AV</em>
           </h1>
           <p style={{ color: "rgba(216,234,208,0.75)", fontSize: "1.05rem" }}>
-            On-site repair and installation across greater Los Angeles, Ventura County, Orange
-            County and the Central Valley. Most repairs are completed the same day, in a single visit.
+            Local technicians for homes first and businesses second, from Valencia and Saugus out to
+            Palmdale and Lancaster. Call or text a photo and we take it from there.
           </p>
         </div>
       </section>
@@ -112,18 +112,19 @@ export default function ServicesPage() {
       <section className="section-padding section--dark">
         <div className="container-max max-w-2xl text-center">
           <h2 style={{ color: "var(--text-warm)", marginBottom: "0.75rem" }}>
-            Not Sure What You Need?
+            Can&apos;t Tell What Broke?
           </h2>
           <p style={{ color: "rgba(216,234,208,0.7)", marginBottom: "2rem", fontSize: "0.95rem" }}>
-            Describe what your gate or garage door is doing and we&apos;ll tell you what it takes to fix it —
-            with the price before any work starts.
+            That is our job. Call or text a photo of the gate or door and a technician will find the
+            cause on site and give you a free quote before any work.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a href={BUSINESS.phoneHref} className="btn-gold">
               <Phone size={16} /> Call {BUSINESS.phone}
             </a>
+            <TextUsCTA className="btn-secondary" />
             <Link href="/contact" className="btn-secondary">
-              Get a Free Estimate
+              Request a Free Quote
             </Link>
           </div>
         </div>

@@ -15,8 +15,7 @@ Only 7 usable photos, all gates. Each is reused across several slots.
   operator). Every other brand page shows a generic gate photo.
 - **About page:** reuses the commercial gate photo with a technician; no team photo.
 - **City pages:** 7 heroes rotate across 20 cities, so cities share photos.
-- Filenames name a city per the upgrade prompt's naming pattern; the photos are not verified to be
-  from those cities.
+- Photo filenames describe the gate only (no city names); the photos are not tied to a specific city.
 
 ## Brand logos
 

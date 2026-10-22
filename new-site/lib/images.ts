@@ -3,13 +3,13 @@
 // Slots without a matching photo reuse one of these; see IMAGE-GAPS.md.
 
 const P = {
-  woodSteel: "/images/photos/wood-steel-sliding-gate-valencia.webp",
-  woodSlatOperator: "/images/photos/wood-slat-slide-gate-operator-saugus.webp",
-  blackSteel: "/images/photos/black-steel-slide-gate-stevenson-ranch.webp",
-  bronzeSlat: "/images/photos/bronze-slat-slide-gate-canyon-country.webp",
-  commercial: "/images/photos/commercial-iron-slide-gate-santa-clarita.webp",
-  hillside: "/images/photos/hillside-slat-slide-gate-agua-dulce.webp",
-  ornateIron: "/images/photos/ornate-iron-swing-gate-castaic.webp",
+  woodSteel: "/images/photos/wood-steel-sliding-gate.webp",
+  woodSlatOperator: "/images/photos/wood-slat-slide-gate-operator.webp",
+  blackSteel: "/images/photos/black-steel-slide-gate.webp",
+  bronzeSlat: "/images/photos/bronze-slat-slide-gate.webp",
+  commercial: "/images/photos/commercial-iron-slide-gate.webp",
+  hillside: "/images/photos/hillside-slat-slide-gate.webp",
+  ornateIron: "/images/photos/ornate-iron-swing-gate.webp",
 };
 
 // Describes what is actually in each photo.

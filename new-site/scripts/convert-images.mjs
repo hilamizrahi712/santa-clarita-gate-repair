@@ -5,13 +5,13 @@ import { mkdirSync } from "node:fs";
 
 const SRC = "../my images scv/";
 const PHOTOS = {
-  "black and wood outside.jpeg": "wood-steel-sliding-gate-valencia",
-  "black frame woodn gate motor.jpeg": "wood-slat-slide-gate-operator-saugus",
-  "black iron gate.jpeg": "black-steel-slide-gate-stevenson-ranch",
-  "bronze gate.jpeg": "bronze-slat-slide-gate-canyon-country",
-  "commercial gate.jpeg": "commercial-iron-slide-gate-santa-clarita",
-  "iron gate 1.jpeg": "hillside-slat-slide-gate-agua-dulce",
-  "iron gold gate.jpeg": "ornate-iron-swing-gate-castaic",
+  "black and wood outside.jpeg": "wood-steel-sliding-gate",
+  "black frame woodn gate motor.jpeg": "wood-slat-slide-gate-operator",
+  "black iron gate.jpeg": "black-steel-slide-gate",
+  "bronze gate.jpeg": "bronze-slat-slide-gate",
+  "commercial gate.jpeg": "commercial-iron-slide-gate",
+  "iron gate 1.jpeg": "hillside-slat-slide-gate",
+  "iron gold gate.jpeg": "ornate-iron-swing-gate",
 };
 // Viking and Ramset sources are black art on black, unusable (see IMAGE-GAPS.md).
 const LOGOS = {
