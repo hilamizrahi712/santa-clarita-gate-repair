@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Phone, MessageSquareText, ArrowRight, Clock, ClipboardCheck, Home, Siren } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
 import BrandsGrid from "@/components/BrandsGrid";
+import ServiceMap from "@/components/ServiceMap";
 import RevealWrapper from "@/components/RevealWrapper";
 import { BUSINESS, SCV_CITIES, AV_CITIES, ALL_CITIES, ORG_ID } from "@/lib/constants";
 import { IMAGES } from "@/lib/images";
@@ -268,6 +269,9 @@ export default function HomePage() {
           </div>
         </section>
       </RevealWrapper>
+
+      {/* ── MAP ── */}
+      <ServiceMap />
 
       {/* ── BRANDS ── */}
       <BrandsGrid />

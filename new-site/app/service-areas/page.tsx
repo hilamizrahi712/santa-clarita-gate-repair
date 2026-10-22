@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Phone, MapPin } from "lucide-react";
 import { IMAGES, IMAGE_ALT } from "@/lib/images";
+import ServiceMap from "@/components/ServiceMap";
 import { BUSINESS, ALL_CITIES, SCV_CITIES, AV_CITIES } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -127,6 +128,8 @@ export default function ServiceAreasPage() {
           </div>
         </div>
       </section>
+
+      <ServiceMap />
     </>
   );
 }
