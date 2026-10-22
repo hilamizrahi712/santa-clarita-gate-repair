@@ -5,8 +5,8 @@ import ContactForm from "@/components/ContactForm";
 import TextUsCTA from "@/components/TextUsCTA";
 
 export const metadata: Metadata = {
-  title: "Contact Us — Free Estimate | Real Gate & Garage Door",
-  description: "Contact Real Gate & Garage Door for same-day gate or garage door repair. Call (818) 915-5715 or fill out our free estimate form.",
+  title: `Contact ${BUSINESS.name} | Free On-Site Quote`,
+  description: `Call or text ${BUSINESS.phone} for gate and garage door repair in the Santa Clarita and Antelope Valleys, or send the form for a free on-site quote.`,
   alternates: { canonical: "/contact" },
 };
 
@@ -18,10 +18,10 @@ export default function ContactPage() {
         <div className="container-max max-w-2xl">
           <span className="eyebrow">Get in Touch</span>
           <h1 style={{ color: "#ffffff", marginBottom: "0.75rem" }}>
-            Contact Us — <em>Free Estimate</em>
+            Call, Text or <em>Send the Form</em>
           </h1>
           <p style={{ color: "rgba(216,234,208,0.75)", fontSize: "1.05rem" }}>
-            Call now, text, or fill out the form. We respond within 30 minutes during business hours.
+            Tell us what the gate or garage door is doing. A photo of the operator or its sticker helps us bring the right parts.
           </p>
         </div>
       </section>
@@ -32,7 +32,7 @@ export default function ContactPage() {
 
             {/* Contact Info */}
             <div>
-              <h2 style={{ marginBottom: "1.5rem", fontSize: "1.75rem" }}>Get in Touch</h2>
+              <h2 style={{ marginBottom: "1.5rem", fontSize: "1.75rem" }}>Reach a Technician</h2>
 
               <div className="space-y-6">
                 {/* Phone */}
@@ -61,7 +61,8 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                {/* Email */}
+                {/* Email: hidden until the business email is decided (TODO(pending) in lib/constants.ts) */}
+                {BUSINESS.email && (
                 <div className="flex gap-4">
                   <div
                     className="flex-shrink-0 flex items-center justify-center rounded-[var(--radius)]"
@@ -80,10 +81,11 @@ export default function ContactPage() {
                       {BUSINESS.email}
                     </a>
                     <p style={{ fontSize: "0.82rem", color: "var(--stone)", marginTop: "0.2rem" }}>
-                      Response within 2 hours (business hours)
+                      For non-urgent questions and paperwork
                     </p>
                   </div>
                 </div>
+                )}
 
                 {/* Location */}
                 <div className="flex gap-4">
@@ -97,9 +99,9 @@ export default function ContactPage() {
                     <p className="font-semibold" style={{ color: "var(--text-dark)", marginBottom: "0.2rem" }}>
                       Service Area
                     </p>
-                    <p style={{ color: "var(--text-mid)" }}>{BUSINESS.address}</p>
+                    <p style={{ color: "var(--text-mid)" }}>Santa Clarita Valley and Antelope Valley</p>
                     <p style={{ fontSize: "0.82rem", color: "var(--stone)", marginTop: "0.2rem" }}>
-                      We come to you — no shop visit needed
+                      Technicians come to your property, Castaic to Pearblossom
                     </p>
                   </div>
                 </div>
@@ -117,7 +119,7 @@ export default function ContactPage() {
                       Hours
                     </p>
                     <div style={{ color: "var(--text-mid)", fontSize: "0.9rem", lineHeight: 1.7 }}>
-                      <p>Sun–Fri: 7:00 AM – 10:00 PM</p>
+                      <p>Sunday to Friday, 7 AM to 10 PM</p>
                       <p>Saturday: Closed</p>
                       <p style={{ color: "var(--error)", fontWeight: 600 }}>Emergency line: 24/7</p>
                     </div>
@@ -134,8 +136,8 @@ export default function ContactPage() {
                   Gate or Garage Door Emergency?
                 </p>
                 <p style={{ color: "var(--text-mid)", fontSize: "0.88rem", marginBottom: "1rem" }}>
-                  If your gate is stuck open or your garage door is inoperable, call our emergency line now.
-                  We dispatch a technician immediately.
+                  Gate stuck open overnight, or a car trapped behind a garage door that will not lift?
+                  Call the emergency line and we send a technician out.
                 </p>
                 <a
                   href={BUSINESS.phoneHref}

@@ -9,9 +9,9 @@ import ModelFinder from "@/components/ModelFinder";
 import ModelList from "@/components/ModelList";
 import TextUsCTA from "@/components/TextUsCTA";
 
-const TITLE = "Gate Opener Models We Repair & Replace | Los Angeles";
+const TITLE = "Gate Operator Models We Service | Santa Clarita & Antelope Valley";
 const DESCRIPTION =
-  "Every gate motor model we repair and replace in Los Angeles: LiftMaster LA400, All-O-Matic SL-150, Viking K-2, Elite SL3000, Ramset, DoorKing 9050, Eagle and Linear, current and older. Call (818) 915-5715.";
+  `Look up your gate operator model: LiftMaster LA400, All-O-Matic SL-150, Viking K-2, Elite SL3000, Ramset, DoorKing 9050, Eagle and Linear, current and discontinued. Call or text ${BUSINESS.phone}.`;
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -34,7 +34,7 @@ export default function GateOperatorModelsPage() {
       const data = BRAND_MODELS[b.slug];
       return {
         "@type": "DefinedTermSet",
-        name: `${shortBrandName(b.name)} models serviced by Real Gate & Garage Door`,
+        name: `${shortBrandName(b.name)} models serviced by ${BUSINESS.name}`,
         url: `${BUSINESS.domain}/brands/${b.slug}`,
         publisher: { "@id": ORG_ID },
         hasDefinedTerm: data.groups.flatMap((g) =>
@@ -57,12 +57,12 @@ export default function GateOperatorModelsPage() {
         <div className="container-max max-w-3xl">
           <span className="eyebrow">Gate Motor Models</span>
           <h1 style={{ color: "var(--text-warm)", marginBottom: "1rem" }}>
-            Gate Opener Models We Repair &amp; Replace in <em>Los Angeles</em>
+            Find Your <em>Gate Operator Model</em>
           </h1>
           <p style={{ color: "rgba(216,234,208,0.8)", fontSize: "1.05rem", marginBottom: "1.5rem" }}>
-            Find the model on the sticker of your gate motor. We repair and replace LiftMaster, All-O-Matic, Viking,
-            Elite, Ramset, DoorKing, Eagle and Linear gate operators for homeowners across Los Angeles and the San
-            Fernando Valley, including older and discontinued models going back 20 years and more.
+            The model is printed on a label on the operator housing or inside its cover. Type it below, however it
+            is written, to see what it is. We service these operators across the Santa Clarita and Antelope Valleys,
+            including models that are no longer made.
           </p>
           <div className="flex flex-wrap gap-3">
             <a href={BUSINESS.phoneHref} className="btn-gold">

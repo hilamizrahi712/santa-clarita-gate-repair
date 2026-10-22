@@ -3,7 +3,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Send } from "lucide-react";
-import { FORMSPREE_URL } from "@/lib/constants";
+import { FORMSPREE_URL, BUSINESS } from "@/lib/constants";
 import { gtagEvent } from "@/lib/gtag";
 
 interface FormData {
@@ -85,7 +85,7 @@ export default function ContactForm({ className = "", compact = false }: { class
         setError(body?.error ?? "Submission failed. Please call us directly.");
       }
     } catch {
-      setError("Network error. Please call us at (818) 915-5715.");
+      setError(`Network error. Please call us at ${BUSINESS.phone}.`);
     }
   };
 
@@ -125,7 +125,7 @@ export default function ContactForm({ className = "", compact = false }: { class
         <label style={labelStyle}>Phone Number *</label>
         <input
           type="tel"
-          placeholder="(818) 555-0100"
+          placeholder="Best number to reach you"
           style={{ ...inputStyle, borderColor: errors.phone ? "#f87171" : "rgba(255,255,255,0.2)" }}
           {...register("phone", {
             required: "Phone is required",
@@ -161,7 +161,7 @@ export default function ContactForm({ className = "", compact = false }: { class
                 <label style={labelStyle}>Property Address</label>
                 <input
                   type="text"
-                  placeholder="123 Main St, Los Angeles, CA"
+                  placeholder="Street and city, e.g. Valencia"
                   style={inputStyle}
                   {...register("address")}
                 />

@@ -1,10 +1,10 @@
 /** @type {import('next-sitemap').IConfig} */
 const { execSync } = require("child_process");
 
-// Low-competition markets get crawled first.
-const AREA_TIER_1 = ["fresno", "bakersfield", "lancaster", "palmdale", "oxnard", "ventura-county", "santa-barbara"];
-const AREA_TIER_2 = ["santa-clarita", "glendora", "hacienda-heights", "torrance", "manhattan-beach", "long-beach", "orange-county"];
-const AREA_TIER_3 = ["calabasas", "encino", "sherman-oaks", "woodland-hills", "beverly-hills", "glendale", "burbank", "pasadena", "los-angeles"];
+// Cities with old-site Search Console history first (PRIORITY_CITY_SLUGS), then the largest AV cities.
+const AREA_TIER_1 = ["santa-clarita", "valencia", "saugus", "newhall", "canyon-country", "castaic"];
+const AREA_TIER_2 = ["palmdale", "lancaster", "stevenson-ranch"];
+const AREA_TIER_3 = ["quartz-hill", "agua-dulce", "acton"];
 
 // Content for dynamic routes lives in a shared lib/*-data.ts file; static routes
 // are their own app/**/page.tsx. lastmod reflects whichever file actually holds
@@ -51,7 +51,7 @@ module.exports = {
   },
   changefreq: "weekly",
   priority: 0.7,
-  exclude: ["/privacy-policy", "/blog", "/blog/*", "/pricing", "/thank-you"],
+  exclude: ["/privacy-policy", "/blog", "/blog/*", "/pricing", "/thank-you", "/llms.txt"],
   transform: async (config, urlPath) => {
     let priority = config.priority;
     let changefreq = config.changefreq;

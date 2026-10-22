@@ -6,7 +6,6 @@ import { BLOG_POSTS, getBlogPostBySlug } from "@/lib/blog-data";
 import { IMAGES } from "@/lib/images";
 import { BUSINESS, ORG_ID } from "@/lib/constants";
 import ContactForm from "@/components/ContactForm";
-import DiagnosticWidget from "@/components/DiagnosticWidget";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -158,9 +157,7 @@ export default async function TipsPostPage({ params }: Props) {
     author: { "@id": ORG_ID },
   };
 
-  // Article schema only — deliberately no Offer/PriceSpecification. Any $ figures in
-  // this content are general market ranges, not our quotes, and schema shouldn't
-  // imply otherwise.
+  // Article schema only, deliberately no Offer/PriceSpecification (site rule: no prices).
   const faqSchema = post.faq && {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -278,18 +275,18 @@ export default async function TipsPostPage({ params }: Props) {
                 data-cta-location="article_cta"
               >
                 <h3 className="font-heading font-bold text-xl mb-2" style={{ color: "var(--text-warm)" }}>
-                  Need Professional Help?
+                  Want a Technician to Take a Look?
                 </h3>
                 <p className="text-sm mb-4" style={{ color: "rgba(216,234,208,0.7)" }}>
-                  Real Gate &amp; Garage Door provides same-day service.
-                  Bonded, insured, upfront pricing.
+                  {BUSINESS.name} covers the Santa Clarita and Antelope Valleys with same-day service.
+                  Bonded &amp; Insured, written quote before any work.
                 </p>
                 <div className="flex flex-wrap gap-3">
                   <a href={BUSINESS.phoneHref} className="btn-gold">
                     <Phone size={16} /> Call {BUSINESS.phone}
                   </a>
                   <a href={BUSINESS.smsHref} className="btn-ghost">
-                    <MessageSquareText size={16} /> Text us a photo — free diagnosis
+                    <MessageSquareText size={16} /> Text us a photo
                   </a>
                 </div>
               </div>
@@ -323,19 +320,6 @@ export default async function TipsPostPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Diagnostic widget — same Formspree flow as the homepage, context-set heading */}
-      <DiagnosticWidget
-        eyebrow="Free Diagnosis"
-        heading={
-          <>
-            Not Sure What&apos;s Wrong With Your{" "}
-            <em>{post.category === "gate" ? "Gate" : "Garage Door"}</em>?
-          </>
-        }
-        subheading={`Answer 4 quick questions about your ${
-          post.category === "gate" ? "gate" : "garage door"
-        } and get an expert read on what's likely failing — and what it takes to fix.`}
-      />
     </>
   );
 }

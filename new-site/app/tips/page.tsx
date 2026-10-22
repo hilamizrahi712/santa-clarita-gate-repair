@@ -6,9 +6,9 @@ import { BLOG_POSTS } from "@/lib/blog-data";
 import { BUSINESS } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Gate & Garage Door Tips | Real Gate & Garage Door",
+  title: `Gate & Garage Door Tips for SCV and the AV | ${BUSINESS.name}`,
   description:
-    "Expert tips, cost guides, and troubleshooting for gates and garage doors. Real answers from the technicians at Real Gate & Garage Door.",
+    "What desert wind, summer heat, HOA rules and ranch driveways mean for your gate and garage door, from technicians who work the Santa Clarita and Antelope Valleys.",
   alternates: { canonical: "/tips" },
 };
 
@@ -24,13 +24,13 @@ export default function TipsIndexPage() {
         style={{ background: "var(--bg-dark)", color: "var(--text-warm)" }}
       >
         <div className="container-max max-w-2xl">
-          <span className="eyebrow">Expert Advice</span>
+          <span className="eyebrow">Local Know-How</span>
           <h1 style={{ color: "var(--text-warm)", marginBottom: "1rem" }}>
             Gate &amp; Garage Door <em>Tips</em>
           </h1>
           <p style={{ color: "rgba(216,234,208,0.75)", fontSize: "1.1rem" }}>
-            Cost guides, troubleshooting help, and maintenance advice from the technicians
-            at {BUSINESS.name}.
+            Short reads on how local conditions affect gates and garage doors, the warning signs to
+            watch for, and when it is time to call {BUSINESS.name}.
           </p>
         </div>
       </section>

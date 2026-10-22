@@ -3,35 +3,25 @@ import Link from "next/link";
 import Image from "next/image";
 import { Phone, MapPin } from "lucide-react";
 import { IMAGES, IMAGE_ALT } from "@/lib/images";
-import { BUSINESS, ALL_CITIES } from "@/lib/constants";
+import { BUSINESS, ALL_CITIES, SCV_CITIES, AV_CITIES } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Service Areas — LA & SoCal Cities | Real Gate & Garage Door",
+  title: `Service Areas: Santa Clarita & Antelope Valley | ${BUSINESS.name}`,
   description:
-    `Real Gate & Garage Door serves ${ALL_CITIES.length}+ cities across Los Angeles & Southern California. Same-day gate and garage door repair near you. Call (818) 915-5715.`,
+    `Gate and garage door repair in ${ALL_CITIES.length} communities across the Santa Clarita and Antelope Valleys, from Castaic and Valencia to Lancaster and Pearblossom.`,
   alternates: { canonical: "/service-areas" },
 };
 
-const REGIONS: { name: string; slugs: string[] }[] = [
+const REGIONS: { name: string; blurb: string; cities: { name: string; slug: string }[] }[] = [
   {
-    name: "San Fernando Valley",
-    slugs: ["woodland-hills", "sherman-oaks", "encino", "calabasas", "tarzana", "chatsworth", "van-nuys", "reseda", "northridge", "north-hollywood", "studio-city", "burbank", "glendale", "canoga-park"],
+    name: "Santa Clarita Valley",
+    blurb: "Planned communities, older tracts, canyon lots and horse country.",
+    cities: SCV_CITIES,
   },
   {
-    name: "Greater LA",
-    slugs: ["los-angeles", "beverly-hills", "west-hollywood", "santa-monica", "culver-city", "silver-lake", "los-feliz", "eagle-rock", "hollywood", "bel-air", "malibu", "pasadena", "alhambra", "hacienda-heights", "glendora"],
-  },
-  {
-    name: "Beaches & South Bay",
-    slugs: ["manhattan-beach", "redondo-beach", "torrance", "huntington-beach", "newport-beach", "long-beach", "orange", "fullerton", "anaheim", "irvine", "orange-county"],
-  },
-  {
-    name: "North LA County",
-    slugs: ["santa-clarita", "palmdale", "lancaster"],
-  },
-  {
-    name: "Central Coast & Beyond",
-    slugs: ["thousand-oaks", "simi-valley", "santa-barbara", "ventura", "oxnard", "camarillo", "fresno", "bakersfield", "ventura-county"],
+    name: "Antelope Valley",
+    blurb: "High desert cities, ranch land and the foothill lake communities.",
+    cities: AV_CITIES,
   },
 ];
 
@@ -43,17 +33,16 @@ export default function ServiceAreasPage() {
         <div className="container-max max-w-2xl">
           <span className="eyebrow">Where We Work</span>
           <h1 style={{ color: "var(--text-warm)", marginBottom: "1rem" }}>
-            Gate & Garage Door Repair — <em>Service Areas</em>
+            {ALL_CITIES.length} Communities, <em>Two Valleys</em>
           </h1>
           <p style={{ color: "rgba(216,234,208,0.75)", fontSize: "1.05rem" }}>
-            We serve cities across Los Angeles &amp; Southern California —
-            from Malibu to Long Beach, Santa Barbara to Orange County.
+            Our technicians cover the Santa Clarita Valley and the Antelope Valley, from Stevenson Ranch
+            and Castaic in the west to Lancaster, Littlerock and Pearblossom in the east.
           </p>
         </div>
       </section>
 
       {/* Photo strip — visual proof of work across the region */}
-      {/* TODO: An interactive Google Maps embed showing coverage radius could replace this section */}
       <section style={{ background: "var(--bg-muted)", borderBottom: "1px solid var(--line)" }}>
         <div className="grid grid-cols-4" style={{ height: 200 }}>
           {IMAGES.serviceAreasStrip.map((src) => ({ src, alt: IMAGE_ALT[src] })).map((photo, i) => (
@@ -78,15 +67,16 @@ export default function ServiceAreasPage() {
         <div className="container-max">
 
           {REGIONS.map((region) => {
-            const cities = region.slugs
-              .map((slug) => ALL_CITIES.find((c) => c.slug === slug))
-              .filter((c): c is { name: string; slug: string } => Boolean(c));
+            const cities = region.cities;
             return (
               <div key={region.name} className="mb-14">
                 <div className="flex items-center gap-3 mb-8">
                   <h2 style={{ fontSize: "1.4rem", color: "var(--heading)" }}>{region.name}</h2>
                   <div style={{ flex: 1, height: 1, background: "var(--line)" }} />
                 </div>
+                <p style={{ color: "var(--text-soft)", fontSize: "0.92rem", marginTop: "-1.25rem", marginBottom: "1.5rem" }}>
+                  {region.blurb}
+                </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {cities.map((c) => (
                     <Link
@@ -104,7 +94,7 @@ export default function ServiceAreasPage() {
                           {c.name}
                         </p>
                         <p style={{ color: "var(--stone)", fontSize: "0.78rem" }}>
-                          Gate &amp; Garage Door Repair · {c.name}, CA
+                          Gates and garage doors in {c.name}
                         </p>
                       </div>
                     </Link>
@@ -120,18 +110,18 @@ export default function ServiceAreasPage() {
             style={{ background: "var(--bg-card)", border: "1px solid var(--line)" }}
           >
             <h2 style={{ fontSize: "1.5rem", color: "var(--heading)", marginBottom: "0.75rem" }}>
-              Don&apos;t See Your City?
+              Near One of These Communities?
             </h2>
             <p style={{ color: "var(--text-soft)", maxWidth: 520, margin: "0 auto 1.75rem", fontSize: "0.95rem" }}>
-              We may still be able to reach you. Our coverage extends throughout Los Angeles
-              &amp; Southern California — call us and we&apos;ll let you know.
+              If your property sits between two of the places above, or just outside them, call or text
+              and we will tell you straight away whether we can come out.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a href={BUSINESS.phoneHref} className="btn-primary">
                 <Phone size={16} /> Call {BUSINESS.phone}
               </a>
               <Link href="/contact" className="btn-secondary">
-                Get a Free Estimate
+                Free On-Site Quote
               </Link>
             </div>
           </div>

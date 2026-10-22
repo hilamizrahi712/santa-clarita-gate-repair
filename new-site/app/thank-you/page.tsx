@@ -4,8 +4,8 @@ import { CheckCircle, Phone, ArrowRight } from "lucide-react";
 import { BUSINESS } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Thank You — Real Gate & Garage Door",
-  description: "Your request has been received. We'll call you back within 30 minutes.",
+  title: `Request Received | ${BUSINESS.name}`,
+  description: "Thanks for reaching out. A technician will call you back to set up your visit.",
   robots: { index: false, follow: false },
 };
 
@@ -18,12 +18,12 @@ export default function ThankYouPage() {
         </div>
 
         <h1 style={{ marginBottom: "1rem", fontSize: "2.25rem", lineHeight: 1.15 }}>
-          Request Received!
+          Got It, Thank You
         </h1>
 
         <p style={{ color: "var(--text-mid)", fontSize: "1.05rem", lineHeight: 1.75, marginBottom: "2rem" }}>
-          We&apos;ll call you back within <strong>30 minutes</strong> during business hours
-          (Sun–Fri, 7 AM–10 PM). If this is urgent, call us directly and we&apos;ll pick up now.
+          Your request is with our office, and a technician will call you back during business hours
+          (Sun–Fri, 7 AM–10 PM) to set up a visit. Gate stuck or car trapped? Call the number below instead.
         </p>
 
         <div
@@ -31,7 +31,7 @@ export default function ThankYouPage() {
           style={{ background: "var(--bg-card)", border: "1px solid var(--line)" }}
         >
           <p className="font-semibold mb-2" style={{ color: "var(--text-dark)" }}>
-            Need help right now?
+            Urgent?
           </p>
           <a
             href={BUSINESS.phoneHref}
