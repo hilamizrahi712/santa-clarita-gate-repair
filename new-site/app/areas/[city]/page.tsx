@@ -138,7 +138,7 @@ export default async function CityPage({ params }: Props) {
         >
           <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-8 items-center w-full">
             <div>
-              <span className="eyebrow" style={{ color: "rgba(217,80,112,0.9)" }}>
+              <span className="eyebrow" style={{ color: "var(--brown-warm)" }}>
                 {data.name}, CA
               </span>
               <h1 style={{ color: "var(--text-warm)", marginBottom: "0.75rem" }}>

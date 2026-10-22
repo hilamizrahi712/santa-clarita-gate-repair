@@ -192,7 +192,7 @@ export default async function BrandPage({
           </div>
           )}
 
-          <span className="eyebrow" style={{ color: "rgba(217,80,112,0.9)" }}>
+          <span className="eyebrow" style={{ color: "var(--brown-warm)" }}>
             Santa Clarita Valley · Antelope Valley
           </span>
           <h1 style={{ color: "var(--text-warm)", marginBottom: "0.5rem" }}>
