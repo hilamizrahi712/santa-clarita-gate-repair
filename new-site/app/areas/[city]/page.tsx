@@ -185,7 +185,7 @@ export default async function CityPage({ params }: Props) {
             className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm font-semibold"
             style={{ color: "#1a1a1a", letterSpacing: "0.02em" }}
           >
-            <span>✦ Serving {data.name}</span>
+            <span>✦ Same-day service in {data.name}</span>
             <span style={{ opacity: 0.5 }}>·</span>
             <span>24/7 emergency dispatch</span>
             <span style={{ opacity: 0.5 }}>·</span>
