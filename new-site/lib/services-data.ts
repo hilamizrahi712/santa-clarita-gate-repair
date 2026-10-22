@@ -23,6 +23,8 @@ export interface ServiceData {
   relatedSlugs: string[];
   isInstallation: boolean;
   isEmergency?: boolean;
+  // Installation pages only: one section per local setting, each linking the cities it fits.
+  settings?: { heading: string; body: string; citySlugs: string[] }[];
 }
 
 const P = BUSINESS.phone;
@@ -378,7 +380,7 @@ When you call, tell us what is happening and we get a technician moving. The fir
     isInstallation: true,
     intro: `A good gate install starts with the property. A slide gate needs room to travel; a swing gate needs space to clear the driveway and a grade it can handle. Hillside homes in Castaic, ranch entries in Acton and Agua Dulce, and windy lots in Lancaster and Quartz Hill all call for different choices.
 
-We walk the site with you, talk through styles like wrought iron, wood and steel, and horizontal slat, and pair the gate with an operator that suits its size and use. Remotes, keypads, safety sensors and battery backup can all be part of the plan.`,
+We walk the site with you, talk through styles like wrought iron, wood and steel, and horizontal slat, and pair the gate with an operator that suits its size and use. Remotes, keypads, safety sensors and battery backup can all be part of the plan. The sections below cover the four settings we install in most across the two valleys.`,
     features: [
       { icon: "📐", title: "Planned On Site", desc: "Layout based on your driveway width, slope and clearance." },
       { icon: "🎨", title: "Style Options", desc: "Wrought iron, horizontal slat, wood and steel and more." },
@@ -401,6 +403,36 @@ We walk the site with you, talk through styles like wrought iron, wood and steel
       { q: "Slide or swing: which is better for my driveway?", a: "It depends on space and slope. Slide gates suit tight or sloped driveways with room along the fence line; swing gates need clear space to open. We will recommend what fits after seeing the site." },
       { q: "Can you automate my existing manual gate?", a: "Often, yes, if the gate is in good shape and sized for an operator. We check the frame and hinges during the visit." },
       { q: "How do I get a quote?", a: `Call or text ${P} and we will set up a free on-site quote. We need to see the property to quote accurately.` },
+    ],
+    settings: [
+      {
+        heading: "High Desert Gates: Heat, Wind and Blowing Sand",
+        body: `Out in Palmdale, Lancaster and the east Antelope Valley, a gate spends summer in triple-digit sun and spring in steady west wind. Dark steel gets hot enough to warp thin pickets, wind loads a solid gate like a sail, and fine sand drifts into everything. We favor open picket or slat designs that let gusts pass through, and we size the operator for the wind pressure on the leaf, not only its weight.
+
+Sand is the main enemy of a slide gate here. It packs into V-track and grinds the wheels, so we set tracks where they shed debris, or recommend a cantilever gate that rides on rollers above the ground. Operators go in sealed, gasketed housings rated for heavy duty, with control boards shaded from direct afternoon sun.`,
+        citySlugs: ["palmdale", "lancaster", "quartz-hill", "littlerock", "sun-village", "pearblossom", "leona-valley", "acton"],
+      },
+      {
+        heading: "Ranch and Horse Property Gates: Long Drives, Wide Openings",
+        body: `On ranch and horse lots in Agua Dulce, Acton and Leona Valley, the gate often sits hundreds of feet from the house and has to open wide enough for a truck pulling a horse trailer. We plan openings of 16 feet and up, build leaves that stay rigid across that span, and set posts deep enough for the weight and the leverage.
+
+Running power down a long drive is costly, so many of these installs use solar operators with battery banks. We size the panel and batteries for the gate's daily cycles and for short winter days, and place the panel where it gets clear sun. Vehicle exit sensors, keypads at trailer-window height and long-range remotes make the gate easy to use from the cab.`,
+        citySlugs: ["agua-dulce", "acton", "leona-valley", "lake-hughes", "lake-elizabeth", "green-valley", "littlerock", "pearblossom", "val-verde", "newhall", "canyon-country"],
+      },
+      {
+        heading: "HOA and Master-Planned Community Gates: Approval First",
+        body: `In Valencia, Stevenson Ranch and the planned neighborhoods of Saugus, Castaic and west Palmdale, a new gate usually needs architectural approval before anything is built. We prepare the drawings, dimensions, materials and color details your committee asks for, and design the gate to match the fence styles already approved in your tract.
+
+Homes sit close together in these communities, so operator noise matters. We use quiet DC operators and belt or chain systems that run smoothly, and we keep motors and control boxes low and screened from the street. For community entries we install commercial-grade operators, loop detectors and telephone entry that a property manager can maintain.`,
+        citySlugs: ["valencia", "stevenson-ranch", "santa-clarita", "saugus", "castaic", "palmdale", "lancaster"],
+      },
+      {
+        heading: "Hillside Gates: Steep Driveways and Heavy Leaves",
+        body: `Canyon Country, Castaic and the hills above Newhall and Val Verde have driveways that climb or drop right at the property line. A swing leaf on a slope can hit the pavement partway open, so we survey the grade first and choose rising hinges, a split pair of shorter leaves or a slide gate laid out along the contour.
+
+Gates on hillside lots tend to be heavy, and an undersized operator strains every time it fights gravity. We match the operator to the true weight and the slope, and fit a battery backup on every hillside install so the gate keeps working, and you can still get the car out, when the power drops.`,
+        citySlugs: ["canyon-country", "castaic", "stevenson-ranch", "newhall", "val-verde", "green-valley", "lake-hughes", "agua-dulce"],
+      },
     ],
     relatedSlugs: ["gate-motor-replacement", "iron-gate-repair", "driveway-gate-repair"],
   },
@@ -677,7 +709,7 @@ We repair springs, cables, operators, tracks and damaged sections, and we can sc
     isInstallation: true,
     intro: `A new garage door changes how a house looks from the street and how the garage feels on a 105-degree afternoon. Insulated doors help in hot Santa Clarita summers and cold high desert winters, and a sturdier door holds up better against Antelope Valley wind.
 
-We measure your opening, help you choose a style that suits the house, from clean modern panels in Valencia to carriage-style looks on ranch homes, and install the door with springs, hardware and an [opener](/services/garage-door-opener-repair) sized for it.`,
+We measure your opening, help you choose a style that suits the house, from clean modern panels in Valencia to carriage-style looks on ranch homes, and install the door with springs, hardware and an [opener](/services/garage-door-opener-repair) sized for it. Below is how that plays out in the four kinds of property we work on most.`,
     features: [
       { icon: "🌡️", title: "Insulated Options", desc: "Doors that help with heat and cold in the garage." },
       { icon: "🏡", title: "Style Choices", desc: "Modern, raised panel, carriage-style and wood-look doors." },
@@ -700,6 +732,36 @@ We measure your opening, help you choose a style that suits the house, from clea
       { q: "Is an insulated door worth it here?", a: "For attached garages and garages used as workshops or gyms, insulation makes a noticeable difference in both summer heat and winter cold." },
       { q: "Can you install a new opener at the same time?", a: "Yes. We often install the door and opener together so they are matched and set up in one visit." },
       { q: "How do I get a quote?", a: `Call or text ${P} for a free on-site quote. We measure the opening so the quote is accurate.` },
+    ],
+    settings: [
+      {
+        heading: "High Desert Garage Doors: Built for Heat, Cold and Wind",
+        body: `In the Antelope Valley a garage door faces scorching summers, frosty winter mornings and gusts that push hard on a wide door. We recommend insulated steel doors with a polyurethane core, which hold their shape in heat and keep the garage more comfortable, and wind-rated struts and hardware on doors that face the prevailing west wind.
+
+Blowing sand wears out rollers and gets under the door. We fit sealed-bearing nylon rollers, a heavy bottom seal and side and top weatherstripping so grit stays out, and we choose an opener with an enclosed drive that keeps dust off the moving parts.`,
+        citySlugs: ["palmdale", "lancaster", "quartz-hill", "littlerock", "sun-village", "pearblossom", "leona-valley", "acton"],
+      },
+      {
+        heading: "Ranch and Horse Property Garage Doors: Barns, Shops and Tall Openings",
+        body: `Ranch properties often have more than a house garage: a shop, an RV bay or a barn that needs a tall, wide door. We install doors sized for trucks, trailers and equipment, with heavier springs and track rated for the size, and openers powerful enough to lift them every day.
+
+When an outbuilding is far from the main panel, we plan the opener around the power you have, and add battery backup so a door still opens during an outage. Keypads and app control let you open a shop or barn door without walking back for a remote.`,
+        citySlugs: ["agua-dulce", "acton", "leona-valley", "lake-hughes", "lake-elizabeth", "green-valley", "littlerock", "pearblossom", "val-verde", "newhall", "canyon-country"],
+      },
+      {
+        heading: "HOA and Master-Planned Community Garage Doors: Matching the Street",
+        body: `Most garage doors in Valencia, Stevenson Ranch and the newer tracts around Saugus and Castaic face a street where the HOA controls style and color. We bring catalog pages and color samples for the approval package and order a door that matches what the association already allows on your block.
+
+With bedrooms often above or beside the garage, we install belt-drive or wall-mount openers that run quietly, and set the door up so it closes gently without banging. Smart openers let you check and close the door from your phone.`,
+        citySlugs: ["valencia", "stevenson-ranch", "santa-clarita", "saugus", "castaic", "palmdale", "lancaster"],
+      },
+      {
+        heading: "Hillside Garage Doors: Sloped Aprons and Battery Backup",
+        body: `On steep lots in Canyon Country, Castaic and the canyons around Newhall, the garage floor or apron often slopes across the width of the door. A standard seal leaves a gap on one side, so we measure the slab and fit a bottom seal and retainer that close flush along the whole width.
+
+Hillside homes also tend to have larger, heavier doors and garages that are the only way out. We match springs and opener to the actual door weight and install battery backup as standard, so the door still opens when the power is out.`,
+        citySlugs: ["canyon-country", "castaic", "stevenson-ranch", "newhall", "val-verde", "green-valley", "lake-hughes", "agua-dulce"],
+      },
     ],
     relatedSlugs: ["garage-door-opener-repair", "garage-door-panel-repair", "garage-door-repair"],
   },

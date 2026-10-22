@@ -179,6 +179,34 @@ export default async function ServicePage({ params }: Props) {
                 ))}
               </div>
 
+              {/* Installation by setting: high desert, ranch, HOA, hillside */}
+              {service.settings?.map((st) => (
+                <div key={st.heading}>
+                  <h2 style={{ marginBottom: "1rem", fontSize: "1.5rem" }}>{st.heading}</h2>
+                  {st.body.split("\n\n").map((para, i) => (
+                    <p key={i} className="leading-relaxed mb-4" style={{ color: "var(--text-mid)", fontSize: "1rem" }}>
+                      {para}
+                    </p>
+                  ))}
+                  <div className="flex flex-wrap gap-2">
+                    {st.citySlugs.map((citySlug) => {
+                      const c = CITIES.find((city) => city.slug === citySlug);
+                      if (!c) return null;
+                      return (
+                        <Link
+                          key={c.slug}
+                          href={`/areas/${c.slug}`}
+                          className="px-3 py-1 rounded-full text-sm"
+                          style={{ background: "var(--bg-muted)", color: "var(--text-mid)", border: "1px solid var(--line)", textDecoration: "none" }}
+                        >
+                          {c.name}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+
               {/* Symptoms */}
               <div
                 className="rounded-[var(--radius-lg)] p-6"
