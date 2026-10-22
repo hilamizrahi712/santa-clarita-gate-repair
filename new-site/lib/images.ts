@@ -75,15 +75,9 @@ export const IMAGES = {
   } as Record<string, { hero: string; photo: string }>,
   brandFallback: { hero: P.blackSteel, photo: P.woodSlatOperator },
 
-  // Brands strip. Viking, Ramset and Eagle have no usable logo (IMAGE-GAPS.md).
-  brandLogos: {
-    "all-o-matic": "/images/logos/all-o-matic.webp",
-    "chamberlain": "/images/logos/chamberlain.webp",
-    "doorbird": "/images/logos/doorbird.webp",
-    "doorking": "/images/logos/doorking.webp",
-    "elite": "/images/logos/elite.webp",
-    "genie": "/images/logos/genie.webp",
-    "liftmaster": "/images/logos/liftmaster.webp",
-    "linear": "/images/logos/linear.webp",
-  } as Record<string, string>,
+  // Brands grid: REAL's logo files (logo-1..11), copied by slug per FIX-LIST.md group 2.
+  brandLogos: Object.fromEntries(
+    ["all-o-matic", "liftmaster", "doorking", "genie", "doorbird", "chamberlain", "elite", "viking", "ramset", "linear", "eagle"]
+      .map((slug) => [slug, `/images/logos/${slug}.webp`]),
+  ) as Record<string, string>,
 };

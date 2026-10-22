@@ -9,7 +9,7 @@ export interface BrandFAQ {
 export interface BrandData {
   slug: string;
   name: string;
-  // Empty when this site has no usable logo for the brand (IMAGE-GAPS.md).
+  // Logo file path; every brand has one (IMAGE-GAPS.md).
   logo: string;
   type: "gate" | "garage-door" | "both" | "access-control";
   tagline: string;

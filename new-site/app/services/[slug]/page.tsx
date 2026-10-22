@@ -20,7 +20,7 @@ const GATE_CITY_SIGNAL_SLUGS = [
 ];
 import ContactForm from "@/components/ContactForm";
 import InlineLinks from "@/components/InlineLinks";
-import BrandsMarquee from "@/components/BrandsMarquee";
+import BrandsGrid from "@/components/BrandsGrid";
 import TextUsCTA from "@/components/TextUsCTA";
 
 interface Props {
@@ -447,7 +447,7 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* BRANDS WE SERVICE */}
-      <BrandsMarquee />
+      <BrandsGrid />
     </>
   );
 }

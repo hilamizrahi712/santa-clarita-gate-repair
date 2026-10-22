@@ -9,7 +9,7 @@ import { BRANDS, anchorVerb } from "@/lib/brands-data";
 import { IMAGES, IMAGE_ALT } from "@/lib/images";
 import { BUSINESS, ORG_ID } from "@/lib/constants";
 import ContactForm from "@/components/ContactForm";
-import BrandsMarquee from "@/components/BrandsMarquee";
+import BrandsGrid from "@/components/BrandsGrid";
 import InlineLinks from "@/components/InlineLinks";
 import TextUsCTA from "@/components/TextUsCTA";
 
@@ -324,7 +324,7 @@ export default async function CityPage({ params }: Props) {
       </section>
 
       {/* BRANDS */}
-      <BrandsMarquee />
+      <BrandsGrid />
 
       {/* BRANDS WE REPAIR: one link per brand page, wording per city from cities-data */}
       <section className="section-padding" style={{ background: "var(--bg-base)" }}>

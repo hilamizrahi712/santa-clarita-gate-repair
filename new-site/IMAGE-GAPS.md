@@ -19,12 +19,7 @@ Only 7 usable photos, all gates. Each is reused across several slots.
 
 ## Brand logos
 
-- **Viking, Ramset:** source `* tp.jpeg` files are black artwork on a black background, so they are
-  unusable. They are left out of the brands strip.
-- **Eagle:** no `eagle tp.jpeg`; `eagle logo.jpeg` has a fake checkerboard "transparent" background
-  baked in. Left out.
-- **Chamberlain:** dark navy on black. Low contrast on the dark theme; a light or white version
-  would be better.
-- Logos are trimmed but keep their black JPEG background (no transparency in the sources).
+All 11 brand logos are REAL's `public/images/brands/logo-1..11.webp` files, copied under slug names
+into `public/images/logos/` (Hila's decision, FIX-LIST.md group 2). They sit on white tiles.
 
-Needed from Hila: garage door job photos, a team or truck photo, and usable Viking/Ramset/Eagle logos.
+Needed from Hila: garage door job photos and a team or truck photo.

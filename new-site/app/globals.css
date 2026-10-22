@@ -298,46 +298,13 @@ main > section + section, main > div + section, main > section + div > section {
 /* ─── Stars ─── */
 .stars { color: var(--brown-warm); }
 
-/* ─── Brands marquee ─── */
-.brands-bar {
-  padding: 64px 0;
-  background: var(--bg-muted);
-  overflow: hidden;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-.brands-head { text-align: center; margin-bottom: 2.5rem; padding: 0 1.5rem; }
-.brands-head h2 { font-size: clamp(1.4rem, 2.5vw, 2rem); color: var(--heading); margin-bottom: 0.4rem; }
-.brands-head p { color: var(--stone); font-size: 0.95rem; }
-.brands-marquee-wrap {
-  overflow: hidden;
-  mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
-}
-.brands-marquee-track {
-  display: flex;
-  align-items: center;
-  gap: 72px;
-  width: max-content;
-  will-change: transform;
-}
-.brands-marquee-track img {
-  height: 52px;
-  width: auto;
-  max-width: 140px;
-  object-fit: contain;
-  opacity: 1;
-  filter: none;
-  transition: opacity 0.25s;
-  pointer-events: none;
-  /* logos are dark-on-white files: show them on light chips so they stay legible */
-  background: #ffffff;
-  padding: 6px 10px;
-  border-radius: var(--radius);
-  -webkit-user-select: none;
-  user-select: none;
-}
-.brands-marquee-track img:hover { opacity: 0.8; }
+/* ─── Brands grid: logos on white tiles ─── */
+.line-grid > .brand-tile { background: #ffffff; }
+.brand-tile a { display: flex; align-items: center; justify-content: center; height: 120px; padding: 1rem 1.5rem; transition: opacity 0.2s; }
+.brand-tile a:hover { opacity: 0.8; }
+.line-grid > .brand-tile--all { background: var(--brown); }
+.brand-tile--all a { color: #ffffff; font-family: var(--font-barlow, 'Barlow Condensed', system-ui, sans-serif); font-weight: 700; font-size: 1.25rem; text-transform: uppercase; letter-spacing: 0.06em; text-decoration: none; }
+.brand-tile img { max-height: 80px; width: auto; height: auto; max-width: 100%; object-fit: contain; }
 
 /* ─── Section dark fill ─── */
 .section--dark { background: var(--bg-dark); }

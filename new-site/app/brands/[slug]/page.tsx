@@ -179,7 +179,7 @@ export default async function BrandPage({
           {brand.logo && (
           <div
             className="inline-flex items-center justify-center rounded-[var(--radius)] mb-5"
-            style={{ background: "rgba(255,255,255,0.12)", padding: "0.6rem 1.25rem", backdropFilter: "blur(6px)" }}
+            style={{ background: "#ffffff", padding: "0.6rem 1.25rem" }}
           >
             <Image
               src={brand.logo}
