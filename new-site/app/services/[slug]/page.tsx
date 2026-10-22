@@ -127,7 +127,7 @@ export default async function ServicePage({ params }: Props) {
         )}
         <div className="relative z-10 container-max pb-12 pt-32">
           <div className="max-w-2xl">
-            <span className="eyebrow" style={{ color: "var(--brown-warm)" }}>
+            <span className="eyebrow" style={{ color: "rgba(255,255,255,0.88)" }}>
               {service.isEmergency ? "Emergency Response" : service.isInstallation ? "Installation" : "Repair Service"}
             </span>
             <h1 style={{ color: "var(--text-warm)", marginBottom: "0.75rem" }}>

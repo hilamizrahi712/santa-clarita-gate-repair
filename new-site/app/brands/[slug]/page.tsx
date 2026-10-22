@@ -178,7 +178,7 @@ export default async function BrandPage({
           {/* Logo pill: skipped for brands without a usable logo */}
           {brand.logo && (
           <div
-            className="inline-flex items-center justify-center rounded-[var(--radius)] mb-5"
+            className="flex w-fit items-center justify-center rounded-[var(--radius)] mb-5"
             style={{ background: "#ffffff", padding: "0.6rem 1.25rem" }}
           >
             <Image
@@ -192,11 +192,11 @@ export default async function BrandPage({
           </div>
           )}
 
-          <span className="eyebrow" style={{ color: "var(--brown-warm)" }}>
+          <span className="eyebrow" style={{ color: "rgba(255,255,255,0.88)" }}>
             Santa Clarita Valley · Antelope Valley
           </span>
           <h1 style={{ color: "var(--text-warm)", marginBottom: "0.5rem" }}>
-            {brandH1(brand)} — Santa Clarita &amp; Antelope Valley
+            {`${brandH1(brand)}, Santa Clarita & Antelope Valley`}
           </h1>
           <p className="font-semibold" style={{ color: "var(--text-warm)", fontSize: "1.05rem", marginBottom: "0.5rem", maxWidth: 560 }}>
             {homeownerLine(brand)}
@@ -293,7 +293,7 @@ export default async function BrandPage({
                   className="font-heading font-bold"
                   style={{ fontSize: "1.25rem", color: "var(--heading)", marginBottom: "0.75rem", borderLeft: "4px solid var(--brown)", paddingLeft: "0.75rem" }}
                 >
-                  {brand.name} {verbTitle} in Santa Clarita & Antelope Valley
+                  {brand.name} {verbTitle}, Valencia to Lancaster
                 </h2>
                 <p style={{ color: "var(--text-mid)", lineHeight: 1.8, fontSize: "1rem" }}>
                   {brand.localParagraph}
@@ -582,7 +582,7 @@ export default async function BrandPage({
       {/* Bottom CTA */}
       <section className="section-padding section--dark">
         <div className="container-max max-w-2xl text-center">
-          <span className="eyebrow" style={{ color: "var(--brown-warm)" }}>{brand.name} Trouble?</span>
+          <span className="eyebrow" style={{ color: "rgba(255,255,255,0.88)" }}>{brand.name} Trouble?</span>
           <h2 style={{ color: "var(--text-warm)", marginBottom: "0.75rem" }}>
             Get Your {brand.name} Working Again
           </h2>

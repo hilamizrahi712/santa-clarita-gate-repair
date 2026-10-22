@@ -6,7 +6,7 @@ export const GA4_ID = "G-RR82654PGL";
 export const BUSINESS = {
   name: "Santa Clarita Gate Repair",
   shortName: "SCV Gate Repair",
-  tagline: "Gate & Garage Door Repair in Santa Clarita & Antelope Valley",
+  tagline: "Gates, gate openers and garage doors fixed from Castaic to Pearblossom",
   phone: "(661) 519-1599",
   phoneHref: "tel:+16615191599",
   smsHref: "sms:+16615191599",
